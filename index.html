@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus.net - Tu Aliado Digital en Los Guayos, Carabobo</title>
+    <meta name="description" content="Diseño web, menús digitales, catálogos y más para que tu negocio venda por WhatsApp. ¡Más clientes fáciles!">
+    <style>
+        /* Colores modernos: azul ciberpunk, púrpura neón, gradientes glassmorphism para enganche visual */
+        :root {
+            --azul-principal: #1e3a8a;
+            --azul-neon: #3b82f6;
+            --purpura: #8b5cf6;
+            --verde-neon: #10b981;
+            --blanco: #f8fafc;
+            --gris-suave: #e2e8f0;
+            --negro: #0f172a;
+            --glass-bg: rgba(255,255,255,0.1);
+            --glass-border: rgba(255,255,255,0.2);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, var(--azul-principal) 0%, var(--purpura) 50%, var(--azul-neon) 100%);
+            color: var(--blanco); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+        /* Header fijo con blur para carga rápida y navegación fácil */
+        header { 
+            position: fixed; top: 0; width: 100%; 
+            background: var(--glass-bg); backdrop-filter: blur(20px); 
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000; padding: 1rem 0;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .logo { font-size: 1.8rem; font-weight: bold; background: linear-gradient(45deg, var(--azul-neon), var(--verde-neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .menu { display: flex; list-style: none; gap: 2rem; }
+        .menu li a { color: var(--blanco); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .menu li a:hover { color: var(--verde-neon); }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 4px; }
+        .hamburger span { width: 25px; height: 3px; background: var(--blanco); transition: 0.3s; }
+        /* Botón WhatsApp flotante principal - llama a acción fuerte */
+        .whatsapp-btn { 
+            position: fixed; bottom: 20px; right: 20px; 
+            background: linear-gradient(45deg, var(--verde-neon), var(--azul-neon)); 
+            color: var(--blanco); border: none; border-radius: 50px; 
+            padding: 1rem 1.5rem; font-size: 1.1rem; font-weight: bold; 
+            box-shadow: 0 10px 30px rgba(16,185,129,0.4); 
+            cursor: pointer; z-index: 1001; transition: all 0.3s; 
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-btn:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(16,185,129,0.6); }
+        @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
+        /* Secciones con scroll suave y animaciones simples para móviles */
+        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        h1, h2 { font-size: clamp(2rem, 5vw, 3.5rem); text-align: center; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        /* Hero simple y grande para impacto inmediato */
+        #hero { padding-top: 8rem; text-align: center; }
+        .hero-subtitle { font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9; }
+        /* Servicios en grid responsive - fácil para mayores */
+        .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .servicio { background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 20px; padding: 2rem; border: 1px solid var(--glass-border); transition: transform 0.3s; }
+        .servicio:hover { transform: translateY(-10px); }
+        .servicio h3 { color: var(--azul-neon); }
+        /* Ejemplos con cards clickeables */
+        .ejemplos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .ejemplo { text-align: center; }
+        .ejemplo img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s; }
+        .ejemplo img:hover { transform: scale(1.05); }
+        .ejemplo-descr { margin-top: 1rem; font-weight: 500; }
+        /* Testimonios carousel simple con JS */
+        .testimonios { background: rgba(0,0,0,0.3); border-radius: 20px; padding: 2rem; margin-top: 3rem; }
+        .testimonio { text-align: center; font-style: italic; margin-bottom: 1.5rem; opacity: 0.9; }
+        .testimonio strong { display: block; color: var(--verde-neon); margin-top: 0.5rem; }
+        /* Formulario de opiniones simple - envía a WhatsApp */
+        #opiniones form { max-width: 500px; margin: 2rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
+        #opiniones input, #opiniones textarea { padding: 1rem; border: none; border-radius: 10px; background: var(--glass-bg); color: var(--blanco); font-size: 1rem; }
+        #opiniones button { background: var(--verde-neon); color: var(--negro); border: none; padding: 1rem; border-radius: 10px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        #opiniones button:hover { background: var(--azul-neon); }
+        /* Footer con dirección */
+        footer { background: var(--negro); padding: 2rem; text-align: center; }
+        /* Responsive para celulares y mayores - botones grandes, fuentes claras */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--glass-bg); flex-direction: column; padding: 1rem; }
+            .menu.active { display: flex; }
+            section { padding: 3rem 1rem; }
+            .whatsapp-btn { padding: 1.2rem 1.8rem; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Nexus.net</div>
+            <ul class="menu">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#ejemplos">Ejemplos</a></li>
+                <li><a href="#testimonios">Opiniones</a></li>
+                <li><a href="#opiniones">Deja tu opinión</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>¡Tu Negocio Más Cerca de los Clientes!</h1>
+        <p class="hero-subtitle">Menús digitales, páginas web y catálogos para que te escriban directo por WhatsApp. Más pedidos fáciles desde Los Guayos, Carabobo.</p>
+        <button class="whatsapp-btn" onclick="abrirWhatsApp('¡Hola! Quiero más info para mi negocio')">Habla por WhatsApp Ahora</button>
+    </section>
+
+    <section id="servicios">
+        <h2>Lo que Hago por Tu Negocio</h2>
+        <div class="servicios-grid">
+            <div class="servicio">
+                <h3>Menú Digital</h3>
+                <p>Tu carta de comida o precios en WhatsApp. Clientes piden sin llamar.</p>
+            </div>
+            <div class="servicio">
+                <h3>Página Web Simple</h3>
+                <p>Muestra tu negocio en internet. Más gente te encuentra en Google.</p>
+            </div>
+            <div class="servicio">
+                <h3>Catálogo WhatsApp</h3>
+                <p>Lista de productos con fotos. Vende recargas, pan o celulares fácil.</p>
+            </div>
+            <div class="servicio">
+                <h3>Community Manager</h3>
+                <p>Publico por ti en redes. Más visitas a tu local cerca del Elevado.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ejemplos">
+        <h2>Ejemplos Reales que Puedes Copiar</h2>
+        <div class="ejemplos-grid">
+            <div class="ejemplo">
+                <a href="https://bit.ly/PanaderiapasteleriaTambo" target="_blank">
+                    <img src="https://via.placeholder.com/300x200/3b82f6/ffffff?text=Panadería+con+Carrito" alt="Panadería Tambo" loading="lazy">
+                </a>
+                <div class="ejemplo-descr">Panadería con carrito y pedidos WhatsApp</div>
+            </div>
+            <div class="ejemplo">
+                <a href="https://bit.ly/Notipanda" target="_blank">
+                    <img src="https://via.placeholder.com/300x200/8b5cf6/ffffff?text=NotiPanda" alt="NotiPanda" loading="lazy">
+                </a>
+                <div class="ejemplo-descr">Catálogo de servicios para tu zona</div>
+            </div>
+            <div class="ejemplo">
+                <a href="https://jhonmalorne.github.io/PuntodeVentaSocialAlvarez/" target="_blank">
+                    <img src="https://via.placeholder.com/300x200/10b981/ffffff?text=Apoyo+Escolar" alt="Punto de Venta Alvarez" loading="lazy">
+                </a>
+                <div class="ejemplo-descr">Página de apoyo escolar y ventas</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios">
+        <h2>Lo que Dicen mis Clientes</h2>
+        <div class="testimonios">
+            <div id="carousel" class="testimonio">
+                "¡Mi panadería ahora recibe 20 pedidos diarios por WhatsApp! Increíble." <strong>- Panadería Los Guayos</strong>
+            </div>
+            <div class="testimonio">
+                "El menú digital me ayudó a vender más agua sin esfuerzo. Recomiendo." <strong>- Recargador El Elevado</strong>
+            </div>
+            <div class="testimonio">
+                "Página web simple pero efectiva. Más clientes de celulares." <strong>- Tienda Tech Carabobo</strong>
+            </div>
+        </div>
+        <button onclick="prevTestimonio()" style="margin: 1rem; padding: 0.5rem 1rem; background: var(--azul-neon);">? Anterior</button>
+        <button onclick="nextTestimonio()" style="margin: 1rem; padding: 0.5rem 1rem; background: var(--azul-neon);">Siguiente ?</button>
+    </section>
+
+    <section id="opiniones">
+        <h2>Deja Tu Opinión o Sugerencia</h2>
+        <p>¡Escribe aquí y te respondo por WhatsApp!</p>
+        <form id="formOpiniones">
+            <input type="text" id="nombre" placeholder="Tu nombre o negocio" required>
+            <textarea id="mensaje" rows="4" placeholder="Tu opinión o idea para mejorar..." required></textarea>
+            <button type="submit">Enviar a WhatsApp</button>
+        </form>
+    </section>
+
+    <footer>
+        <h3>Nexus.net - Tu Mejor Aliado Digital</h3>
+        <p>Estado Carabobo, Municipio Los Guayos, referencia por el Elevado<br>WhatsApp: <a href="https://wa.me/584244525765" style="color: var(--verde-neon);">0424-452-5765</a></p>
+    </footer>
+
+    <script>
+        // Menú hamburguesa móvil
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+
+        // WhatsApp directo con mensaje personalizado
+        function abrirWhatsApp(mensaje) {
+            const numero = '584244525765';
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        // Carousel testimonios simple
+        let currentTest = 0;
+        const tests = document.querySelectorAll('.testimonio');
+        function showTest(index) {
+            tests.forEach((t, i) => t.style.display = i === index ? 'block' : 'none');
+        }
+        function nextTestimonio() { currentTest = (currentTest + 1) % tests.length; showTest(currentTest); }
+        function prevTestimonio() { currentTest = (currentTest - 1 + tests.length) % tests.length; showTest(currentTest); }
+        showTest(0); // Inicial
+
+        // Formulario opiniones -> WhatsApp
+        document.getElementById('formOpiniones').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const mensaje = document.getElementById('mensaje').value;
+            abrirWhatsApp(`Nueva opinión de ${nombre}: ${mensaje}`);
+            alert('¡Gracias! Mensaje enviado a WhatsApp.');
+            e.target.reset();
+        });
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
