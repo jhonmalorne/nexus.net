@@ -4,32 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus.net - Tu Aliado Digital en Los Guayos, Carabobo</title>
-    <meta name="description" content="Diseno web, menus digitales, catalogos y mas para que tu negocio venda por WhatsApp. Mas clientes faciles!">
     <style>
-        /* Fuentes seguras sin caracteres especiales problematicos */
+        /* SUPER OPTIMIZADO: Sin imagenes externas, todo SVG inline + emojis */
         :root {
             --azul-principal: #1e3a8a;
             --azul-neon: #3b82f6;
             --purpura: #8b5cf6;
             --verde-neon: #10b981;
             --blanco: #f8fafc;
-            --gris-suave: #e2e8f0;
             --negro: #0f172a;
             --glass-bg: rgba(255,255,255,0.1);
             --glass-border: rgba(255,255,255,0.2);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: Arial, Helvetica, sans-serif; /* Fuentes basicas sin problemas */
+            font-family: Arial, sans-serif; 
             background: linear-gradient(135deg, var(--azul-principal) 0%, var(--purpura) 50%, var(--azul-neon) 100%);
             color: var(--blanco); 
             line-height: 1.6; 
             overflow-x: hidden;
         }
-        /* Resto estilos iguales pero con iconos emojis reales */
         header { 
             position: fixed; top: 0; width: 100%; 
-            background: var(--glass-bg); backdrop-filter: blur(20px); 
+            background: rgba(15,23,42,0.9); backdrop-filter: blur(20px); 
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000; padding: 1rem 0;
         }
@@ -44,53 +41,51 @@
             position: fixed; bottom: 20px; right: 20px; 
             background: linear-gradient(45deg, var(--verde-neon), var(--azul-neon)); 
             color: var(--blanco); border: none; border-radius: 50px; 
-            padding: 1rem 1.5rem; font-size: 1.1rem; font-weight: bold; 
-            box-shadow: 0 10px 30px rgba(16,185,129,0.4); 
+            padding: 1.2rem 1.8rem; font-size: 1.1rem; font-weight: bold; 
+            box-shadow: 0 8px 25px rgba(16,185,129,0.4); 
             cursor: pointer; z-index: 1001; transition: all 0.3s; 
             animation: pulse 2s infinite;
         }
-        .whatsapp-btn:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(16,185,129,0.6); }
         @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
-        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
-        h1, h2 { font-size: clamp(2rem, 5vw, 3.5rem); text-align: center; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        #hero { padding-top: 8rem; text-align: center; }
-        .hero-subtitle { font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9; }
-        .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .servicio { 
-            background: var(--glass-bg); backdrop-filter: blur(10px); border-radius: 20px; 
-            padding: 2rem; border: 1px solid var(--glass-border); transition: transform 0.3s; 
+        section { padding: 4rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+        h1, h2 { font-size: clamp(2rem, 5vw, 3.5rem); text-align: center; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; text-align: center; }
+        #hero { padding-top: 7rem; text-align: center; }
+        .hero-subtitle { font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .servicios-grid, .ejemplos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .servicio, .ejemplo { 
+            background: var(--glass-bg); backdrop-filter: blur(15px); border-radius: 20px; 
+            padding: 1.5rem; border: 1px solid var(--glass-border); transition: transform 0.3s; 
             text-align: center;
         }
-        .servicio:hover { transform: translateY(-10px); }
-        .servicio h3 { color: var(--azul-neon); margin-bottom: 1rem; }
-        .servicio img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 1rem; }
-        .ejemplos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .ejemplo { text-align: center; }
-        .ejemplo img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: transform 0.3s; }
-        .ejemplo img:hover { transform: scale(1.05); }
-        .ejemplo-descr { margin-top: 1rem; font-weight: 500; }
-        .testimonios { background: rgba(0,0,0,0.3); border-radius: 20px; padding: 2rem; margin-top: 3rem; }
-        .testimonio { text-align: center; font-style: italic; margin-bottom: 1.5rem; opacity: 0.9; }
+        .servicio:hover, .ejemplo:hover { transform: translateY(-8px); }
+        .servicio-icon { 
+            width: 80px; height: 80px; margin: 0 auto 1rem; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-size: 2.5rem; 
+            background: rgba(255,255,255,0.2);
+        }
+        .ejemplo svg { width: 100%; height: 200px; border-radius: 15px; cursor: pointer; transition: transform 0.3s; }
+        .ejemplo svg:hover { transform: scale(1.02); }
+        .testimonios { background: rgba(0,0,0,0.4); border-radius: 20px; padding: 2rem; margin-top: 3rem; }
+        .testimonio { text-align: center; font-style: italic; margin-bottom: 1.5rem; opacity: 0.95; }
         .testimonio strong { display: block; color: var(--verde-neon); margin-top: 0.5rem; }
         #opiniones form { max-width: 500px; margin: 2rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
         #opiniones input, #opiniones textarea { padding: 1rem; border: none; border-radius: 10px; background: var(--glass-bg); color: var(--blanco); font-size: 1rem; }
-        #opiniones button { background: var(--verde-neon); color: var(--negro); border: none; padding: 1rem; border-radius: 10px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
-        #opiniones button:hover { background: var(--azul-neon); }
-        footer { background: var(--negro); padding: 2rem; text-align: center; }
+        #opiniones button { background: var(--verde-neon); color: var(--negro); border: none; padding: 1rem; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        footer { background: var(--negro); padding: 2rem 1rem; text-align: center; }
         @media (max-width: 768px) {
             .hamburger { display: flex; }
-            .menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--glass-bg); flex-direction: column; padding: 1rem; }
+            .menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(15,23,42,0.95); flex-direction: column; padding: 1rem; border-radius: 0 0 20px 20px; }
             .menu.active { display: flex; }
             section { padding: 3rem 1rem; }
-            .whatsapp-btn { padding: 1.2rem 1.8rem; font-size: 1.2rem; }
+            .whatsapp-btn { padding: 1.3rem 2rem; font-size: 1.2rem; bottom: 15px; right: 15px; }
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">🍀 Nexus.net</div>
+            <div class="logo">🌟 Nexus.net</div>
             <ul class="menu">
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#ejemplos">Ejemplos</a></li>
@@ -106,31 +101,31 @@
     <section id="hero">
         <h1>🍔 Tu Negocio Mas Cerca de los Clientes!</h1>
         <p class="hero-subtitle">Menus digitales, paginas web y catalogos para que te escriban directo por WhatsApp. Mas pedidos faciles desde Los Guayos, Carabobo.</p>
-        <button class="whatsapp-btn" onclick="abrirWhatsApp('Hola! Quiero mas info para mi negocio')">Habla por WhatsApp Ahora 📱</button>
+        <button class="whatsapp-btn" onclick="abrirWhatsApp('Hola! Quiero mas info para mi negocio en Los Guayos')">Habla por WhatsApp 📱</button>
     </section>
 
     <section id="servicios">
         <h2>🔥 Lo que Hago por Tu Negocio</h2>
         <div class="servicios-grid">
             <div class="servicio">
-                <img src="https://via.placeholder.com/80x80/10b981/ffffff?text=🍔" alt="Menu">
+                <div class="servicio-icon">🍔</div>
                 <h3>Menú Digital</h3>
-                <p>Tu carta de comida o precios en WhatsApp. Clientes piden sin llamar. 🛒</p>
+                <p>Tu carta de comida o precios en WhatsApp. Clientes piden sin llamar.</p>
             </div>
             <div class="servicio">
-                <img src="https://via.placeholder.com/80x80/3b82f6/ffffff?text=🌐" alt="Web">
+                <div class="servicio-icon">🌐</div>
                 <h3>Pagina Web Simple</h3>
-                <p>Muestra tu negocio en internet. Mas gente te encuentra en Google. 📱</p>
+                <p>Muestra tu negocio en internet. Mas gente te encuentra en Google.</p>
             </div>
             <div class="servicio">
-                <img src="https://via.placeholder.com/80x80/8b5cf6/ffffff?text=📦" alt="Catalogo">
+                <div class="servicio-icon">📦</div>
                 <h3>Catalogo WhatsApp</h3>
-                <p>Lista de productos con fotos. Vende recargas, pan o celulares facil. 💧</p>
+                <p>Lista de productos con fotos. Vende recargas, pan o celulares facil.</p>
             </div>
             <div class="servicio">
-                <img src="https://via.placeholder.com/80x80/f59e0b/ffffff?text=📢" alt="Redes">
+                <div class="servicio-icon">📢</div>
                 <h3>Community Manager</h3>
-                <p>Publico por ti en redes. Mas visitas a tu local cerca del Elevado. 👥</p>
+                <p>Publico por ti en redes. Mas visitas a tu local cerca del Elevado.</p>
             </div>
         </div>
     </section>
@@ -140,21 +135,36 @@
         <div class="ejemplos-grid">
             <div class="ejemplo">
                 <a href="https://bit.ly/PanaderiapasteleriaTambo" target="_blank">
-                    <img src="https://via.placeholder.com/300x200/f97316/ffffff?text=🍞+Panadería+Tambo" alt="Panaderia Tambo" loading="lazy">
+                    <svg viewBox="0 0 300 200" fill="none">
+                        <rect width="300" height="200" rx="15" fill="#f97316"/>
+                        <circle cx="150" cy="100" r="60" fill="#fbbf24"/>
+                        <text x="150" y="105" text-anchor="middle" fill="white" font-size="24" font-weight="bold">🍞 PANADERIA</text>
+                        <text x="150" y="135" text-anchor="middle" fill="white" font-size="16">Carrito WhatsApp</text>
+                    </svg>
                 </a>
-                <div class="ejemplo-descr">🍞 Panaderia con carrito y pedidos WhatsApp</div>
+                <div class="ejemplo-descr">Panaderia con carrito y pedidos WhatsApp</div>
             </div>
             <div class="ejemplo">
                 <a href="https://bit.ly/Notipanda" target="_blank">
-                    <img src="https://via.placeholder.com/300x200/8b5cf6/ffffff?text=🐼+NotiPanda" alt="NotiPanda" loading="lazy">
+                    <svg viewBox="0 0 300 200" fill="none">
+                        <rect width="300" height="200" rx="15" fill="#8b5cf6"/>
+                        <circle cx="150" cy="90" r="50" fill="#c084fc"/>
+                        <text x="150" y="95" text-anchor="middle" fill="white" font-size="28" font-weight="bold">🐼</text>
+                        <text x="150" y="130" text-anchor="middle" fill="white" font-size="18">NotiPanda</text>
+                    </svg>
                 </a>
-                <div class="ejemplo-descr">🐼 Catalogo de servicios para tu zona</div>
+                <div class="ejemplo-descr">Catalogo de servicios para tu zona</div>
             </div>
             <div class="ejemplo">
                 <a href="https://jhonmalorne.github.io/PuntodeVentaSocialAlvarez/" target="_blank">
-                    <img src="https://via.placeholder.com/300x200/10b981/ffffff?text=📚+Apoyo+Escolar" alt="Punto de Venta Alvarez" loading="lazy">
+                    <svg viewBox="0 0 300 200" fill="none">
+                        <rect width="300" height="200" rx="15" fill="#10b981"/>
+                        <circle cx="150" cy="100" r="55" fill="#34d399"/>
+                        <text x="150" y="105" text-anchor="middle" fill="white" font-size="24" font-weight="bold">📚</text>
+                        <text x="150" y="135" text-anchor="middle" fill="white" font-size="16">Apoyo Escolar</text>
+                    </svg>
                 </a>
-                <div class="ejemplo-descr">📚 Pagina de apoyo escolar y ventas</div>
+                <div class="ejemplo-descr">Pagina de apoyo escolar y ventas</div>
             </div>
         </div>
     </section>
@@ -187,41 +197,31 @@
     </section>
 
     <footer>
-        <h3>🍀 Nexus.net - Tu Mejor Aliado Digital</h3>
+        <h3>🌟 Nexus.net - Tu Mejor Aliado Digital</h3>
         <p>Estado Carabobo, Municipio Los Guayos, referencia por el Elevado<br>
         WhatsApp: <a href="https://wa.me/584244525765" style="color: var(--verde-neon);">0424-452-5765</a></p>
     </footer>
 
     <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            menu.classList.toggle('active');
-        }
-        function abrirWhatsApp(mensaje) {
-            const numero = '584244525765';
-            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
-        }
-        let currentTest = 0;
-        const tests = document.querySelectorAll('.testimonio');
-        function showTest(index) {
-            tests.forEach((t, i) => t.style.display = i === index ? 'block' : 'none');
-        }
-        function nextTestimonio() { currentTest = (currentTest + 1) % tests.length; showTest(currentTest); }
-        function prevTestimonio() { currentTest = (currentTest - 1 + tests.length) % tests.length; showTest(currentTest); }
+        function toggleMenu(){document.querySelector('.menu').classList.toggle('active');}
+        function abrirWhatsApp(mensaje){window.open('https://wa.me/584244525765?text='+encodeURIComponent(mensaje),'_blank');}
+        let currentTest=0;const tests=document.querySelectorAll('.testimonio');
+        function showTest(index){tests.forEach((t,i)=>t.style.display=i===index?'block':'none');}
+        function nextTestimonio(){currentTest=(currentTest+1)%tests.length;showTest(currentTest);}
+        function prevTestimonio(){currentTest=(currentTest-1+tests.length)%tests.length;showTest(currentTest);}
         showTest(0);
-        document.getElementById('formOpiniones').addEventListener('submit', (e) => {
+        document.getElementById('formOpiniones').addEventListener('submit',e=>{
             e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const mensaje = document.getElementById('mensaje').value;
-            abrirWhatsApp(`Nueva opinion de ${nombre}: ${mensaje}`);
+            const nombre=document.getElementById('nombre').value;
+            const mensaje=document.getElementById('mensaje').value;
+            abrirWhatsApp('Nueva opinion de '+nombre+': '+mensaje);
             alert('Gracias! Mensaje enviado a WhatsApp.');
             e.target.reset();
         });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+            anchor.addEventListener('click',e=>{
                 e.preventDefault();
-                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({behavior:'smooth'});
             });
         });
     </script>
