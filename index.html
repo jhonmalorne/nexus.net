@@ -256,6 +256,9 @@
             padding: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .service-card:hover {
@@ -274,9 +277,27 @@
             color: var(--dark);
         }
         
+        .service-description {
+            flex-grow: 1;
+        }
+        
+        .service-why {
+            background-color: rgba(42, 91, 204, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .service-why h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
         /* Capacitación */
         .accordion {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
@@ -347,6 +368,13 @@
             text-align: center;
         }
         
+        .block-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
         /* Portafolio */
         .portfolio-grid {
             display: grid;
@@ -368,13 +396,18 @@
         }
         
         .portfolio-img {
-            height: 200px;
+            height: 180px;
             background-color: var(--light-gray);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray);
-            font-size: 3rem;
+            padding: 20px;
+        }
+        
+        .portfolio-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
         
         .portfolio-content {
@@ -397,6 +430,13 @@
             padding: 5px 12px;
             border-radius: 50px;
             font-size: 0.85rem;
+        }
+        
+        .portfolio-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary);
+            font-weight: 500;
         }
         
         /* Contacto */
@@ -463,8 +503,15 @@
             background-color: var(--secondary);
         }
         
+        .social-link img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+        
         .contact-form input,
-        .contact-form textarea {
+        .contact-form textarea,
+        .contact-form select {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
@@ -476,13 +523,19 @@
         }
         
         .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
+        .contact-form textarea::placeholder,
+        .contact-form select {
             color: rgba(255,255,255,0.6);
         }
         
         .contact-form textarea {
             height: 150px;
             resize: vertical;
+        }
+        
+        .contact-form select option {
+            background-color: var(--dark);
+            color: white;
         }
         
         /* Footer */
@@ -555,6 +608,43 @@
         
         .whatsapp-float:hover {
             transform: scale(1.1);
+        }
+        
+        /* Mapa */
+        .map-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+        
+        /* Métodos de pago */
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        
+        .payment-method {
+            background-color: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .payment-method img {
+            height: 16px;
+            filter: brightness(0) invert(1);
         }
         
         /* Responsive */
@@ -650,9 +740,9 @@
             
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#servicios">Servicios Marketing</a></li>
+                <li><a href="#clientes">Clientes</a></li>
                 <li><a href="#capacitacion">Capacitación</a></li>
-                <li><a href="#portafolio">Portafolio</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </div>
@@ -667,8 +757,8 @@
     <section class="hero" id="inicio">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Transformamos tu negocio en la era digital venezolana</h1>
-                <p>Somos especialistas en marketing digital y consultoría para pequeñas y medianas empresas en Venezuela. Te ayudamos a destacar en internet con soluciones prácticas y resultados inmediatos.</p>
+                <h1>Marketing Digital y Consultoría para Empresas Venezolanas</h1>
+                <p>Especialistas en transformar negocios con soluciones digitales prácticas y resultados inmediatos. Con más de 50 proyectos exitosos en Venezuela.</p>
                 <div class="hero-btns">
                     <a href="#contacto" class="btn">Solicitar Asesoría Gratis</a>
                     <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
@@ -677,13 +767,13 @@
             <div class="hero-image">
                 <!-- Imagen representativa -->
                 <div style="background-color: #2A5BCC; height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; padding: 20px;">
-                    <div>Soluciones digitales a medida para empresas venezolanas</div>
+                    <div>Soluciones digitales a medida para el mercado venezolano</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Servicios -->
+    <!-- Sección Servicios Marketing -->
     <section id="servicios">
         <div class="container">
             <div class="section-title">
@@ -697,8 +787,14 @@
                     <div class="service-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3>Diseño de Logotipos</h3>
-                    <p>La cara de tu negocio. Un logo profesional transmite confianza y te hace destacar frente a la competencia.</p>
+                    <h3>Diseño de Logotipos (Identidad Visual)</h3>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> Es la cara de tu negocio. No es solo un dibujo; es la imagen que hará que tus clientes te reconozcan en la calle o en internet.</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Un negocio sin logo parece temporal. Un buen logo transmite confianza y hace que te tomen en serio desde el primer día.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 2 -->
@@ -706,8 +802,14 @@
                     <div class="service-icon">
                         <i class="fas fa-ad"></i>
                     </div>
-                    <h3>Banners y Volantes Digitales</h3>
-                    <p>Anuncios atractivos para WhatsApp, redes sociales o impresión. Deja de enviar fotos borrosas a tus clientes.</p>
+                    <h3>Diseño de Banners y Volantes</h3>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> Imágenes diseñadas profesionalmente para enviar por WhatsApp, poner en tus estados o imprimir en papel.</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Deja de enviar fotos borrosas o textos desordenados. Diseñamos anuncios claros y atractivos que provocan leer y comprar.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 3 -->
@@ -716,7 +818,13 @@
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Páginas Web Profesionales</h3>
-                    <p>Tu oficina digital abierta 24/7. Mostramos quién eres, qué ofreces y cómo contactarte de manera profesional.</p>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> Un sitio web completo donde mostramos quién eres, qué vendes y cómo contactarte.</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Las redes sociales pasan de moda, pero tu web es tuya. Es como tener una oficina abierta las 24 horas del día, los 365 días del año, dando información por ti.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 4 -->
@@ -724,8 +832,14 @@
                     <div class="service-icon">
                         <i class="fas fa-blog"></i>
                     </div>
-                    <h3>Creación de Blogs</h3>
-                    <p>Ideal para docentes y escritores. Un espacio económico para compartir conocimientos y crecer en internet.</p>
+                    <h3>Creación de Blogs (Blogger)</h3>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> Un espacio sencillo y económico para publicar artículos, noticias o tareas (ideal para docentes y escritores).</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Si tienes mucho que contar o enseñar, esta es la forma más fácil y rápida de empezar a tener presencia en internet sin complicaciones técnicas.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 5 -->
@@ -734,7 +848,13 @@
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
                     <h3>Registro en Google Maps</h3>
-                    <p>Te ponemos en el mapa literalmente. Que tus clientes te encuentren al buscar en Google o GPS.</p>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> Hacemos que tu negocio aparezca con su ubicación exacta, horario y teléfono cuando alguien busca en Google o usa el GPS.</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Para que tus vecinos y nuevos clientes te encuentren físicamente sin tener que preguntar direcciones. ¡Literalmente te ponemos en el mapa!</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 6 -->
@@ -743,7 +863,13 @@
                         <i class="fas fa-store"></i>
                     </div>
                     <h3>Catálogos Web de Productos</h3>
-                    <p>Organiza todo lo que vendes en un solo enlace. Como un menú de restaurante para tu negocio.</p>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> Una lista digital ordenada de todo lo que vendes, con fotos bonitas y precios claros.</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Ahorra tiempo enviando mil fotos por WhatsApp. Con esto, envías un solo enlace y tu cliente ve todo lo que ofreces como si fuera un menú de restaurante.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 7 -->
@@ -751,8 +877,14 @@
                     <div class="service-icon">
                         <i class="fas fa-headset"></i>
                     </div>
-                    <h3>Atención al Cliente Web</h3>
-                    <p>Configuramos respuestas automáticas y canales de contacto para que no pierdas mensajes importantes.</p>
+                    <h3>Configuración de Atención al Cliente Web</h3>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> Te ayudamos a configurar respuestas automáticas y canales de contacto para que no pierdas mensajes.</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Un cliente que no recibe respuesta rápido, se va con la competencia. Organizamos tu comunicación para que siempre haya alguien "atendiendo" tu negocio digital.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 8 -->
@@ -760,8 +892,14 @@
                     <div class="service-icon">
                         <i class="fab fa-whatsapp"></i>
                     </div>
-                    <h3>WhatsApp Business Profesional</h3>
-                    <p>Transformamos tu WhatsApp personal en una máquina de ventas con respuestas automáticas y organización.</p>
+                    <h3>Configuración Profesional de WhatsApp Business</h3>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> Transformamos tu WhatsApp personal en una máquina de ventas. Configuramos tu perfil de empresa, horarios, respuestas automáticas de bienvenida y etiquetas para organizar tus pedidos.</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Deja de perder chats importantes y organiza tus ventas de manera profesional con todas las funciones empresariales de WhatsApp.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 9 -->
@@ -769,8 +907,14 @@
                     <div class="service-icon">
                         <i class="fas fa-qrcode"></i>
                     </div>
-                    <h3>Códigos QR para Negocios</h3>
-                    <p>Puente entre lo físico y lo digital. Pegas el código en tu local y los clientes escanean para contactarte.</p>
+                    <h3>Creación de Código QR para Negocios</h3>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> ¿Quieres que los clientes vayan a tu web o a tu WhatsApp sin tener que escribir tu número?</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Creamos códigos QR para que los pegues en tu mostrador, vitrina o tarjetas de presentación. Escanean y listo, ya están contactándote.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Servicio 10 -->
@@ -778,34 +922,125 @@
                     <div class="service-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Paquete "Arranca tus Redes"</h3>
-                    <p>Te creamos las cuentas profesionales en redes sociales con todo configurado para que empieces a publicar.</p>
+                    <h3>Paquete "Arranca tus Redes" (Configuración Inicial)</h3>
+                    <div class="service-description">
+                        <p><strong>¿Qué es?</strong> ¿No sabes cómo abrir el Instagram o Facebook de tu empresa?</p>
+                        <div class="service-why">
+                            <h4>¿Por qué lo necesitas?</h4>
+                            <p>Nosotros te creamos las cuentas, ponemos la foto de perfil correcta, escribimos tu biografía profesional y te dejamos todo listo para que tú solo te encargues de publicar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Clientes -->
+    <section id="clientes" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Clientes</h2>
+                <p>Proyectos exitosos realizados para empresas venezolanas</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Cliente 1 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="https://i.imgur.com/QJqA1fX.png" alt="Nexus Marketing Logo">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Nexus Marketing</h3>
+                        <p>La mejor empresa de marketing y consultoría con especialistas y los precios más cómodos.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Marketing</span>
+                            <span class="tag">Consultoría</span>
+                            <span class="tag">Web Corporativa</span>
+                        </div>
+                        <a href="https://jhonmalorne.github.io/nexus.net/" class="portfolio-link" target="_blank">Ver sitio web →</a>
+                    </div>
+                </div>
+                
+                <!-- Cliente 2 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="https://i.imgur.com/EKwYdRG.png" alt="VarietyVida Logo">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>VarietyVida Pastelería</h3>
+                        <p>Los mejores servicios de carne, postres y pasapalos de la zona con atención por WhatsApp.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Gastronomía</span>
+                            <span class="tag">E-commerce</span>
+                            <span class="tag">Catálogo Digital</span>
+                        </div>
+                        <a href="https://jhonmalorne.github.io/varietyvida/" class="portfolio-link" target="_blank">Ver sitio web →</a>
+                    </div>
+                </div>
+                
+                <!-- Cliente 3 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="https://i.imgur.com/5VgML9c.png" alt="Genio Vision Logo">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Genio Vision</h3>
+                        <p>Si quieres que tu hijo se nivele o sea uno de los mejores no dudes en su servicio ya que cuentan con personal capacitado en tareas dirigidas y apoyo escolar.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Educación</span>
+                            <span class="tag">Plataforma</span>
+                            <span class="tag">Blog</span>
+                        </div>
+                        <a href="https://jhonmalorne.github.io/GenioVision/" class="portfolio-link" target="_blank">Ver sitio web →</a>
+                    </div>
+                </div>
+                
+                <!-- Cliente 4 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <div style="background-color: #1A1A2E; color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Sistema de Ventas para Bodega</h3>
+                        <p>Innovadora página web con sistema de ventas y sistema de inventarios para gestión completa de bodegas.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Sistema de Ventas</span>
+                            <span class="tag">Inventario</span>
+                            <span class="tag">Almacén</span>
+                        </div>
+                        <a href="https://jhonmalorne.github.io/Sistemadeventas/" class="portfolio-link" target="_blank">Ver sitio web →</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Sección Capacitación -->
-    <section id="capacitacion" style="background-color: var(--light-gray);">
+    <section id="capacitacion">
         <div class="container">
             <div class="section-title">
                 <h2>Consulting & Capacitación</h2>
-                <p>Capacitaciones prácticas para emprendedores y profesionales venezolanos que buscan crecer en la era digital</p>
+                <p>Capacitaciones prácticas para emprendedores y profesionales venezolanos</p>
             </div>
             
             <div class="accordion">
+                <h3 class="block-title">🏫 Bloque 1: Herramientas Digitales para la Educación</h3>
+                <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Ideal para docentes y directivos que desean modernizar su enseñanza sin estrés</p>
+                
                 <!-- Curso 1 -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>🏫 Herramientas Digitales para la Educación</h3>
+                        <h3>1. De la Pizarra al Píxel: Organización Digital</h3>
                         <span class="accordion-icon">+</span>
                     </div>
                     <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Transformar la gestión diaria del docente usando tecnología básica sin estrés.</p>
+                        <p><strong>Objetivo:</strong> Transformar la gestión diaria del docente usando tecnología básica.</p>
                         <ul class="module-list">
                             <li>Módulo 1: Adiós al papel: Cómo usar la nube para guardar exámenes y planificaciones</li>
                             <li>Módulo 2: Herramientas gratuitas para crear presentaciones que no aburran</li>
-                            <li>Módulo 3: Comunicación efectiva con padres y alumnos vía digital</li>
+                            <li>Módulo 3: Comunicación efectiva con padres y alumnos vía digital (sin invadir tu privacidad)</li>
                         </ul>
                         <div class="course-cta">
                             <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
@@ -816,11 +1051,90 @@
                 <!-- Curso 2 -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>💼 Ventas y Negocios Locales</h3>
+                        <h3>2. Mi Primera Aula Virtual (Blogger y Más)</h3>
                         <span class="accordion-icon">+</span>
                     </div>
                     <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Que los clientes locales te encuentren al buscar en su celular y factures más.</p>
+                        <p><strong>Objetivo:</strong> Crear un espacio propio en internet para compartir recursos educativos.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: ¿Qué es un Blog y para qué sirve en la escuela?</li>
+                            <li>Módulo 2: Creación paso a paso de tu sitio en Blogger (estructura básica)</li>
+                            <li>Módulo 3: Cómo subir tareas, guías PDF y videos para tus alumnos</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>3. Diseño Visual para Docentes</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Crear material didáctico visualmente atractivo que capte la atención.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: Psicología básica del color: ¿Qué colores ayudan a aprender?</li>
+                            <li>Módulo 2: Creación de infografías y láminas educativas sencillas</li>
+                            <li>Módulo 3: Bancos de imágenes: Dónde encontrar fotos legales y de buena calidad</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 4 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>4. Google para Maestros (Suite Educativa)</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Dominar el ecosistema Google para ahorrar tiempo administrativo.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: Formularios de Google: Crea exámenes que se corrigen solos</li>
+                            <li>Módulo 2: Documentos compartidos: Trabajo colaborativo en tiempo real</li>
+                            <li>Módulo 3: Google Calendar: Organiza tu año escolar y entregas</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 5 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>5. Presencia Digital Escolar (Para Directivos)</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Mejorar la imagen institucional de la escuela en internet.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: La importancia de la "huella digital" de la escuela</li>
+                            <li>Módulo 2: Diferencia entre perfil personal y página institucional</li>
+                            <li>Módulo 3: Protocolos de seguridad: Qué publicar y qué no (fotos de alumnos)</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="block-title">💼 Bloque 2: Ventas y Negocios Locales</h3>
+                <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Diseñado para comerciantes y emprendedores que quieren facturar más</p>
+                
+                <!-- Curso 6 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>6. Tu Negocio en el Mapa (Google Business)</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Que los clientes locales te encuentren al buscar en su celular.</p>
                         <ul class="module-list">
                             <li>Módulo 1: Cómo registrar tu negocio en Google Maps desde cero</li>
                             <li>Módulo 2: La ficha perfecta: Horarios, ubicación y fotos que venden</li>
@@ -832,29 +1146,10 @@
                     </div>
                 </div>
                 
-                <!-- Curso 3 -->
+                <!-- Curso 7 -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>🚀 Cierre de Brecha Digital</h3>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Perder el miedo a la tecnología y operar en internet con seguridad.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Correo corporativo vs. personal: Profesionalismo básico</li>
-                            <li>Módulo 2: Cómo identificar estafas y "Phishing" en el correo/WhatsApp</li>
-                            <li>Módulo 3: Datos sensibles: Cómo proteger la información de tus clientes</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Curso 4 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>📱 Marketing para No Expertos</h3>
+                        <h3>7. Vender sin Enredarse (Marketing para No Expertos)</h3>
                         <span class="accordion-icon">+</span>
                     </div>
                     <div class="accordion-content">
@@ -869,78 +1164,158 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Portafolio -->
-    <section id="portafolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestro Portafolio</h2>
-                <p>Proyectos realizados para clientes venezolanos que han transformado su presencia digital</p>
-            </div>
-            
-            <div class="portfolio-grid">
-                <!-- Proyecto 1 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-img" style="background-color: #2A5BCC; color: white;">
-                        <i class="fas fa-chart-line"></i>
+                
+                <!-- Curso 8 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>8. El Catálogo Digital Profesional</h3>
+                        <span class="accordion-icon">+</span>
                     </div>
-                    <div class="portfolio-content">
-                        <h3>Nexus Marketing</h3>
-                        <p>Sitio web corporativo para empresa de marketing y consultoría digital.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Web Corporativa</span>
-                            <span class="tag">Marketing</span>
-                            <span class="tag">Consultoría</span>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Organizar tus productos para facilitar la compra vía WhatsApp/Web.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: Cómo tomar fotos de producto decentes con tu celular</li>
+                            <li>Módulo 2: Estructura de un catálogo: Categorías, precios y descripciones</li>
+                            <li>Módulo 3: Herramientas para crear y compartir tu catálogo en PDF o Web</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Proyecto 2 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-img" style="https://imgur.com/a/AEeKMNn">
+                <!-- Curso 9 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>9. Atención al Cliente 2.0</h3>
+                        <span class="accordion-icon">+</span>
                     </div>
-                    <div class="portfolio-content">
-                        <h3>VarietyVida Pastelería</h3>
-                        <p>Página web para pastelería con catálogo de productos y sistema de pedidos.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">E-commerce</span>
-                            <span class="tag">Catálogo Digital</span>
-                            <span class="tag">WhatsApp Business</span>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Profesionalizar la respuesta al cliente para cerrar más ventas.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: Etiqueta digital: Cómo saludar, responder y despedirse</li>
+                            <li>Módulo 2: Plantillas de respuesta rápida para WhatsApp (ahorra tiempo)</li>
+                            <li>Módulo 3: Manejo de quejas: Cómo convertir un cliente enojado en uno fiel</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Proyecto 3 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-img" style="background-color: #00C9B1; color: white;">
-                        <i class="fas fa-graduation-cap"></i>
+                <!-- Curso 10 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>10. Imagen que Vende (Branding Básico)</h3>
+                        <span class="accordion-icon">+</span>
                     </div>
-                    <div class="portfolio-content">
-                        <h3>Genio Vision</h3>
-                        <p>Plataforma educativa para tareas dirigidas y apoyo escolar con blog integrado.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Educación</span>
-                            <span class="tag">Blog</span>
-                            <span class="tag">Plataforma</span>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Entender por qué el diseño influye en cuánto puedes cobrar.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: El poder del Logo: Por qué no deberías usar Clipart</li>
+                            <li>Módulo 2: Coherencia visual: Que tu local, tu uniforme y tu web digan lo mismo</li>
+                            <li>Módulo 3: Elementos básicos de un Flyer promocional exitoso</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Proyecto 4 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-img" style="background-color: #1A1A2E; color: white;">
-                        <i class="fas fa-warehouse"></i>
+                <h3 class="block-title">🚀 Bloque 3: Cierre de Brecha Digital</h3>
+                <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Capacitaciones esenciales para perder el miedo a la tecnología</p>
+                
+                <!-- Curso 11 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>11. Internet para Emprendedores (Nivel Cero)</h3>
+                        <span class="accordion-icon">+</span>
                     </div>
-                    <div class="portfolio-content">
-                        <h3>Sistema de Ventas Bodega</h3>
-                        <p>Sistema de ventas e inventario para bodega con control de almacén.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Sistema de Ventas</span>
-                            <span class="tag">Inventario</span>
-                            <span class="tag">Almacén</span>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Perder el miedo a navegar y usar herramientas básicas de gestión.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: Correo corporativo vs. personal: Profesionalismo básico</li>
+                            <li>Módulo 2: Navegadores y Búsquedas: Cómo encontrar proveedores e ideas</li>
+                            <li>Módulo 3: La nube: Qué es y por qué es más segura que tu pendrive</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 12 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>12. Publicidad con Propósito</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Dejar de gastar dinero en publicidad que no trae clientes.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: Diferencia entre publicidad tradicional (radio/volante) y digital</li>
+                            <li>Módulo 2: Segmentación básica: Cómo hablarle solo a quien te puede comprar</li>
+                            <li>Módulo 3: Cómo medir si tu publicidad funcionó o no</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 13 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>13. Seguridad y Confianza Digital</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Operar en internet protegiendo tus datos y los de tus clientes.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: Contraseñas seguras y verificación en dos pasos</li>
+                            <li>Módulo 2: Cómo identificar estafas y "Phishing" en el correo/WhatsApp</li>
+                            <li>Módulo 3: Datos sensibles: Cómo proteger la información de tus clientes</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 14 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>14. Storytelling para Negocios</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Aprender a escribir textos que emocionen y vendan.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: Tu historia: ¿Por qué empezaste este negocio? (La gente compra historias)</li>
+                            <li>Módulo 2: Descripción de productos: Vende beneficios, no características</li>
+                            <li>Módulo 3: Redacción para la sección "Quiénes Somos" de tu web</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 15 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>15. Transformación Digital Real</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Objetivo:</strong> Planificar el crecimiento tecnológico de tu negocio a largo plazo.</p>
+                        <ul class="module-list">
+                            <li>Módulo 1: ¿Por qué necesito una página web si ya tengo Facebook?</li>
+                            <li>Módulo 2: Automatización básica: Tareas que puedes dejar de hacer manualmente</li>
+                            <li>Módulo 3: El futuro de tu negocio: Pasos para seguir creciendo digitalmente</li>
+                        </ul>
+                        <div class="course-cta">
+                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
                         </div>
                     </div>
                 </div>
@@ -965,7 +1340,7 @@
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div>
-                            <h4>Teléfono</h4>
+                            <h4>Teléfono / WhatsApp</h4>
                             <p>+58 424 123 4567</p>
                         </div>
                     </div>
@@ -986,23 +1361,50 @@
                         </div>
                         <div>
                             <h4>Ubicación</h4>
+                            <p>Caracas, Venezuela</p>
                             <p>Servicios en toda Venezuela</p>
                         </div>
                     </div>
                     
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.052374084288!2d-66.90319092401604!3d10.480489889782132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a58f5ff2f2b0f%3A0x5c3c8b8c9c8c9c8c!2sCaracas%2C%20Venezuela!5e0!3m2!1ses!2sve!4v1690834567890!5m2!1ses!2sve" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    
                     <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/584241234567" class="social-link" target="_blank">
+                            <img src="https://i.imgur.com/JCQKfRj.png" alt="WhatsApp">
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
+                        <a href="https://facebook.com/nexusmarketing" class="social-link" target="_blank">
+                            <img src="https://i.imgur.com/4d0KklK.png" alt="Facebook">
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://instagram.com/nexusmarketing" class="social-link" target="_blank">
+                            <img src="https://i.imgur.com/QY7ivGQ.png" alt="Instagram">
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="https://linkedin.com/company/nexusmarketing" class="social-link" target="_blank">
+                            <img src="https://i.imgur.com/uU8YpyK.png" alt="LinkedIn">
                         </a>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4>Métodos de Pago</h4>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <img src="https://i.imgur.com/dtB9NiG.png" alt="Zelle">
+                                <span>Zelle</span>
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://i.imgur.com/7IYpDDx.png" alt="Binance">
+                                <span>Binance</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-paypal" style="font-size: 1rem;"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-university" style="font-size: 1rem;"></i>
+                                <span>Transferencia</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -1011,7 +1413,7 @@
                         <input type="text" placeholder="Tu nombre" required>
                         <input type="email" placeholder="Tu correo electrónico" required>
                         <input type="text" placeholder="Tu teléfono (WhatsApp)" required>
-                        <select style="width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 8px; background-color: rgba(255,255,255,0.1); color: white; font-family: var(--font-primary);">
+                        <select required>
                             <option value="" disabled selected>¿Qué servicio te interesa?</option>
                             <option value="logo">Diseño de Logotipo</option>
                             <option value="web">Página Web</option>
@@ -1050,21 +1452,20 @@
                     <h4>Enlaces Rápidos</h4>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#servicios">Servicios Marketing</a></li>
+                        <li><a href="#clientes">Clientes</a></li>
                         <li><a href="#capacitacion">Capacitación</a></li>
-                        <li><a href="#portafolio">Portafolio</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Métodos de Pago</h4>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
-                        <div style="background-color: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">Zelle</div>
-                        <div style="background-color: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">Binance</div>
-                        <div style="background-color: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">PayPal</div>
-                        <div style="background-color: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">Transferencia</div>
-                    </div>
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt" style="margin-right: 8px;"></i> +58 424 123 4567</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@nexusmarketing.com</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Caracas, Venezuela</li>
+                    </ul>
                 </div>
             </div>
             
@@ -1101,13 +1502,6 @@
             header.addEventListener('click', () => {
                 const accordionItem = header.parentElement;
                 accordionItem.classList.toggle('active');
-                
-                // Cerrar otros acordeones (opcional)
-                // document.querySelectorAll('.accordion-item').forEach(item => {
-                //     if (item !== accordionItem) {
-                //         item.classList.remove('active');
-                //     }
-                // });
             });
         });
         
@@ -1166,4 +1560,3 @@
     </script>
 </body>
 </html>
-
