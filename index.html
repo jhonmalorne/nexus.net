@@ -34,6 +34,7 @@
             color: var(--dark);
             background-color: var(--light);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4 {
@@ -647,6 +648,22 @@
             filter: brightness(0) invert(1);
         }
         
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero-container,
@@ -705,6 +722,12 @@
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .contact-form input,
+            .contact-form textarea,
+            .contact-form select {
+                padding: 12px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -723,6 +746,16 @@
             .hero {
                 padding: 130px 0 70px;
             }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -731,6 +764,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
+                <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing Logo">
                 <div class="logo-text">Nexus<span>Marketing</span></div>
             </div>
             
@@ -749,14 +783,14 @@
     </header>
 
     <!-- WhatsApp flotante -->
-    <a href="https://wa.me/584244525765?text=Hola%20Nexus%20Marketing,%20quiero%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/584241234567?text=Hola%20Nexus%20Marketing,%20quiero%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Sección Hero -->
     <section class="hero" id="inicio">
         <div class="container hero-container">
-            <div class="hero-content">
+            <div class="hero-content fade-in-up">
                 <h1>Marketing Digital y Consultoría para Empresas Venezolanas</h1>
                 <p>Especialistas en transformar negocios con soluciones digitales prácticas y resultados inmediatos. Con más de 50 proyectos exitosos en Venezuela.</p>
                 <div class="hero-btns">
@@ -764,11 +798,8 @@
                     <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <!-- Imagen representativa -->
-                <div style="background-color: #2A5BCC; height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; padding: 20px;">
-                    <div>Soluciones digitales a medida para el mercado venezolano</div>
-                </div>
+            <div class="hero-image fade-in-up">
+                <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" style="max-height: 350px;">
             </div>
         </div>
     </section>
@@ -783,7 +814,7 @@
             
             <div class="services-grid">
                 <!-- Servicio 1 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-palette"></i>
                     </div>
@@ -798,7 +829,7 @@
                 </div>
                 
                 <!-- Servicio 2 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-ad"></i>
                     </div>
@@ -813,7 +844,7 @@
                 </div>
                 
                 <!-- Servicio 3 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
@@ -828,7 +859,7 @@
                 </div>
                 
                 <!-- Servicio 4 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-blog"></i>
                     </div>
@@ -843,7 +874,7 @@
                 </div>
                 
                 <!-- Servicio 5 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
@@ -858,7 +889,7 @@
                 </div>
                 
                 <!-- Servicio 6 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-store"></i>
                     </div>
@@ -873,7 +904,7 @@
                 </div>
                 
                 <!-- Servicio 7 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-headset"></i>
                     </div>
@@ -888,7 +919,7 @@
                 </div>
                 
                 <!-- Servicio 8 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fab fa-whatsapp"></i>
                     </div>
@@ -903,7 +934,7 @@
                 </div>
                 
                 <!-- Servicio 9 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-qrcode"></i>
                     </div>
@@ -918,7 +949,7 @@
                 </div>
                 
                 <!-- Servicio 10 -->
-                <div class="service-card">
+                <div class="service-card fade-in-up">
                     <div class="service-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
@@ -945,7 +976,7 @@
             
             <div class="portfolio-grid">
                 <!-- Cliente 1 -->
-                <div class="portfolio-card">
+                <div class="portfolio-card fade-in-up">
                     <div class="portfolio-img">
                         <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing Logo">
                     </div>
@@ -962,7 +993,7 @@
                 </div>
                 
                 <!-- Cliente 2 -->
-                <div class="portfolio-card">
+                <div class="portfolio-card fade-in-up">
                     <div class="portfolio-img">
                         <img src="https://i.imgur.com/W8mLP0s.png" alt="VarietyVida Logo">
                     </div>
@@ -979,7 +1010,7 @@
                 </div>
                 
                 <!-- Cliente 3 -->
-                <div class="portfolio-card">
+                <div class="portfolio-card fade-in-up">
                     <div class="portfolio-img">
                         <img src="https://i.imgur.com/4haYkRl.png" alt="Genio Vision Logo">
                     </div>
@@ -996,7 +1027,7 @@
                 </div>
                 
                 <!-- Cliente 4 -->
-                <div class="portfolio-card">
+                <div class="portfolio-card fade-in-up">
                     <div class="portfolio-img">
                         <div style="background-color: #1A1A2E; color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
                             <i class="fas fa-warehouse"></i>
@@ -1030,7 +1061,7 @@
                 <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Ideal para docentes y directivos que desean modernizar su enseñanza sin estrés</p>
                 
                 <!-- Curso 1 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>1. De la Pizarra al Píxel: Organización Digital</h3>
                         <span class="accordion-icon">+</span>
@@ -1049,7 +1080,7 @@
                 </div>
                 
                 <!-- Curso 2 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>2. Mi Primera Aula Virtual (Blogger y Más)</h3>
                         <span class="accordion-icon">+</span>
@@ -1068,7 +1099,7 @@
                 </div>
                 
                 <!-- Curso 3 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>3. Diseño Visual para Docentes</h3>
                         <span class="accordion-icon">+</span>
@@ -1087,7 +1118,7 @@
                 </div>
                 
                 <!-- Curso 4 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>4. Google para Maestros (Suite Educativa)</h3>
                         <span class="accordion-icon">+</span>
@@ -1106,7 +1137,7 @@
                 </div>
                 
                 <!-- Curso 5 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>5. Presencia Digital Escolar (Para Directivos)</h3>
                         <span class="accordion-icon">+</span>
@@ -1128,7 +1159,7 @@
                 <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Diseñado para comerciantes y emprendedores que quieren facturar más</p>
                 
                 <!-- Curso 6 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>6. Tu Negocio en el Mapa (Google Business)</h3>
                         <span class="accordion-icon">+</span>
@@ -1147,7 +1178,7 @@
                 </div>
                 
                 <!-- Curso 7 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>7. Vender sin Enredarse (Marketing para No Expertos)</h3>
                         <span class="accordion-icon">+</span>
@@ -1166,7 +1197,7 @@
                 </div>
                 
                 <!-- Curso 8 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>8. El Catálogo Digital Profesional</h3>
                         <span class="accordion-icon">+</span>
@@ -1185,7 +1216,7 @@
                 </div>
                 
                 <!-- Curso 9 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>9. Atención al Cliente 2.0</h3>
                         <span class="accordion-icon">+</span>
@@ -1204,7 +1235,7 @@
                 </div>
                 
                 <!-- Curso 10 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>10. Imagen que Vende (Branding Básico)</h3>
                         <span class="accordion-icon">+</span>
@@ -1226,7 +1257,7 @@
                 <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Capacitaciones esenciales para perder el miedo a la tecnología</p>
                 
                 <!-- Curso 11 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>11. Internet para Emprendedores (Nivel Cero)</h3>
                         <span class="accordion-icon">+</span>
@@ -1245,7 +1276,7 @@
                 </div>
                 
                 <!-- Curso 12 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>12. Publicidad con Propósito</h3>
                         <span class="accordion-icon">+</span>
@@ -1264,7 +1295,7 @@
                 </div>
                 
                 <!-- Curso 13 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>13. Seguridad y Confianza Digital</h3>
                         <span class="accordion-icon">+</span>
@@ -1283,7 +1314,7 @@
                 </div>
                 
                 <!-- Curso 14 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>14. Storytelling para Negocios</h3>
                         <span class="accordion-icon">+</span>
@@ -1302,7 +1333,7 @@
                 </div>
                 
                 <!-- Curso 15 -->
-                <div class="accordion-item">
+                <div class="accordion-item fade-in-up">
                     <div class="accordion-header">
                         <h3>15. Transformación Digital Real</h3>
                         <span class="accordion-icon">+</span>
@@ -1332,7 +1363,7 @@
             </div>
             
             <div class="contact-container">
-                <div class="contact-info">
+                <div class="contact-info fade-in-up">
                     <h3>Hablemos de tu proyecto</h3>
                     
                     <div class="contact-item">
@@ -1341,7 +1372,7 @@
                         </div>
                         <div>
                             <h4>Teléfono / WhatsApp</h4>
-                            <p>+58 424 4525765</p>
+                            <p>+58 424 123 4567</p>
                         </div>
                     </div>
                     
@@ -1371,7 +1402,7 @@
                     </div>
                     
                     <div class="social-links">
-                        <a href="https://wa.me/584244525765" class="social-link" target="_blank">
+                        <a href="https://wa.me/584241234567" class="social-link" target="_blank">
                             <img src="https://i.imgur.com/JCQKfRj.png" alt="WhatsApp">
                         </a>
                         <a href="https://facebook.com/nexusmarketing" class="social-link" target="_blank">
@@ -1383,6 +1414,9 @@
                         <a href="https://linkedin.com/company/nexusmarketing" class="social-link" target="_blank">
                             <img src="https://i.imgur.com/uU8YpyK.png" alt="LinkedIn">
                         </a>
+                        <a href="#" class="social-link" target="_blank">
+                            <img src="https://i.imgur.com/uAYMpZw.png" alt="Threads" style="filter: brightness(0) invert(0.8);">
+                        </a>
                     </div>
                     
                     <div style="margin-top: 30px;">
@@ -1393,7 +1427,7 @@
                                 <span>Zelle</span>
                             </div>
                             <div class="payment-method">
-                                <img src="https://i.imgur.com/7IYpDDx.png" alt="Binance">
+                                <img src="https://i.imgur.com/tLxAMXV.png" alt="Binance">
                                 <span>Binance</span>
                             </div>
                             <div class="payment-method">
@@ -1408,7 +1442,7 @@
                     </div>
                 </div>
                 
-                <div class="contact-form">
+                <div class="contact-form fade-in-up">
                     <form id="contactForm">
                         <input type="text" placeholder="Tu nombre" required>
                         <input type="email" placeholder="Tu correo electrónico" required>
@@ -1462,7 +1496,7 @@
                 <div class="footer-links">
                     <h4>Contacto</h4>
                     <ul>
-                        <li><i class="fas fa-phone-alt" style="margin-right: 8px;"></i> +58 424 4525765</li>
+                        <li><i class="fas fa-phone-alt" style="margin-right: 8px;"></i> +58 424 123 4567</li>
                         <li><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@nexusmarketing.com</li>
                         <li><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Caracas, Venezuela</li>
                     </ul>
@@ -1535,32 +1569,36 @@
             });
         });
         
-        // Efecto de aparición al hacer scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Animación al hacer scroll
+        const fadeElements = document.querySelectorAll('.fade-in-up');
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('fade-in-up');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
         
-        // Aplicar animación a elementos
-        document.querySelectorAll('.service-card, .portfolio-card, .accordion-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s, transform 0.5s';
+        fadeElements.forEach(el => {
             observer.observe(el);
+        });
+        
+        // Efecto de aparición inicial
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+            });
+            
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in-up').forEach(el => {
+                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }, 300);
         });
     </script>
 </body>
 </html>
-
-
-
-
