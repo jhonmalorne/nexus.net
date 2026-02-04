@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Marketing - Consultoría Digital y Diseño Web</title>
+    <title>Nexus Marketing - Consultoría Digital y Directorio Local</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,12 +16,13 @@
             --primary-dark: #1d4ed8;
             --secondary: #7c3aed;
             --accent: #f59e0b;
+            --premium: #d4af37;
             --dark: #1f2937;
             --light: #f9fafb;
             --gray: #6b7280;
             --light-gray: #e5e7eb;
             --success: #10b981;
-            --radius: 10px;
+            --radius: 12px;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
@@ -297,9 +298,298 @@
             color: var(--dark);
         }
         
+        /* Directorio InfoGuías - NUEVO DISEÑO */
+        .directory-section {
+            background-color: #f8fafc;
+        }
+        
+        .directory-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--light-gray);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .directory-tab {
+            padding: 12px 30px;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .directory-tab.active {
+            color: var(--primary);
+        }
+        
+        .directory-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .directory-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        /* Fichas Básicas */
+        .business-card.basic {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .business-card.basic:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .business-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .business-name {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .business-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .business-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .business-location i {
+            color: var(--primary);
+        }
+        
+        .business-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .business-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .business-btn.whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .business-btn.whatsapp:hover {
+            background-color: #1da851;
+        }
+        
+        /* Fichas Premium */
+        .business-card.premium {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            height: 100%;
+            border: 2px solid var(--premium);
+            position: relative;
+        }
+        
+        .business-card.premium:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .premium-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--premium);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .business-image {
+            height: 180px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .business-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .business-card.premium:hover .business-image img {
+            transform: scale(1.05);
+        }
+        
+        .business-card.premium .business-content {
+            padding: 25px;
+        }
+        
+        .business-card.premium .business-name {
+            font-size: 1.5rem;
+        }
+        
+        .business-card.premium .business-description {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .business-card.premium .business-location {
+            margin-bottom: 25px;
+        }
+        
+        .business-social {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .business-card.premium .business-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .business-btn.map {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .business-btn.map:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .business-btn.cta {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .business-btn.cta:hover {
+            background-color: #e69500;
+        }
+        
+        .directory-cta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 50px;
+            border-radius: var(--radius);
+            margin-top: 60px;
+        }
+        
+        .directory-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .directory-cta p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
         /* Clientes */
         .clients-section {
-            background-color: #f8fafc;
+            background-color: white;
         }
         
         .clients-grid {
@@ -452,86 +742,6 @@
         .course-cta:hover {
             background-color: var(--primary-dark);
             transform: translateY(-2px);
-        }
-        
-        /* Directorio */
-        .directory-section {
-            background-color: var(--primary);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .directory-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.imgur.com/qCgst7f.jpeg') center/cover no-repeat;
-            opacity: 0.05;
-            z-index: 0;
-        }
-        
-        .directory-section .section-title h2 {
-            color: white;
-        }
-        
-        .directory-section .section-title p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .directory-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius);
-            padding: 50px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .directory-icon {
-            font-size: 60px;
-            margin-bottom: 25px;
-            color: var(--accent);
-        }
-        
-        .directory-card h3 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-        
-        .directory-card p {
-            margin-bottom: 25px;
-            font-size: 1.2rem;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-        
-        .directory-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .directory-button:hover {
-            background-color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         /* Contacto */
@@ -800,16 +1010,12 @@
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
             
+            .directory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
             .clients-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            
-            .directory-card {
-                padding: 40px 30px;
-            }
-            
-            .directory-card h3 {
-                font-size: 1.8rem;
             }
         }
         
@@ -873,6 +1079,41 @@
                 grid-template-columns: 1fr;
             }
             
+            .directory-tabs {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                border-bottom: none;
+            }
+            
+            .directory-tab {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--light-gray);
+            }
+            
+            .directory-tab.active::after {
+                display: none;
+            }
+            
+            .directory-tab.active {
+                border-bottom: 3px solid var(--primary);
+            }
+            
+            .directory-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .directory-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .client-card {
                 padding: 20px;
             }
@@ -887,6 +1128,14 @@
             
             .contact-container {
                 gap: 40px;
+            }
+            
+            .directory-cta {
+                padding: 30px 20px;
+            }
+            
+            .directory-cta h3 {
+                font-size: 1.5rem;
             }
         }
         
@@ -908,12 +1157,8 @@
                 padding: 25px;
             }
             
-            .directory-card {
-                padding: 30px 20px;
-            }
-            
-            .directory-card h3 {
-                font-size: 1.5rem;
+            .business-card.premium .business-actions {
+                flex-direction: column;
             }
             
             .footer-container {
@@ -940,9 +1185,9 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#directorio">Directorio</a></li>
                     <li><a href="#clientes">Clientes</a></li>
                     <li><a href="#cursos">Cursos</a></li>
-                    <li><a href="#directorio">Directorio</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
@@ -953,8 +1198,8 @@
     <section class="hero" id="inicio">
         <div class="container hero-content">
             <h1>Impulsa tu negocio con estrategias digitales efectivas</h1>
-            <p>En Nexus Marketing combinamos diseño web innovador, marketing digital estratégico y capacitación especializada para transformar tu presencia online y aumentar tus ventas.</p>
-            <a href="#contacto" class="cta-button">¡Solicita tu asesoría gratuita ahora! <i class="fas fa-arrow-right"></i></a>
+            <p>En Nexus Marketing combinamos diseño web innovador, marketing digital estratégico y un directorio local para conectar negocios con clientes en Los Guayos.</p>
+            <a href="#directorio" class="cta-button">Explorar Directorio <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
@@ -1066,6 +1311,160 @@
                     <p><strong>¿Qué es?</strong> ¿No sabes cómo abrir el Instagram o Facebook de tu empresa? Nosotros te creamos las cuentas, ponemos la foto de perfil correcta, escribimos tu biografía profesional.</p>
                     <p><strong>¿Por qué lo necesitas?</strong> No es Community Manager mensual, es solo el arranque. Te dejamos todo listo para que tú solo te encargues de publicar.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directorio InfoGuías -->
+    <section class="directory-section" id="directorio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Directorio Local - InfoGuía</h2>
+                <p>Encuentra los mejores negocios y servicios en Los Guayos</p>
+            </div>
+            
+            <div class="directory-tabs">
+                <button class="directory-tab active" data-tab="todos">Todos los negocios</button>
+                <button class="directory-tab" data-tab="premium">Destacados</button>
+                <button class="directory-tab" data-tab="basicos">Básicos</button>
+            </div>
+            
+            <div class="directory-filters">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="comida">Comida</button>
+                <button class="filter-btn" data-filter="servicios">Servicios</button>
+                <button class="filter-btn" data-filter="salud">Salud</button>
+                <button class="filter-btn" data-filter="educacion">Educación</button>
+            </div>
+            
+            <div class="directory-grid" id="directoryGrid">
+                <!-- Fichas Premium -->
+                <div class="business-card premium" data-category="comida" data-plan="premium">
+                    <div class="premium-badge">DESTACADO</div>
+                    <div class="business-image">
+                        <img src="https://i.imgur.com/W8mLP0s.png" alt="VarietyVida">
+                    </div>
+                    <div class="business-content">
+                        <div class="business-category">Comida</div>
+                        <h3 class="business-name">VarietyVida</h3>
+                        <p class="business-description">Los mejores servicios de carne, postres y pasapalos de la zona. Calidad garantizada y servicio a domicilio.</p>
+                        <div class="business-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Centro de Los Guayos</span>
+                        </div>
+                        <div class="business-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                        <div class="business-actions">
+                            <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20me%20interesan%20sus%20productos" target="_blank" class="business-btn whatsapp">Pedir Catálogo</a>
+                            <a href="https://goo.gl/maps/example" target="_blank" class="business-btn map">Ver Ubicación</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="business-card premium" data-category="educacion" data-plan="premium">
+                    <div class="premium-badge">DESTACADO</div>
+                    <div class="business-image">
+                        <img src="https://i.imgur.com/4haYkRl.png" alt="Genio Vision">
+                    </div>
+                    <div class="business-content">
+                        <div class="business-category">Educación</div>
+                        <h3 class="business-name">Genio Vision</h3>
+                        <p class="business-description">Tareas dirigidas y apoyo escolar personalizado. Contamos con personal capacitado para que tu hijo sea el mejor.</p>
+                        <div class="business-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Zona Norte, Los Guayos</span>
+                        </div>
+                        <div class="business-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                        <div class="business-actions">
+                            <a href="https://wa.me/584244525765?text=Hola%20Genio%20Vision,%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="business-btn whatsapp">Reservar Cita</a>
+                            <a href="https://goo.gl/maps/example" target="_blank" class="business-btn map">Ver Ubicación</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fichas Básicas -->
+                <div class="business-card basic" data-category="servicios" data-plan="basic">
+                    <div class="business-category">Servicios</div>
+                    <h3 class="business-name">Reparaciones Eléctricas JV</h3>
+                    <p class="business-description">Servicio de reparaciones eléctricas domésticas e industriales. Soluciones rápidas y garantizadas.</p>
+                    <div class="business-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Sector El Pilar, Los Guayos</span>
+                    </div>
+                    <div class="business-actions">
+                        <a href="https://wa.me/584244525765?text=Hola,%20quiero%20información%20sobre%20sus%20servicios%20eléctricos" target="_blank" class="business-btn whatsapp">Contactar ahora</a>
+                    </div>
+                </div>
+                
+                <div class="business-card basic" data-category="salud" data-plan="basic">
+                    <div class="business-category">Salud</div>
+                    <h3 class="business-name">Farmacia La Esperanza</h3>
+                    <p class="business-description">Medicamentos y productos de cuidado personal. Entrega a domicilio disponible.</p>
+                    <div class="business-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Av. Principal, Los Guayos</span>
+                    </div>
+                    <div class="business-actions">
+                        <a href="https://wa.me/584244525765?text=Hola%20Farmacia%20La%20Esperanza,%20necesito%20información" target="_blank" class="business-btn whatsapp">Contactar ahora</a>
+                    </div>
+                </div>
+                
+                <div class="business-card premium" data-category="comida" data-plan="premium">
+                    <div class="premium-badge">DESTACADO</div>
+                    <div class="business-image">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Panadería El Horno">
+                    </div>
+                    <div class="business-content">
+                        <div class="business-category">Comida</div>
+                        <h3 class="business-name">Panadería El Horno</h3>
+                        <p class="business-description">Pan fresco artesanal todos los días. Especialistas en pan dulce, tortas y pasteles personalizados.</p>
+                        <div class="business-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Calle Bolívar, Los Guayos</span>
+                        </div>
+                        <div class="business-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                        <div class="business-actions">
+                            <a href="https://wa.me/584244525765?text=Hola%20Panadería%20El%20Horno,%20quiero%20hacer%20un%20pedido" target="_blank" class="business-btn whatsapp">Hacer Pedido</a>
+                            <a href="https://goo.gl/maps/example" target="_blank" class="business-btn map">Ver Ubicación</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="business-card basic" data-category="servicios" data-plan="basic">
+                    <div class="business-category">Servicios</div>
+                    <h3 class="business-name">Lavandería Express</h3>
+                    <p class="business-description">Lavado y planchado de ropa. Servicio rápido en 24 horas. Recogida y entrega a domicilio.</p>
+                    <div class="business-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Sector La Isabelica, Los Guayos</span>
+                    </div>
+                    <div class="business-actions">
+                        <a href="https://wa.me/584244525765?text=Hola%20Lavandería%20Express,%20necesito%20información%20sobre%20sus%20servicios" target="_blank" class="business-btn whatsapp">Contactar ahora</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="directory-cta">
+                <h3>¿Quieres aparecer en nuestro directorio?</h3>
+                <p>Registra tu negocio hoy y comienza a recibir clientes de Los Guayos. Ofrecemos planes gratuitos y premium con más visibilidad.</p>
+                <a href="https://bit.ly/InfoguiaMarketing" target="_blank" class="cta-button">Registrar mi negocio <i class="fas fa-external-link-alt"></i></a>
             </div>
         </div>
     </section>
@@ -1460,26 +1859,6 @@
         </div>
     </section>
 
-    <!-- Directorio Infoguías -->
-    <section class="directory-section" id="directorio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Registro Oficial de Comercios y Servicios - InfoGuía</h2>
-                <p>¡Haz que los clientes locales te encuentren primero! 📍</p>
-            </div>
-            
-            <div class="directory-card">
-                <div class="directory-icon">
-                    <i class="fas fa-store"></i>
-                </div>
-                <h3>Registra tu negocio en nuestra InfoGuía</h3>
-                <p>En Nexus Marketing, estamos creando la vitrina digital más completa de Los Guayos. Al registrarte hoy, tu negocio aparecerá en nuestro directorio web, permitiendo que cientos de personas accedan a tus servicios y te contacten directamente por WhatsApp.</p>
-                <p><strong>Los planes de 0 $ y 10 $</strong></p>
-                <a href="https://bit.ly/InfoguiaMarketing" target="_blank" class="directory-button">Registrar mi negocio ahora <i class="fas fa-external-link-alt"></i></a>
-            </div>
-        </div>
-    </section>
-
     <!-- Contacto -->
     <section id="contacto">
         <div class="container">
@@ -1614,7 +1993,7 @@
             <div class="footer-container">
                 <div class="footer-column">
                     <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" class="footer-logo">
-                    <p>Somos una empresa especializada en marketing digital, diseño web y consultoría, comprometida con el crecimiento y transformación digital de tu negocio.</p>
+                    <p>Somos una empresa especializada en marketing digital, diseño web y directorio local, comprometida con el crecimiento y transformación digital de tu negocio.</p>
                 </div>
                 
                 <div class="footer-column">
@@ -1698,6 +2077,78 @@
             });
         });
         
+        // Directory Filtering System
+        const directoryTabs = document.querySelectorAll('.directory-tab');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const businessCards = document.querySelectorAll('.business-card');
+        const directoryGrid = document.getElementById('directoryGrid');
+        
+        // Tab functionality
+        directoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                directoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const tabType = tab.getAttribute('data-tab');
+                filterBusinessCards(tabType, 'todos');
+            });
+        });
+        
+        // Filter button functionality
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active filter button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const activeTab = document.querySelector('.directory-tab.active').getAttribute('data-tab');
+                const filterCategory = button.getAttribute('data-filter');
+                
+                filterBusinessCards(activeTab, filterCategory);
+            });
+        });
+        
+        // Function to filter business cards
+        function filterBusinessCards(tabType, category) {
+            businessCards.forEach(card => {
+                const cardPlan = card.getAttribute('data-plan');
+                const cardCategory = card.getAttribute('data-category');
+                
+                let shouldShow = true;
+                
+                // Apply tab filter
+                if (tabType !== 'todos') {
+                    if (tabType === 'premium' && cardPlan !== 'premium') {
+                        shouldShow = false;
+                    } else if (tabType === 'basicos' && cardPlan !== 'basic') {
+                        shouldShow = false;
+                    }
+                }
+                
+                // Apply category filter
+                if (category !== 'todos' && cardCategory !== category) {
+                    shouldShow = false;
+                }
+                
+                // Show or hide card
+                if (shouldShow) {
+                    card.style.display = 'block';
+                    // Add slight delay for animation
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
         // Form Submission
         const contactForm = document.getElementById('contactForm');
         
@@ -1767,6 +2218,9 @@
                 }
             });
         });
+        
+        // Initialize directory with all businesses
+        filterBusinessCards('todos', 'todos');
     </script>
 </body>
 </html>
