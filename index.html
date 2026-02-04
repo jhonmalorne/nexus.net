@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Marketing - Consultoría y Diseño Web</title>
+    <title>Nexus Marketing - Consultoría Digital y Diseño Web</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://i.imgur.com/qCgst7f.jpeg">
     <style>
+        /* Variables CSS */
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
@@ -20,15 +21,21 @@
             --gray: #6b7280;
             --light-gray: #e5e7eb;
             --success: #10b981;
-            --radius: 8px;
+            --radius: 10px;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
         
+        /* Reset y Estilos Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -36,9 +43,10 @@
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
+            overflow-x: hidden;
         }
         
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
             line-height: 1.2;
@@ -52,31 +60,71 @@
             padding: 0 20px;
         }
         
-        /* Header */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        /* Header y Navegación */
         header {
             background-color: white;
             box-shadow: var(--shadow);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
+            transition: var(--transition);
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 20px 0;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
         }
         
         .logo img {
             height: 50px;
             width: auto;
+            border-radius: 8px;
         }
         
         .logo-text {
@@ -98,10 +146,11 @@
         nav a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
-            transition: color 0.3s;
+            transition: var(--transition);
             position: relative;
+            padding: 5px 0;
         }
         
         nav a:hover {
@@ -111,12 +160,12 @@
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background-color: var(--primary);
-            transition: width 0.3s;
+            transition: var(--transition);
         }
         
         nav a:hover::after {
@@ -130,21 +179,40 @@
             font-size: 24px;
             cursor: pointer;
             color: var(--dark);
+            transition: var(--transition);
         }
         
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 100px 0;
+            padding: 160px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/qCgst7f.jpeg') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .hero p {
@@ -158,13 +226,15 @@
             display: inline-block;
             background-color: var(--accent);
             color: var(--dark);
-            padding: 15px 35px;
+            padding: 16px 40px;
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
             font-size: 1.1rem;
-            transition: all 0.3s;
+            transition: var(--transition);
             box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
         }
         
         .cta-button:hover {
@@ -173,29 +243,7 @@
             box-shadow: var(--shadow-lg);
         }
         
-        /* Sections */
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-        }
-        
-        .section-title p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Services */
+        /* Servicios */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -207,7 +255,10 @@
             border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .service-card:hover {
@@ -234,40 +285,46 @@
         .service-card h3 {
             font-size: 1.5rem;
             color: var(--dark);
+            margin-bottom: 15px;
         }
         
         .service-card p {
             color: var(--gray);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
-        /* Clients */
+        .service-card p strong {
+            color: var(--dark);
+        }
+        
+        /* Clientes */
         .clients-section {
             background-color: #f8fafc;
         }
         
         .clients-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
         }
         
         .client-card {
             background: white;
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 25px;
             box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s;
+            transition: var(--transition);
             text-decoration: none;
             color: inherit;
         }
         
         .client-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         
         .client-logo {
@@ -281,11 +338,18 @@
             font-weight: 600;
             color: var(--dark);
             text-align: center;
+            margin-bottom: 10px;
         }
         
-        /* Courses */
+        .client-description {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-align: center;
+        }
+        
+        /* Cursos */
         .courses-accordion {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
@@ -295,27 +359,39 @@
             margin-bottom: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .course-item:hover {
+            box-shadow: var(--shadow-lg);
         }
         
         .course-header {
-            padding: 20px 25px;
+            padding: 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             background-color: white;
+            transition: var(--transition);
+        }
+        
+        .course-header:hover {
+            background-color: #f8fafc;
         }
         
         .course-header h3 {
             margin: 0;
             font-size: 1.3rem;
             color: var(--dark);
+            flex: 1;
         }
         
         .course-toggle {
             font-size: 1.5rem;
             color: var(--primary);
             transition: transform 0.3s;
+            margin-left: 15px;
         }
         
         .course-content {
@@ -327,51 +403,75 @@
         
         .course-content.active {
             max-height: 1000px;
-            padding-bottom: 25px;
+            padding-bottom: 30px;
         }
         
         .course-objective {
             background-color: rgba(245, 158, 11, 0.1);
-            padding: 15px;
+            padding: 20px;
             border-radius: var(--radius);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-weight: 500;
+            border-left: 4px solid var(--accent);
         }
         
         .course-modules h4 {
             font-size: 1.1rem;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .course-modules ul {
             padding-left: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .course-modules li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .course-modules li::marker {
+            color: var(--primary);
         }
         
         .course-cta {
             display: inline-block;
             background-color: var(--primary);
             color: white;
-            padding: 10px 25px;
+            padding: 12px 30px;
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
         
         .course-cta:hover {
             background-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
         
-        /* Directory */
+        /* Directorio */
         .directory-section {
             background-color: var(--primary);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .directory-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/qCgst7f.jpeg') center/cover no-repeat;
+            opacity: 0.05;
+            z-index: 0;
         }
         
         .directory-section .section-title h2 {
@@ -386,86 +486,112 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
-            padding: 40px;
+            padding: 50px;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
             box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .directory-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
+            font-size: 60px;
+            margin-bottom: 25px;
             color: var(--accent);
         }
         
         .directory-card h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
         }
         
         .directory-card p {
             margin-bottom: 25px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.9;
+            line-height: 1.8;
         }
         
         .directory-button {
             display: inline-block;
             background-color: var(--accent);
             color: var(--dark);
-            padding: 15px 35px;
+            padding: 16px 40px;
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
             font-size: 1.1rem;
-            transition: all 0.3s;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
         
         .directory-button:hover {
             background-color: white;
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* Contact */
+        /* Contacto */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 50px;
         }
         
         .contact-info h3, .contact-form h3 {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--dark);
+            font-size: 1.8rem;
         }
         
         .contact-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 25px;
+            align-items: flex-start;
+            margin-bottom: 30px;
         }
         
         .contact-icon {
             background-color: rgba(37, 99, 235, 0.1);
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 20px;
             flex-shrink: 0;
         }
         
         .contact-icon i {
-            font-size: 20px;
+            font-size: 24px;
             color: var(--primary);
+        }
+        
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-details p {
+            color: var(--gray);
+        }
+        
+        .social-section {
+            margin-top: 40px;
+        }
+        
+        .social-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
         }
         
         .social-icons {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
+            flex-wrap: wrap;
         }
         
         .social-icon {
@@ -478,7 +604,7 @@
             background-color: var(--light-gray);
             color: var(--dark);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         
         .social-icon:hover {
@@ -487,12 +613,18 @@
             transform: translateY(-3px);
         }
         
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+        }
+        
         .payment-methods {
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
         .payment-methods h4 {
             margin-bottom: 15px;
+            font-size: 1.3rem;
         }
         
         .payment-icons {
@@ -504,109 +636,11 @@
         .payment-icon {
             height: 40px;
             width: auto;
+            border-radius: 5px;
         }
         
-        .contact-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .form-group label {
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input, .form-group textarea {
-            padding: 15px;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--radius);
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .submit-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: var(--radius);
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo {
-            height: 60px;
-            width: auto;
-            margin-bottom: 15px;
-        }
-        
-        .footer-column h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: white;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-        }
-        
-        /* Map */
         .map-container {
-            margin-top: 30px;
+            margin-top: 40px;
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -618,7 +652,145 @@
             border: none;
         }
         
-        /* Responsive */
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: white;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn i {
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            width: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-column ul li a i {
+            font-size: 14px;
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.8rem;
@@ -626,6 +798,18 @@
             
             .services-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .directory-card {
+                padding: 40px 30px;
+            }
+            
+            .directory-card h3 {
+                font-size: 1.8rem;
             }
         }
         
@@ -645,7 +829,7 @@
                 transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.3s;
+                transition: var(--transition);
                 z-index: 999;
             }
             
@@ -664,12 +848,17 @@
                 display: block;
             }
             
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
             .hero h1 {
                 font-size: 2.2rem;
             }
             
             .hero p {
                 font-size: 1rem;
+                padding: 0 15px;
             }
             
             section {
@@ -679,23 +868,44 @@
             .section-title h2 {
                 font-size: 2rem;
             }
-        }
-        
-        @media (max-width: 576px) {
-            .hero {
-                padding: 70px 0;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
             
             .services-grid {
                 grid-template-columns: 1fr;
             }
             
             .client-card {
-                padding: 15px;
+                padding: 20px;
+            }
+            
+            .course-header {
+                padding: 20px;
+            }
+            
+            .course-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .contact-container {
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button, .directory-button {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+            
+            .service-card {
+                padding: 25px;
             }
             
             .directory-card {
@@ -705,17 +915,22 @@
             .directory-card h3 {
                 font-size: 1.5rem;
             }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container header-container">
-            <div class="logo">
+            <a href="#inicio" class="logo">
                 <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing Logo">
                 <div class="logo-text">Nexus<span>Marketing</span></div>
-            </div>
+            </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -736,10 +951,10 @@
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
-        <div class="container">
-            <h1>Transformamos tu negocio con estrategias digitales efectivas</h1>
-            <p>En Nexus Marketing combinamos diseño web innovador y estrategias de marketing digital para impulsar tu presencia online y aumentar tus ventas.</p>
-            <a href="#contacto" class="cta-button">¡Solicita tu asesoría gratuita!</a>
+        <div class="container hero-content">
+            <h1>Impulsa tu negocio con estrategias digitales efectivas</h1>
+            <p>En Nexus Marketing combinamos diseño web innovador, marketing digital estratégico y capacitación especializada para transformar tu presencia online y aumentar tus ventas.</p>
+            <a href="#contacto" class="cta-button">¡Solicita tu asesoría gratuita ahora! <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
@@ -748,7 +963,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Servicios de Marketing Digital</h2>
-                <p>Soluciones integrales para potenciar tu negocio en el mundo digital</p>
+                <p>Soluciones integrales diseñadas para potenciar tu negocio en el mundo digital</p>
             </div>
             
             <div class="services-grid">
@@ -757,7 +972,7 @@
                     <div class="service-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3>Diseño de Logotipos</h3>
+                    <h3>1. Diseño de Logotipos (Identidad Visual)</h3>
                     <p><strong>¿Qué es?</strong> Es la cara de tu negocio. No es solo un dibujo; es la imagen que hará que tus clientes te reconozcan en la calle o en internet.</p>
                     <p><strong>¿Por qué lo necesitas?</strong> Un negocio sin logo parece temporal. Un buen logo transmite confianza y hace que te tomen en serio desde el primer día.</p>
                 </div>
@@ -767,7 +982,7 @@
                     <div class="service-icon">
                         <i class="fas fa-bullhorn"></i>
                     </div>
-                    <h3>Diseño de Banners y Volantes</h3>
+                    <h3>2. Diseño de Banners y Volantes (Publicidad Digital e Impresa)</h3>
                     <p><strong>¿Qué es?</strong> Imágenes diseñadas profesionalmente para enviar por WhatsApp, poner en tus estados o imprimir en papel.</p>
                     <p><strong>¿Por qué lo necesitas?</strong> Deja de enviar fotos borrosas o textos desordenados. Diseñamos anuncios claros y atractivos que provocan leer y comprar.</p>
                 </div>
@@ -777,9 +992,9 @@
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Páginas Web Profesionales</h3>
+                    <h3>3. Páginas Web Profesionales (Tu Oficina Digital)</h3>
                     <p><strong>¿Qué es?</strong> Un sitio web completo donde mostramos quién eres, qué vendes y cómo contactarte.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Las redes sociales pasan de moda, pero tu web es tuya. Es como tener una oficina abierta las 24 horas del día, los 365 días del año.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Las redes sociales pasan de moda, pero tu web es tuya. Es como tener una oficina abierta las 24 horas del día, los 365 días del año, dando información por ti.</p>
                 </div>
                 
                 <!-- Servicio 4 -->
@@ -787,7 +1002,7 @@
                     <div class="service-icon">
                         <i class="fas fa-blog"></i>
                     </div>
-                    <h3>Creación de Blogs (Blogger)</h3>
+                    <h3>4. Creación de Blogs (Blogger)</h3>
                     <p><strong>¿Qué es?</strong> Un espacio sencillo y económico para publicar artículos, noticias o tareas (ideal para docentes y escritores).</p>
                     <p><strong>¿Por qué lo necesitas?</strong> Si tienes mucho que contar o enseñar, esta es la forma más fácil y rápida de empezar a tener presencia en internet sin complicaciones técnicas.</p>
                 </div>
@@ -797,7 +1012,7 @@
                     <div class="service-icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <h3>Registro en Google Maps (Google Business)</h3>
+                    <h3>5. Registro en Google Maps (Google Business)</h3>
                     <p><strong>¿Qué es?</strong> Hacemos que tu negocio aparezca con su ubicación exacta, horario y teléfono cuando alguien busca en Google o usa el GPS.</p>
                     <p><strong>¿Por qué lo necesitas?</strong> Para que tus vecinos y nuevos clientes te encuentren físicamente sin tener que preguntar direcciones. ¡Literalmente te ponemos en el mapa!</p>
                 </div>
@@ -807,7 +1022,7 @@
                     <div class="service-icon">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <h3>Catálogos Web de Productos</h3>
+                    <h3>6. Catálogos Web de Productos</h3>
                     <p><strong>¿Qué es?</strong> Una lista digital ordenada de todo lo que vendes, con fotos bonitas y precios claros.</p>
                     <p><strong>¿Por qué lo necesitas?</strong> Ahorra tiempo enviando mil fotos por WhatsApp. Con esto, envías un solo enlace y tu cliente ve todo lo que ofreces como si fuera un menú de restaurante.</p>
                 </div>
@@ -817,7 +1032,7 @@
                     <div class="service-icon">
                         <i class="fas fa-headset"></i>
                     </div>
-                    <h3>Configuración de Atención al Cliente Web</h3>
+                    <h3>7. Configuración de Atención al Cliente Web</h3>
                     <p><strong>¿Qué es?</strong> Te ayudamos a configurar respuestas automáticas y canales de contacto para que no pierdas mensajes.</p>
                     <p><strong>¿Por qué lo necesitas?</strong> Un cliente que no recibe respuesta rápido, se va con la competencia. Organizamos tu comunicación para que siempre haya alguien "atendiendo" tu negocio digital.</p>
                 </div>
@@ -827,9 +1042,9 @@
                     <div class="service-icon">
                         <i class="fab fa-whatsapp"></i>
                     </div>
-                    <h3>Configuración Profesional de WhatsApp Business</h3>
+                    <h3>8. Configuración Profesional de WhatsApp Business</h3>
                     <p><strong>¿Qué es?</strong> Transformamos tu WhatsApp personal en una máquina de ventas. Configuramos tu perfil de empresa, horarios, respuestas automáticas de bienvenida y etiquetas para organizar tus pedidos.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Deja de perder chats importantes y convierte tu WhatsApp en una herramienta profesional de ventas.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Deja de perder chats importantes. Muchos usan WhatsApp normal para vender y pierden funciones profesionales vitales.</p>
                 </div>
                 
                 <!-- Servicio 9 -->
@@ -837,9 +1052,9 @@
                     <div class="service-icon">
                         <i class="fas fa-qrcode"></i>
                     </div>
-                    <h3>Creación de Código QR para Negocios</h3>
-                    <p><strong>¿Qué es?</strong> Puente entre lo físico y lo digital. Creamos códigos QR para que los pegues en tu mostrador, vitrina o tarjetas de presentación.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> ¿Quieres que los clientes vayan a tu web o a tu WhatsApp sin tener que escribir tu número? Escanean y listo, ya están contactándote.</p>
+                    <h3>9. Creación de Código QR para Negocios</h3>
+                    <p><strong>¿Qué es?</strong> ¿Quieres que los clientes vayan a tu web o a tu WhatsApp sin tener que escribir tu número? Creamos códigos QR para que los pegues en tu mostrador, vitrina o tarjetas de presentación.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Escanean y listo, ya están contactándote. Es el puente perfecto entre lo físico y lo digital.</p>
                 </div>
                 
                 <!-- Servicio 10 -->
@@ -847,9 +1062,9 @@
                     <div class="service-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Paquete "Arranca tus Redes" (Configuración Inicial)</h3>
-                    <p><strong>¿Qué es?</strong> No es Community Manager mensual, es solo el arranque. Te creamos las cuentas, ponemos la foto de perfil correcta, escribimos tu biografía profesional.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> ¿No sabes cómo abrir el Instagram o Facebook de tu empresa? Te dejamos todo listo para que tú solo te encargues de publicar.</p>
+                    <h3>10. Paquete "Arranca tus Redes" (Configuración Inicial)</h3>
+                    <p><strong>¿Qué es?</strong> ¿No sabes cómo abrir el Instagram o Facebook de tu empresa? Nosotros te creamos las cuentas, ponemos la foto de perfil correcta, escribimos tu biografía profesional.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> No es Community Manager mensual, es solo el arranque. Te dejamos todo listo para que tú solo te encargues de publicar.</p>
                 </div>
             </div>
         </div>
@@ -867,21 +1082,25 @@
                 <a href="https://jhonmalorne.github.io/nexus.net/" target="_blank" class="client-card">
                     <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" class="client-logo">
                     <div class="client-name">Nexus Marketing</div>
+                    <div class="client-description">La mejor empresa de marketing y consultoría con especialistas y los precios más cómodos.</div>
                 </a>
                 
                 <a href="https://jhonmalorne.github.io/varietyvida/" target="_blank" class="client-card">
                     <img src="https://i.imgur.com/W8mLP0s.png" alt="VarietyVida" class="client-logo">
                     <div class="client-name">VarietyVida</div>
+                    <div class="client-description">Los mejores servicios de carne, postres y pasapalos de la zona.</div>
                 </a>
                 
                 <a href="https://jhonmalorne.github.io/GenioVision/" target="_blank" class="client-card">
                     <img src="https://i.imgur.com/4haYkRl.png" alt="Genio Vision" class="client-logo">
                     <div class="client-name">Genio Vision</div>
+                    <div class="client-description">Si quieres que tu hijo se nivele o sea uno de los mejores no dudes en su servicio.</div>
                 </a>
                 
                 <a href="https://jhonmalorne.github.io/Sistemadeventas/" target="_blank" class="client-card">
                     <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Sistema de Ventas" class="client-logo">
-                    <div class="client-name">Sistema de Ventas</div>
+                    <div class="client-name">Sistema de Ventas Bodega</div>
+                    <div class="client-description">Innovadora página web con sistema de ventas y sistema de inventarios.</div>
                 </a>
             </div>
         </div>
@@ -896,6 +1115,10 @@
             </div>
             
             <div class="courses-accordion">
+                <!-- Bloque 1 -->
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);">Bloque 1: Herramientas Digitales para la Educación</h3>
+                <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto;">Ideal para docentes y directivos que desean modernizar su enseñanza sin estrés.</p>
+                
                 <!-- Curso 1 -->
                 <div class="course-item">
                     <div class="course-header">
@@ -914,7 +1137,7 @@
                                 <li>Módulo 3: Comunicación efectiva con padres y alumnos vía digital (sin invadir tu privacidad).</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
                 
@@ -936,7 +1159,7 @@
                                 <li>Módulo 3: Cómo subir tareas, guías PDF y videos para tus alumnos.</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
                 
@@ -958,7 +1181,7 @@
                                 <li>Módulo 3: Bancos de imágenes: Dónde encontrar fotos legales y de buena calidad.</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
                 
@@ -980,7 +1203,7 @@
                                 <li>Módulo 3: Google Calendar: Organiza tu año escolar y entregas.</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
                 
@@ -1002,9 +1225,13 @@
                                 <li>Módulo 3: Protocolos de seguridad: Qué publicar y qué no (fotos de alumnos).</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
+                
+                <!-- Bloque 2 -->
+                <h3 style="text-align: center; margin: 60px 0 30px; color: var(--primary);">Bloque 2: Ventas y Negocios Locales</h3>
+                <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto;">Diseñado para comerciantes y emprendedores que quieren facturar más.</p>
                 
                 <!-- Curso 6 -->
                 <div class="course-item">
@@ -1116,6 +1343,10 @@
                     </div>
                 </div>
                 
+                <!-- Bloque 3 -->
+                <h3 style="text-align: center; margin: 60px 0 30px; color: var(--primary);">Bloque 3: Cierre de Brecha Digital</h3>
+                <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto;">Capacitaciones esenciales para perder el miedo a la tecnología.</p>
+                
                 <!-- Curso 11 -->
                 <div class="course-item">
                     <div class="course-header">
@@ -1134,7 +1365,7 @@
                                 <li>Módulo 3: La nube: Qué es y por qué es más segura que tu pendrive.</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
                 
@@ -1156,7 +1387,7 @@
                                 <li>Módulo 3: Cómo medir si tu publicidad funcionó o no.</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
                 
@@ -1178,7 +1409,7 @@
                                 <li>Módulo 3: Datos sensibles: Cómo proteger la información de tus clientes.</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
                 
@@ -1200,7 +1431,7 @@
                                 <li>Módulo 3: Redacción para la sección "Quiénes Somos" de tu web.</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
                 
@@ -1222,7 +1453,7 @@
                                 <li>Módulo 3: El futuro de tu negocio: Pasos para seguir creciendo digitalmente.</li>
                             </ul>
                         </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
+                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
                     </div>
                 </div>
             </div>
@@ -1244,7 +1475,7 @@
                 <h3>Registra tu negocio en nuestra InfoGuía</h3>
                 <p>En Nexus Marketing, estamos creando la vitrina digital más completa de Los Guayos. Al registrarte hoy, tu negocio aparecerá en nuestro directorio web, permitiendo que cientos de personas accedan a tus servicios y te contacten directamente por WhatsApp.</p>
                 <p><strong>Los planes de 0 $ y 10 $</strong></p>
-                <a href="https://bit.ly/InfoguiaMarketing" target="_blank" class="directory-button">Registrar mi negocio ahora</a>
+                <a href="https://bit.ly/InfoguiaMarketing" target="_blank" class="directory-button">Registrar mi negocio ahora <i class="fas fa-external-link-alt"></i></a>
             </div>
         </div>
     </section>
@@ -1265,7 +1496,7 @@
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h4>Ubicación</h4>
                             <p>Los Guayos, Carabobo, Venezuela</p>
                         </div>
@@ -1275,7 +1506,7 @@
                         <div class="contact-icon">
                             <i class="fab fa-whatsapp"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h4>WhatsApp</h4>
                             <p>+58 424-4525765</p>
                         </div>
@@ -1285,27 +1516,32 @@
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h4>Correo Electrónico</h4>
                             <p>jhoncuenta2@gmail.com</p>
                         </div>
                     </div>
                     
                     <!-- Redes Sociales -->
-                    <h3 style="margin-top: 30px;">Síguenos en Redes Sociales</h3>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon" title="Facebook">
-                            <img src="https://i.imgur.com/4d0KklK.png" alt="Facebook" style="width: 24px; height: 24px;">
-                        </a>
-                        <a href="#" class="social-icon" title="Instagram">
-                            <img src="https://i.imgur.com/QY7ivGQ.png" alt="Instagram" style="width: 24px; height: 24px;">
-                        </a>
-                        <a href="#" class="social-icon" title="LinkedIn">
-                            <img src="https://i.imgur.com/uU8YpyK.png" alt="LinkedIn" style="width: 24px; height: 24px;">
-                        </a>
-                        <a href="#" class="social-icon" title="Threads">
-                            <img src="https://i.imgur.com/uAYMpZw.png" alt="Threads" style="width: 24px; height: 24px;">
-                        </a>
+                    <div class="social-section">
+                        <h4>Síguenos en Redes Sociales</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" title="Facebook">
+                                <img src="https://i.imgur.com/4d0KklK.png" alt="Facebook">
+                            </a>
+                            <a href="#" class="social-icon" title="Instagram">
+                                <img src="https://i.imgur.com/QY7ivGQ.png" alt="Instagram">
+                            </a>
+                            <a href="#" class="social-icon" title="LinkedIn">
+                                <img src="https://i.imgur.com/uU8YpyK.png" alt="LinkedIn">
+                            </a>
+                            <a href="#" class="social-icon" title="Threads">
+                                <img src="https://i.imgur.com/uAYMpZw.png" alt="Threads">
+                            </a>
+                            <a href="#" class="social-icon" title="Google Maps">
+                                <img src="https://i.imgur.com/q7pJtIu.png" alt="Google Maps">
+                            </a>
+                        </div>
                     </div>
                     
                     <!-- Métodos de Pago -->
@@ -1314,7 +1550,6 @@
                         <div class="payment-icons">
                             <img src="https://i.imgur.com/tLxAMXV.png" alt="Binance" class="payment-icon">
                             <img src="https://i.imgur.com/dtB9NiG.png" alt="Zelle" class="payment-icon">
-                            <img src="https://i.imgur.com/q7pJtIu.png" alt="Google Pay" class="payment-icon">
                         </div>
                     </div>
                     
@@ -1349,7 +1584,7 @@
                                 <option value="diseño_logo">Diseño de Logotipos</option>
                                 <option value="banners">Diseño de Banners y Volantes</option>
                                 <option value="pagina_web">Página Web Profesional</option>
-                                <option value="blog">Creación de Blogs</option>
+                                <option value="blog">Creación de Blogs (Blogger)</option>
                                 <option value="google_maps">Registro en Google Maps</option>
                                 <option value="catalogo">Catálogo Web de Productos</option>
                                 <option value="whatsapp">Configuración de WhatsApp Business</option>
@@ -1357,15 +1592,16 @@
                                 <option value="redes">Paquete "Arranca tus Redes"</option>
                                 <option value="cursos">Cursos de Capacitación</option>
                                 <option value="directorio">Registro en InfoGuía</option>
+                                <option value="consultoria">Consultoría Personalizada</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Mensaje *</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos sobre tu proyecto o necesidades..."></textarea>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Enviar mensaje</button>
+                        <button type="submit" class="submit-btn">Enviar mensaje <i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
@@ -1378,57 +1614,43 @@
             <div class="footer-container">
                 <div class="footer-column">
                     <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" class="footer-logo">
-                    <p>Somos una empresa especializada en marketing digital y diseño web, comprometida con el crecimiento de tu negocio en el mundo digital.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-icon" title="Threads">
-                            <i class="fab fa-threads"></i>
-                        </a>
-                    </div>
+                    <p>Somos una empresa especializada en marketing digital, diseño web y consultoría, comprometida con el crecimiento y transformación digital de tu negocio.</p>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Servicios</h4>
                     <ul>
-                        <li><a href="#servicios">Diseño de Logotipos</a></li>
-                        <li><a href="#servicios">Páginas Web Profesionales</a></li>
-                        <li><a href="#servicios">Configuración de WhatsApp Business</a></li>
-                        <li><a href="#servicios">Registro en Google Maps</a></li>
-                        <li><a href="#servicios">Catálogos Web de Productos</a></li>
+                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Diseño de Logotipos</a></li>
+                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Páginas Web Profesionales</a></li>
+                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Configuración de WhatsApp Business</a></li>
+                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Registro en Google Maps</a></li>
+                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Catálogos Web de Productos</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Cursos</h4>
                     <ul>
-                        <li><a href="#cursos">Herramientas Digitales para Educación</a></li>
-                        <li><a href="#cursos">Ventas y Negocios Locales</a></li>
-                        <li><a href="#cursos">Cierre de Brecha Digital</a></li>
-                        <li><a href="#cursos">Storytelling para Negocios</a></li>
-                        <li><a href="#cursos">Transformación Digital Real</a></li>
+                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Herramientas Digitales para Educación</a></li>
+                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Ventas y Negocios Locales</a></li>
+                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Cierre de Brecha Digital</a></li>
+                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Storytelling para Negocios</a></li>
+                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Transformación Digital Real</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Contacto</h4>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Los Guayos, Carabobo</li>
-                        <li><i class="fab fa-whatsapp"></i> +58 424-4525765</li>
-                        <li><i class="fas fa-envelope"></i> jhoncuenta2@gmail.com</li>
+                        <li><a href="https://wa.me/584244525765" target="_blank"><i class="fab fa-whatsapp"></i> +58 424-4525765</a></li>
+                        <li><a href="mailto:jhoncuenta2@gmail.com"><i class="fas fa-envelope"></i> jhoncuenta2@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Los Guayos, Carabobo</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Nexus Marketing. Todos los derechos reservados. | Diseñado con pasión para impulsar tu negocio digital</p>
+                <p>&copy; 2023 Nexus Marketing. Todos los derechos reservados. | Diseñado y desarrollado con pasión para impulsar tu negocio digital</p>
             </div>
         </div>
     </footer>
@@ -1472,7 +1694,7 @@
                 
                 // Toggle current course item
                 courseContent.classList.toggle('active');
-                toggleIcon.textContent = courseContent.classList.contains('active') ? '-' : '+';
+                toggleIcon.textContent = courseContent.classList.contains('active') ? '−' : '+';
             });
         });
         
@@ -1485,33 +1707,47 @@
             // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
             
             // Create WhatsApp message
-            let message = `¡Hola! Soy ${name} y estoy interesado en los servicios de Nexus Marketing.%0A`;
-            message += `Correo: ${email}%0A`;
+            let whatsappMessage = `¡Hola! Soy ${name} y estoy interesado en los servicios de Nexus Marketing.%0A`;
+            whatsappMessage += `Correo: ${email}%0A`;
             
-            if (document.getElementById('phone').value) {
-                message += `Teléfono: ${document.getElementById('phone').value}%0A`;
+            if (phone) {
+                whatsappMessage += `Teléfono: ${phone}%0A`;
             }
             
             if (service) {
                 const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
-                message += `Servicio de interés: ${serviceText}%0A`;
+                whatsappMessage += `Servicio de interés: ${serviceText}%0A`;
             }
             
-            if (document.getElementById('message').value) {
-                message += `Mensaje: ${document.getElementById('message').value}`;
+            if (message) {
+                whatsappMessage += `Mensaje: ${message}`;
             }
             
             // Open WhatsApp with the message
-            window.open(`https://wa.me/584244525765?text=${message}`, '_blank');
+            window.open(`https://wa.me/584244525765?text=${whatsappMessage}`, '_blank');
             
             // Show success message
-            alert('¡Gracias por contactarnos! Serás redirigido a WhatsApp para continuar con tu consulta.');
+            alert('¡Gracias por contactarnos! Serás redirigido a WhatsApp para continuar con tu consulta. Un asesor te atenderá en seguida.');
             
             // Reset form
             contactForm.reset();
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+                header.style.padding = '20px 0';
+            }
         });
         
         // Smooth scrolling for anchor links
