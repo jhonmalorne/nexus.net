@@ -3,81 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Marketing - Consultoría Digital y Marketing </title>
+    <title>Nexus Marketing - Consultoría y Diseño Web</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/qCgst7f.jpeg">
     <style>
-        /* Reset y estilos base */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+            --success: #10b981;
+            --radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        :root {
-            --primary: #2A5BCC;
-            --secondary: #FF6B35;
-            --accent: #00C9B1;
-            --dark: #1A1A2E;
-            --light: #F8F9FA;
-            --gray: #6C757D;
-            --light-gray: #E9ECEF;
-            --success: #28A745;
-            --font-primary: 'Poppins', sans-serif;
-            --font-heading: 'Montserrat', sans-serif;
-        }
-        
         body {
-            font-family: var(--font-primary);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
         }
         
         h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
             line-height: 1.2;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            position: relative;
-            margin-bottom: 2.5rem;
-        }
-        
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 70px;
-            height: 4px;
-            background-color: var(--secondary);
-            border-radius: 2px;
-        }
-        
-        h3 {
-            font-size: 1.6rem;
-        }
-        
-        p {
             margin-bottom: 1rem;
-            color: var(--gray);
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
         }
         
         .container {
@@ -87,79 +52,36 @@
             padding: 0 20px;
         }
         
-        section {
-            padding: 80px 0;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background-color: var(--secondary);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-        }
-        
-        .btn-primary:hover {
-            background-color: #1E4AA8;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
         /* Header */
         header {
             background-color: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
+            box-shadow: var(--shadow);
+            position: sticky;
             top: 0;
+            z-index: 1000;
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 15px 0;
         }
         
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
         
         .logo img {
             height: 50px;
-            margin-right: 10px;
+            width: auto;
         }
         
         .logo-text {
-            font-family: var(--font-heading);
+            font-size: 24px;
             font-weight: 900;
-            font-size: 1.8rem;
             color: var(--primary);
         }
         
@@ -167,150 +89,215 @@
             color: var(--secondary);
         }
         
-        .nav-menu {
+        nav ul {
             display: flex;
             list-style: none;
+            gap: 30px;
         }
         
-        .nav-menu li {
-            margin-left: 30px;
-        }
-        
-        .nav-menu a {
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
             font-weight: 500;
+            font-size: 16px;
             transition: color 0.3s;
+            position: relative;
         }
         
-        .nav-menu a:hover {
-            color: var(--secondary);
+        nav a:hover {
+            color: var(--primary);
         }
         
-        .mobile-toggle {
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 24px;
             cursor: pointer;
             color: var(--dark);
         }
         
-        /* Hero */
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1A1A2E 0%, #2A5BCC 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 150px 0 100px;
-            margin-top: 80px;
-        }
-        
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        
-        .hero-content h1 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-content p {
-            color: rgba(255,255,255,0.8);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-btns {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .hero-btns .btn {
-            background-color: var(--secondary);
-        }
-        
-        .hero-btns .btn-primary {
-            background-color: white;
-            color: var(--primary);
-        }
-        
-        .hero-image {
+            padding: 100px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
         }
         
-        /* Servicios */
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Services */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
-            margin-top: 40px;
         }
         
         .service-card {
-            background-color: white;
-            border-radius: 10px;
+            background: white;
+            border-radius: var(--radius);
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
         }
         
         .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
         }
         
+        .service-icon i {
+            font-size: 30px;
+            color: var(--primary);
+        }
+        
         .service-card h3 {
-            margin-bottom: 15px;
+            font-size: 1.5rem;
             color: var(--dark);
         }
         
-        .service-description {
-            flex-grow: 1;
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 15px;
         }
         
-        .service-why {
-            background-color: rgba(42, 91, 204, 0.05);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border-left: 4px solid var(--secondary);
+        /* Clients */
+        .clients-section {
+            background-color: #f8fafc;
         }
         
-        .service-why h4 {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 5px;
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
         }
         
-        /* Capacitación */
-        .accordion {
-            max-width: 1000px;
+        .client-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .client-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .client-logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+        
+        .client-name {
+            font-weight: 600;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        /* Courses */
+        .courses-accordion {
+            max-width: 900px;
             margin: 0 auto;
         }
         
-        .accordion-item {
+        .course-item {
+            background: white;
+            border-radius: var(--radius);
             margin-bottom: 15px;
-            background-color: white;
-            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
         }
         
-        .accordion-header {
+        .course-header {
             padding: 20px 25px;
             display: flex;
             justify-content: space-between;
@@ -319,230 +306,256 @@
             background-color: white;
         }
         
-        .accordion-header h3 {
-            margin-bottom: 0;
+        .course-header h3 {
+            margin: 0;
             font-size: 1.3rem;
+            color: var(--dark);
         }
         
-        .accordion-icon {
-            font-size: 1.2rem;
+        .course-toggle {
+            font-size: 1.5rem;
             color: var(--primary);
             transition: transform 0.3s;
         }
         
-        .accordion-content {
+        .course-content {
             padding: 0 25px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s, padding 0.3s;
+            transition: max-height 0.5s ease, padding 0.3s ease;
         }
         
-        .accordion-item.active .accordion-content {
-            padding: 0 25px 25px;
+        .course-content.active {
             max-height: 1000px;
+            padding-bottom: 25px;
         }
         
-        .accordion-item.active .accordion-icon {
-            transform: rotate(45deg);
-        }
-        
-        .module-list {
-            list-style-type: none;
-        }
-        
-        .module-list li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-        
-        .module-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-        
-        .course-cta {
-            margin-top: 20px;
-            text-align: center;
-        }
-        
-        .block-title {
-            text-align: center;
-            margin: 40px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--light-gray);
-        }
-        
-        /* Portafolio */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .portfolio-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-        
-        .portfolio-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .portfolio-img {
-            height: 180px;
-            background-color: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .portfolio-img img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        .portfolio-content {
-            padding: 25px;
-        }
-        
-        .portfolio-content h3 {
-            margin-bottom: 10px;
-        }
-        
-        .portfolio-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-        
-        .tag {
-            background-color: var(--light-gray);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-        }
-        
-        .portfolio-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: var(--primary);
+        .course-objective {
+            background-color: rgba(245, 158, 11, 0.1);
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-bottom: 15px;
             font-weight: 500;
         }
         
-        /* Contacto */
-        .contact {
-            background-color: var(--dark);
+        .course-modules h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .course-modules ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .course-modules li {
+            margin-bottom: 8px;
+        }
+        
+        .course-cta {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .course-cta:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Directory */
+        .directory-section {
+            background-color: var(--primary);
             color: white;
         }
         
-        .contact h2 {
+        .directory-section .section-title h2 {
             color: white;
         }
         
-        .contact h2:after {
+        .directory-section .section-title p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .directory-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .directory-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .directory-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .directory-card p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .directory-button {
+            display: inline-block;
             background-color: var(--accent);
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
         }
         
+        .directory-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Contact */
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
         
-        .contact-info h3 {
-            color: white;
+        .contact-info h3, .contact-form h3 {
             margin-bottom: 20px;
+            color: var(--dark);
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .contact-icon {
+            background-color: rgba(37, 99, 235, 0.1);
             width: 50px;
             height: 50px;
-            background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
-        .social-links {
+        .contact-icon i {
+            font-size: 20px;
+            color: var(--primary);
+        }
+        
+        .social-icons {
             display: flex;
             gap: 15px;
             margin-top: 30px;
         }
         
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
+        .social-icon {
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            margin-top: 30px;
+        }
+        
+        .payment-methods h4 {
+            margin-bottom: 15px;
+        }
+        
+        .payment-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .payment-icon {
+            height: 40px;
+            width: auto;
+        }
+        
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea {
+            padding: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
             transition: background-color 0.3s;
         }
         
-        .social-link:hover {
-            background-color: var(--secondary);
-        }
-        
-        .social-link img {
-            width: 20px;
-            height: 20px;
-            filter: brightness(0) invert(1);
-        }
-        
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 8px;
-            background-color: rgba(255,255,255,0.1);
-            color: white;
-            font-family: var(--font-primary);
-        }
-        
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder,
-        .contact-form select {
-            color: rgba(255,255,255,0.6);
-        }
-        
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        .contact-form select option {
-            background-color: var(--dark);
-            color: white;
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
         }
         
         /* Footer */
         footer {
-            background-color: #0F0F1E;
-            color: rgba(255,255,255,0.7);
+            background-color: var(--dark);
+            color: white;
             padding: 60px 0 30px;
         }
         
@@ -550,211 +563,147 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: white;
+            height: 60px;
+            width: auto;
             margin-bottom: 15px;
         }
         
-        .footer-links h4 {
-            color: white;
+        .footer-column h4 {
+            font-size: 1.2rem;
             margin-bottom: 20px;
+            color: white;
         }
         
-        .footer-links ul {
+        .footer-column ul {
             list-style: none;
         }
         
-        .footer-links li {
+        .footer-column ul li {
             margin-bottom: 10px;
         }
         
-        .footer-links a {
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
             transition: color 0.3s;
         }
         
-        .footer-links a:hover {
-            color: var(--secondary);
+        .footer-column ul li a:hover {
+            color: white;
         }
         
         .copyright {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
         }
         
-        /* WhatsApp flotante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: transform 0.3s;
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-        
-        /* Mapa */
+        /* Map */
         .map-container {
-            margin-top: 20px;
-            border-radius: 10px;
+            margin-top: 30px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
         }
         
         .map-container iframe {
             width: 100%;
             height: 300px;
-            border: 0;
-        }
-        
-        /* Métodos de pago */
-        .payment-methods {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-        
-        .payment-method {
-            background-color: rgba(255,255,255,0.1);
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .payment-method img {
-            height: 16px;
-            filter: brightness(0) invert(1);
-        }
-        
-        /* Animaciones */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
+            border: none;
         }
         
         /* Responsive */
         @media (max-width: 992px) {
-            .hero-container,
-            .contact-container {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 2.8rem;
             }
             
-            .hero-content {
-                text-align: center;
-            }
-            
-            .hero-btns {
-                justify-content: center;
-            }
-            
-            h1 {
-                font-size: 2.4rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
         
         @media (max-width: 768px) {
-            .nav-menu {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav {
                 position: fixed;
                 top: 80px;
-                left: -100%;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-                padding: 20px 0;
-            }
-            
-            .nav-menu.active {
                 left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--shadow);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                z-index: 999;
             }
             
-            .nav-menu li {
-                margin: 15px 0;
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
             }
             
-            .mobile-toggle {
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
                 display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
             }
             
             section {
                 padding: 60px 0;
             }
             
-            .services-grid,
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form input,
-            .contact-form textarea,
-            .contact-form select {
-                padding: 12px;
+            .section-title h2 {
+                font-size: 2rem;
             }
         }
         
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.7rem;
-            }
-            
-            .btn {
-                padding: 12px 25px;
-            }
-            
+        @media (max-width: 576px) {
             .hero {
-                padding: 130px 0 70px;
+                padding: 70px 0;
             }
             
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
+            .hero h1 {
+                font-size: 1.8rem;
             }
             
-            .hero-btns .btn {
-                width: 100%;
-                max-width: 300px;
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .client-card {
+                padding: 15px;
+            }
+            
+            .directory-card {
+                padding: 30px 20px;
+            }
+            
+            .directory-card h3 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -768,611 +717,567 @@
                 <div class="logo-text">Nexus<span>Marketing</span></div>
             </div>
             
-            <div class="mobile-toggle" id="mobileToggle">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
             
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios Marketing</a></li>
-                <li><a href="#clientes">Clientes</a></li>
-                <li><a href="#capacitacion">Capacitación</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="#cursos">Cursos</a></li>
+                    <li><a href="#directorio">Directorio</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- WhatsApp flotante -->
-    <a href="https://wa.me/584244525765?text=Hola%20Nexus%20Marketing,%20quiero%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Sección Hero -->
+    <!-- Hero Section -->
     <section class="hero" id="inicio">
-        <div class="container hero-container">
-            <div class="hero-content fade-in-up">
-                <h1>Marketing Digital y Consultoría para Empresas</h1>
-                <p>Especialistas en transformar negocios con soluciones digitales prácticas y resultados inmediatos. Con más de 50 proyectos exitosos en Venezuela y Peru.</p>
-                <div class="hero-btns">
-                    <a href="#contacto" class="btn">Solicitar Asesoría Gratis</a>
-                    <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
-                </div>
-            </div>
-            <div class="hero-image fade-in-up">
-                <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" style="max-height: 350px;">
-            </div>
+        <div class="container">
+            <h1>Transformamos tu negocio con estrategias digitales efectivas</h1>
+            <p>En Nexus Marketing combinamos diseño web innovador y estrategias de marketing digital para impulsar tu presencia online y aumentar tus ventas.</p>
+            <a href="#contacto" class="cta-button">¡Solicita tu asesoría gratuita!</a>
         </div>
     </section>
 
-    <!-- Sección Servicios Marketing -->
+    <!-- Servicios de Marketing -->
     <section id="servicios">
         <div class="container">
             <div class="section-title">
                 <h2>Servicios de Marketing Digital</h2>
-                <p>Soluciones prácticas y efectivas para que tu negocio tenga presencia profesional en internet</p>
+                <p>Soluciones integrales para potenciar tu negocio en el mundo digital</p>
             </div>
             
             <div class="services-grid">
                 <!-- Servicio 1 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3>Diseño de Logotipos (Identidad Visual)</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> Es la cara de tu negocio. No es solo un dibujo; es la imagen que hará que tus clientes te reconozcan en la calle o en internet.</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Un negocio sin logo parece temporal. Un buen logo transmite confianza y hace que te tomen en serio desde el primer día.</p>
-                        </div>
-                    </div>
+                    <h3>Diseño de Logotipos</h3>
+                    <p><strong>¿Qué es?</strong> Es la cara de tu negocio. No es solo un dibujo; es la imagen que hará que tus clientes te reconozcan en la calle o en internet.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Un negocio sin logo parece temporal. Un buen logo transmite confianza y hace que te tomen en serio desde el primer día.</p>
                 </div>
                 
                 <!-- Servicio 2 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-ad"></i>
+                        <i class="fas fa-bullhorn"></i>
                     </div>
                     <h3>Diseño de Banners y Volantes</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> Imágenes diseñadas profesionalmente para enviar por WhatsApp, poner en tus estados o imprimir en papel.</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Deja de enviar fotos borrosas o textos desordenados. Diseñamos anuncios claros y atractivos que provocan leer y comprar.</p>
-                        </div>
-                    </div>
+                    <p><strong>¿Qué es?</strong> Imágenes diseñadas profesionalmente para enviar por WhatsApp, poner en tus estados o imprimir en papel.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Deja de enviar fotos borrosas o textos desordenados. Diseñamos anuncios claros y atractivos que provocan leer y comprar.</p>
                 </div>
                 
                 <!-- Servicio 3 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Páginas Web Profesionales</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> Un sitio web completo donde mostramos quién eres, qué vendes y cómo contactarte.</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Las redes sociales pasan de moda, pero tu web es tuya. Es como tener una oficina abierta las 24 horas del día, los 365 días del año, dando información por ti.</p>
-                        </div>
-                    </div>
+                    <p><strong>¿Qué es?</strong> Un sitio web completo donde mostramos quién eres, qué vendes y cómo contactarte.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Las redes sociales pasan de moda, pero tu web es tuya. Es como tener una oficina abierta las 24 horas del día, los 365 días del año.</p>
                 </div>
                 
                 <!-- Servicio 4 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-blog"></i>
                     </div>
                     <h3>Creación de Blogs (Blogger)</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> Un espacio sencillo y económico para publicar artículos, noticias o tareas (ideal para docentes y escritores).</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Si tienes mucho que contar o enseñar, esta es la forma más fácil y rápida de empezar a tener presencia en internet sin complicaciones técnicas.</p>
-                        </div>
-                    </div>
+                    <p><strong>¿Qué es?</strong> Un espacio sencillo y económico para publicar artículos, noticias o tareas (ideal para docentes y escritores).</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Si tienes mucho que contar o enseñar, esta es la forma más fácil y rápida de empezar a tener presencia en internet sin complicaciones técnicas.</p>
                 </div>
                 
                 <!-- Servicio 5 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <h3>Registro en Google Maps</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> Hacemos que tu negocio aparezca con su ubicación exacta, horario y teléfono cuando alguien busca en Google o usa el GPS.</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Para que tus vecinos y nuevos clientes te encuentren físicamente sin tener que preguntar direcciones. ¡Literalmente te ponemos en el mapa!</p>
-                        </div>
-                    </div>
+                    <h3>Registro en Google Maps (Google Business)</h3>
+                    <p><strong>¿Qué es?</strong> Hacemos que tu negocio aparezca con su ubicación exacta, horario y teléfono cuando alguien busca en Google o usa el GPS.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Para que tus vecinos y nuevos clientes te encuentren físicamente sin tener que preguntar direcciones. ¡Literalmente te ponemos en el mapa!</p>
                 </div>
                 
                 <!-- Servicio 6 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-store"></i>
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
                     <h3>Catálogos Web de Productos</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> Una lista digital ordenada de todo lo que vendes, con fotos bonitas y precios claros.</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Ahorra tiempo enviando mil fotos por WhatsApp. Con esto, envías un solo enlace y tu cliente ve todo lo que ofreces como si fuera un menú de restaurante.</p>
-                        </div>
-                    </div>
+                    <p><strong>¿Qué es?</strong> Una lista digital ordenada de todo lo que vendes, con fotos bonitas y precios claros.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Ahorra tiempo enviando mil fotos por WhatsApp. Con esto, envías un solo enlace y tu cliente ve todo lo que ofreces como si fuera un menú de restaurante.</p>
                 </div>
                 
                 <!-- Servicio 7 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-headset"></i>
                     </div>
                     <h3>Configuración de Atención al Cliente Web</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> Te ayudamos a configurar respuestas automáticas y canales de contacto para que no pierdas mensajes.</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Un cliente que no recibe respuesta rápido, se va con la competencia. Organizamos tu comunicación para que siempre haya alguien "atendiendo" tu negocio digital.</p>
-                        </div>
-                    </div>
+                    <p><strong>¿Qué es?</strong> Te ayudamos a configurar respuestas automáticas y canales de contacto para que no pierdas mensajes.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Un cliente que no recibe respuesta rápido, se va con la competencia. Organizamos tu comunicación para que siempre haya alguien "atendiendo" tu negocio digital.</p>
                 </div>
                 
                 <!-- Servicio 8 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <h3>Configuración Profesional de WhatsApp Business</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> Transformamos tu WhatsApp personal en una máquina de ventas. Configuramos tu perfil de empresa, horarios, respuestas automáticas de bienvenida y etiquetas para organizar tus pedidos.</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Deja de perder chats importantes y organiza tus ventas de manera profesional con todas las funciones empresariales de WhatsApp.</p>
-                        </div>
-                    </div>
+                    <p><strong>¿Qué es?</strong> Transformamos tu WhatsApp personal en una máquina de ventas. Configuramos tu perfil de empresa, horarios, respuestas automáticas de bienvenida y etiquetas para organizar tus pedidos.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> Deja de perder chats importantes y convierte tu WhatsApp en una herramienta profesional de ventas.</p>
                 </div>
                 
                 <!-- Servicio 9 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-qrcode"></i>
                     </div>
                     <h3>Creación de Código QR para Negocios</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> ¿Quieres que los clientes vayan a tu web o a tu WhatsApp sin tener que escribir tu número?</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Creamos códigos QR para que los pegues en tu mostrador, vitrina o tarjetas de presentación. Escanean y listo, ya están contactándote.</p>
-                        </div>
-                    </div>
+                    <p><strong>¿Qué es?</strong> Puente entre lo físico y lo digital. Creamos códigos QR para que los pegues en tu mostrador, vitrina o tarjetas de presentación.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> ¿Quieres que los clientes vayan a tu web o a tu WhatsApp sin tener que escribir tu número? Escanean y listo, ya están contactándote.</p>
                 </div>
                 
                 <!-- Servicio 10 -->
-                <div class="service-card fade-in-up">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
                     <h3>Paquete "Arranca tus Redes" (Configuración Inicial)</h3>
-                    <div class="service-description">
-                        <p><strong>¿Qué es?</strong> ¿No sabes cómo abrir el Instagram o Facebook de tu empresa?</p>
-                        <div class="service-why">
-                            <h4>¿Por qué lo necesitas?</h4>
-                            <p>Nosotros te creamos las cuentas, ponemos la foto de perfil correcta, escribimos tu biografía profesional y te dejamos todo listo para que tú solo te encargues de publicar.</p>
-                        </div>
-                    </div>
+                    <p><strong>¿Qué es?</strong> No es Community Manager mensual, es solo el arranque. Te creamos las cuentas, ponemos la foto de perfil correcta, escribimos tu biografía profesional.</p>
+                    <p><strong>¿Por qué lo necesitas?</strong> ¿No sabes cómo abrir el Instagram o Facebook de tu empresa? Te dejamos todo listo para que tú solo te encargues de publicar.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Clientes -->
-    <section id="clientes" style="background-color: var(--light-gray);">
+    <!-- Clientes -->
+    <section class="clients-section" id="clientes">
         <div class="container">
             <div class="section-title">
                 <h2>Nuestros Clientes</h2>
-                <p>Proyectos exitosos realizados para empresas venezolanas</p>
+                <p>Empresas que han confiado en nuestros servicios de marketing y diseño web</p>
             </div>
             
-            <div class="portfolio-grid">
-                <!-- Cliente 1 -->
-                <div class="portfolio-card fade-in-up">
-                    <div class="portfolio-img">
-                        <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing Logo">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Nexus Marketing</h3>
-                        <p>La mejor empresa de marketing y consultoría con especialistas y los precios más cómodos.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Marketing</span>
-                            <span class="tag">Consultoría</span>
-                            <span class="tag">Web Corporativa</span>
-                        </div>
-                        <a href="https://jhonmalorne.github.io/nexus.net/" class="portfolio-link" target="_blank">Ver sitio web →</a>
-                    </div>
-                </div>
+            <div class="clients-grid">
+                <a href="https://jhonmalorne.github.io/nexus.net/" target="_blank" class="client-card">
+                    <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" class="client-logo">
+                    <div class="client-name">Nexus Marketing</div>
+                </a>
                 
-                <!-- Cliente 2 -->
-                <div class="portfolio-card fade-in-up">
-                    <div class="portfolio-img">
-                        <img src="https://i.imgur.com/W8mLP0s.png" alt="VarietyVida Logo">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>VarietyVida Pastelería</h3>
-                        <p>Los mejores servicios de carne, postres y pasapalos de la zona con atención por WhatsApp.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Gastronomía</span>
-                            <span class="tag">E-commerce</span>
-                            <span class="tag">Catálogo Digital</span>
-                        </div>
-                        <a href="https://jhonmalorne.github.io/varietyvida/" class="portfolio-link" target="_blank">Ver sitio web →</a>
-                    </div>
-                </div>
+                <a href="https://jhonmalorne.github.io/varietyvida/" target="_blank" class="client-card">
+                    <img src="https://i.imgur.com/W8mLP0s.png" alt="VarietyVida" class="client-logo">
+                    <div class="client-name">VarietyVida</div>
+                </a>
                 
-                <!-- Cliente 3 -->
-                <div class="portfolio-card fade-in-up">
-                    <div class="portfolio-img">
-                        <img src="https://i.imgur.com/4haYkRl.png" alt="Genio Vision Logo">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Genio Vision</h3>
-                        <p>Si quieres que tu hijo se nivele o sea uno de los mejores no dudes en su servicio ya que cuentan con personal capacitado en tareas dirigidas y apoyo escolar.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Educación</span>
-                            <span class="tag">Plataforma</span>
-                            <span class="tag">Blog</span>
-                        </div>
-                        <a href="https://jhonmalorne.github.io/GenioVision/" class="portfolio-link" target="_blank">Ver sitio web →</a>
-                    </div>
-                </div>
+                <a href="https://jhonmalorne.github.io/GenioVision/" target="_blank" class="client-card">
+                    <img src="https://i.imgur.com/4haYkRl.png" alt="Genio Vision" class="client-logo">
+                    <div class="client-name">Genio Vision</div>
+                </a>
                 
-                <!-- Cliente 4 -->
-                <div class="portfolio-card fade-in-up">
-                    <div class="portfolio-img">
-                        <div style="background-color: #1A1A2E; color: white; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-                            <i class="fas fa-warehouse"></i>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Sistema de Ventas para Bodega</h3>
-                        <p>Innovadora página web con sistema de ventas y sistema de inventarios para gestión completa de bodegas.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Sistema de Ventas</span>
-                            <span class="tag">Inventario</span>
-                            <span class="tag">Almacén</span>
-                        </div>
-                        <a href="https://jhonmalorne.github.io/Sistemadeventas/" class="portfolio-link" target="_blank">Ver sitio web →</a>
-                    </div>
-                </div>
+                <a href="https://jhonmalorne.github.io/Sistemadeventas/" target="_blank" class="client-card">
+                    <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Sistema de Ventas" class="client-logo">
+                    <div class="client-name">Sistema de Ventas</div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Sección Capacitación -->
-    <section id="capacitacion">
+    <!-- Cursos de Consultoría y Capacitación -->
+    <section id="cursos">
         <div class="container">
             <div class="section-title">
-                <h2>Consulting & Capacitación</h2>
-                <p>Capacitaciones prácticas para emprendedores y profesionales venezolanos</p>
+                <h2>Consultoría & Capacitación</h2>
+                <p>Programas especializados para docentes, emprendedores y profesionales que buscan transformación digital</p>
             </div>
             
-            <div class="accordion">
-                <h3 class="block-title">🏫 Bloque 1: Herramientas Digitales para la Educación</h3>
-                <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Ideal para docentes y directivos que desean modernizar su enseñanza sin estrés</p>
-                
+            <div class="courses-accordion">
                 <!-- Curso 1 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>1. De la Pizarra al Píxel: Organización Digital</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Transformar la gestión diaria del docente usando tecnología básica.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Adiós al papel: Cómo usar la nube para guardar exámenes y planificaciones</li>
-                            <li>Módulo 2: Herramientas gratuitas para crear presentaciones que no aburran</li>
-                            <li>Módulo 3: Comunicación efectiva con padres y alumnos vía digital (sin invadir tu privacidad)</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Transformar la gestión diaria del docente usando tecnología básica.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Adiós al papel: Cómo usar la nube para guardar exámenes y planificaciones.</li>
+                                <li>Módulo 2: Herramientas gratuitas para crear presentaciones que no aburran.</li>
+                                <li>Módulo 3: Comunicación efectiva con padres y alumnos vía digital (sin invadir tu privacidad).</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 2 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>2. Mi Primera Aula Virtual (Blogger y Más)</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Crear un espacio propio en internet para compartir recursos educativos.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: ¿Qué es un Blog y para qué sirve en la escuela?</li>
-                            <li>Módulo 2: Creación paso a paso de tu sitio en Blogger (estructura básica)</li>
-                            <li>Módulo 3: Cómo subir tareas, guías PDF y videos para tus alumnos</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Crear un espacio propio en internet para compartir recursos educativos.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: ¿Qué es un Blog y para qué sirve en la escuela?</li>
+                                <li>Módulo 2: Creación paso a paso de tu sitio en Blogger (estructura básica).</li>
+                                <li>Módulo 3: Cómo subir tareas, guías PDF y videos para tus alumnos.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 3 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>3. Diseño Visual para Docentes</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Crear material didáctico visualmente atractivo que capte la atención.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Psicología básica del color: ¿Qué colores ayudan a aprender?</li>
-                            <li>Módulo 2: Creación de infografías y láminas educativas sencillas</li>
-                            <li>Módulo 3: Bancos de imágenes: Dónde encontrar fotos legales y de buena calidad</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Crear material didáctico visualmente atractivo que capte la atención.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Psicología básica del color: ¿Qué colores ayudan a aprender?</li>
+                                <li>Módulo 2: Creación de infografías y láminas educativas sencillas.</li>
+                                <li>Módulo 3: Bancos de imágenes: Dónde encontrar fotos legales y de buena calidad.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 4 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>4. Google para Maestros (Suite Educativa)</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Dominar el ecosistema Google para ahorrar tiempo administrativo.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Formularios de Google: Crea exámenes que se corrigen solos</li>
-                            <li>Módulo 2: Documentos compartidos: Trabajo colaborativo en tiempo real</li>
-                            <li>Módulo 3: Google Calendar: Organiza tu año escolar y entregas</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Dominar el ecosistema Google para ahorrar tiempo administrativo.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Formularios de Google: Crea exámenes que se corrigen solos.</li>
+                                <li>Módulo 2: Documentos compartidos: Trabajo colaborativo en tiempo real.</li>
+                                <li>Módulo 3: Google Calendar: Organiza tu año escolar y entregas.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 5 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>5. Presencia Digital Escolar (Para Directivos)</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Mejorar la imagen institucional de la escuela en internet.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: La importancia de la "huella digital" de la escuela</li>
-                            <li>Módulo 2: Diferencia entre perfil personal y página institucional</li>
-                            <li>Módulo 3: Protocolos de seguridad: Qué publicar y qué no (fotos de alumnos)</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Mejorar la imagen institucional de la escuela en internet.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: La importancia de la "huella digital" de la escuela.</li>
+                                <li>Módulo 2: Diferencia entre perfil personal y página institucional.</li>
+                                <li>Módulo 3: Protocolos de seguridad: Qué publicar y qué no (fotos de alumnos).</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
-                <h3 class="block-title">💼 Bloque 2: Ventas y Negocios Locales</h3>
-                <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Diseñado para comerciantes y emprendedores que quieren facturar más</p>
-                
                 <!-- Curso 6 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>6. Tu Negocio en el Mapa (Google Business)</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Que los clientes locales te encuentren al buscar en su celular.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Cómo registrar tu negocio en Google Maps desde cero</li>
-                            <li>Módulo 2: La ficha perfecta: Horarios, ubicación y fotos que venden</li>
-                            <li>Módulo 3: Reseñas: Cómo lograr que tus clientes hablen bien de ti</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Que los clientes locales te encuentren al buscar en su celular.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Cómo registrar tu negocio en Google Maps desde cero.</li>
+                                <li>Módulo 2: La ficha perfecta: Horarios, ubicación y fotos que venden.</li>
+                                <li>Módulo 3: Reseñas: Cómo lograr que tus clientes hablen bien de ti.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 7 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>7. Vender sin Enredarse (Marketing para No Expertos)</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Entender la lógica de las ventas digitales sin términos complicados.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: ¿Quién es mi cliente real y dónde está en internet?</li>
-                            <li>Módulo 2: Del "Me gusta" a la "Compra": El camino del cliente</li>
-                            <li>Módulo 3: Errores comunes que hacen perder ventas en redes sociales</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Entender la lógica de las ventas digitales sin términos complicados.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: ¿Quién es mi cliente real y dónde está en internet?</li>
+                                <li>Módulo 2: Del "Me gusta" a la "Compra": El camino del cliente.</li>
+                                <li>Módulo 3: Errores comunes que hacen perder ventas en redes sociales.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 8 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>8. El Catálogo Digital Profesional</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Organizar tus productos para facilitar la compra vía WhatsApp/Web.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Cómo tomar fotos de producto decentes con tu celular</li>
-                            <li>Módulo 2: Estructura de un catálogo: Categorías, precios y descripciones</li>
-                            <li>Módulo 3: Herramientas para crear y compartir tu catálogo en PDF o Web</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Organizar tus productos para facilitar la compra vía WhatsApp/Web.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Cómo tomar fotos de producto decentes con tu celular.</li>
+                                <li>Módulo 2: Estructura de un catálogo: Categorías, precios y descripciones.</li>
+                                <li>Módulo 3: Herramientas para crear y compartir tu catálogo en PDF o Web.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 9 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>9. Atención al Cliente 2.0</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Profesionalizar la respuesta al cliente para cerrar más ventas.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Etiqueta digital: Cómo saludar, responder y despedirse</li>
-                            <li>Módulo 2: Plantillas de respuesta rápida para WhatsApp (ahorra tiempo)</li>
-                            <li>Módulo 3: Manejo de quejas: Cómo convertir un cliente enojado en uno fiel</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Profesionalizar la respuesta al cliente para cerrar más ventas.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Etiqueta digital: Cómo saludar, responder y despedirse.</li>
+                                <li>Módulo 2: Plantillas de respuesta rápida para WhatsApp (ahorra tiempo).</li>
+                                <li>Módulo 3: Manejo de quejas: Cómo convertir un cliente enojado en uno fiel.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 10 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>10. Imagen que Vende (Branding Básico)</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Entender por qué el diseño influye en cuánto puedes cobrar.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: El poder del Logo: Por qué no deberías usar Clipart</li>
-                            <li>Módulo 2: Coherencia visual: Que tu local, tu uniforme y tu web digan lo mismo</li>
-                            <li>Módulo 3: Elementos básicos de un Flyer promocional exitoso</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Entender por qué el diseño influye en cuánto puedes cobrar.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: El poder del Logo: Por qué no deberías usar Clipart.</li>
+                                <li>Módulo 2: Coherencia visual: Que tu local, tu uniforme y tu web digan lo mismo.</li>
+                                <li>Módulo 3: Elementos básicos de un Flyer promocional exitoso.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
-                <h3 class="block-title">🚀 Bloque 3: Cierre de Brecha Digital</h3>
-                <p class="section-title" style="margin-top: -20px; margin-bottom: 30px;">Capacitaciones esenciales para perder el miedo a la tecnología</p>
-                
                 <!-- Curso 11 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>11. Internet para Emprendedores (Nivel Cero)</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Perder el miedo a navegar y usar herramientas básicas de gestión.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Correo corporativo vs. personal: Profesionalismo básico</li>
-                            <li>Módulo 2: Navegadores y Búsquedas: Cómo encontrar proveedores e ideas</li>
-                            <li>Módulo 3: La nube: Qué es y por qué es más segura que tu pendrive</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Perder el miedo a navegar y usar herramientas básicas de gestión.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Correo corporativo vs. personal: Profesionalismo básico.</li>
+                                <li>Módulo 2: Navegadores y Búsquedas: Cómo encontrar proveedores e ideas.</li>
+                                <li>Módulo 3: La nube: Qué es y por qué es más segura que tu pendrive.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 12 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>12. Publicidad con Propósito</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Dejar de gastar dinero en publicidad que no trae clientes.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Diferencia entre publicidad tradicional (radio/volante) y digital</li>
-                            <li>Módulo 2: Segmentación básica: Cómo hablarle solo a quien te puede comprar</li>
-                            <li>Módulo 3: Cómo medir si tu publicidad funcionó o no</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Dejar de gastar dinero en publicidad que no trae clientes.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Diferencia entre publicidad tradicional (radio/volante) y digital.</li>
+                                <li>Módulo 2: Segmentación básica: Cómo hablarle solo a quien te puede comprar.</li>
+                                <li>Módulo 3: Cómo medir si tu publicidad funcionó o no.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 13 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>13. Seguridad y Confianza Digital</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Operar en internet protegiendo tus datos y los de tus clientes.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Contraseñas seguras y verificación en dos pasos</li>
-                            <li>Módulo 2: Cómo identificar estafas y "Phishing" en el correo/WhatsApp</li>
-                            <li>Módulo 3: Datos sensibles: Cómo proteger la información de tus clientes</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Operar en internet protegiendo tus datos y los de tus clientes.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Contraseñas seguras y verificación en dos pasos.</li>
+                                <li>Módulo 2: Cómo identificar estafas y "Phishing" en el correo/WhatsApp.</li>
+                                <li>Módulo 3: Datos sensibles: Cómo proteger la información de tus clientes.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 14 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>14. Storytelling para Negocios</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Aprender a escribir textos que emocionen y vendan.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: Tu historia: ¿Por qué empezaste este negocio? (La gente compra historias)</li>
-                            <li>Módulo 2: Descripción de productos: Vende beneficios, no características</li>
-                            <li>Módulo 3: Redacción para la sección "Quiénes Somos" de tu web</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Aprender a escribir textos que emocionen y vendan.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: Tu historia: ¿Por qué empezaste este negocio? (La gente compra historias).</li>
+                                <li>Módulo 2: Descripción de productos: Vende beneficios, no características.</li>
+                                <li>Módulo 3: Redacción para la sección "Quiénes Somos" de tu web.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
                 
                 <!-- Curso 15 -->
-                <div class="accordion-item fade-in-up">
-                    <div class="accordion-header">
+                <div class="course-item">
+                    <div class="course-header">
                         <h3>15. Transformación Digital Real</h3>
-                        <span class="accordion-icon">+</span>
+                        <span class="course-toggle">+</span>
                     </div>
-                    <div class="accordion-content">
-                        <p><strong>Objetivo:</strong> Planificar el crecimiento tecnológico de tu negocio a largo plazo.</p>
-                        <ul class="module-list">
-                            <li>Módulo 1: ¿Por qué necesito una página web si ya tengo Facebook?</li>
-                            <li>Módulo 2: Automatización básica: Tareas que puedes dejar de hacer manualmente</li>
-                            <li>Módulo 3: El futuro de tu negocio: Pasos para seguir creciendo digitalmente</li>
-                        </ul>
-                        <div class="course-cta">
-                            <a href="#contacto" class="btn">Solicitar este curso para mi equipo</a>
+                    <div class="course-content">
+                        <div class="course-objective">
+                            <strong>Objetivo:</strong> Planificar el crecimiento tecnológico de tu negocio a largo plazo.
                         </div>
+                        <div class="course-modules">
+                            <h4>Módulos:</h4>
+                            <ul>
+                                <li>Módulo 1: ¿Por qué necesito una página web si ya tengo Facebook?</li>
+                                <li>Módulo 2: Automatización básica: Tareas que puedes dejar de hacer manualmente.</li>
+                                <li>Módulo 3: El futuro de tu negocio: Pasos para seguir creciendo digitalmente.</li>
+                            </ul>
+                        </div>
+                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Contacto -->
-    <section class="contact" id="contacto">
+    <!-- Directorio Infoguías -->
+    <section class="directory-section" id="directorio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Registro Oficial de Comercios y Servicios - InfoGuía</h2>
+                <p>¡Haz que los clientes locales te encuentren primero! 📍</p>
+            </div>
+            
+            <div class="directory-card">
+                <div class="directory-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3>Registra tu negocio en nuestra InfoGuía</h3>
+                <p>En Nexus Marketing, estamos creando la vitrina digital más completa de Los Guayos. Al registrarte hoy, tu negocio aparecerá en nuestro directorio web, permitiendo que cientos de personas accedan a tus servicios y te contacten directamente por WhatsApp.</p>
+                <p><strong>Los planes de 0 $ y 10 $</strong></p>
+                <a href="https://bit.ly/InfoguiaMarketing" target="_blank" class="directory-button">Registrar mi negocio ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
         <div class="container">
             <div class="section-title">
                 <h2>Contáctanos</h2>
-                <p>¿Listo para transformar tu negocio? Un asesor te atenderá en seguida</p>
+                <p>¿Listo para transformar tu negocio? Escríbenos y un asesor te atenderá de inmediato</p>
             </div>
             
             <div class="contact-container">
-                <div class="contact-info fade-in-up">
-                    <h3>Hablemos de tu proyecto</h3>
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h4>Teléfono / WhatsApp</h4>
-                            <p>+58 424 452 5765</p>
+                            <h4>Ubicación</h4>
+                            <p>Los Guayos, Carabobo, Venezuela</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+58 424-4525765</p>
                         </div>
                     </div>
                     
@@ -1381,82 +1286,86 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h4>Email</h4>
-                            <p>info@nexusmarketing.com</p>
+                            <h4>Correo Electrónico</h4>
+                            <p>jhoncuenta2@gmail.com</p>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Ubicación</h4>
-                            <p>Carabobo, Venezuela</p>
-                            <p>Servicios Internacionales</p>
+                    <!-- Redes Sociales -->
+                    <h3 style="margin-top: 30px;">Síguenos en Redes Sociales</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" title="Facebook">
+                            <img src="https://i.imgur.com/4d0KklK.png" alt="Facebook" style="width: 24px; height: 24px;">
+                        </a>
+                        <a href="#" class="social-icon" title="Instagram">
+                            <img src="https://i.imgur.com/QY7ivGQ.png" alt="Instagram" style="width: 24px; height: 24px;">
+                        </a>
+                        <a href="#" class="social-icon" title="LinkedIn">
+                            <img src="https://i.imgur.com/uU8YpyK.png" alt="LinkedIn" style="width: 24px; height: 24px;">
+                        </a>
+                        <a href="#" class="social-icon" title="Threads">
+                            <img src="https://i.imgur.com/uAYMpZw.png" alt="Threads" style="width: 24px; height: 24px;">
+                        </a>
+                    </div>
+                    
+                    <!-- Métodos de Pago -->
+                    <div class="payment-methods">
+                        <h4>Métodos de Pago Aceptados</h4>
+                        <div class="payment-icons">
+                            <img src="https://i.imgur.com/tLxAMXV.png" alt="Binance" class="payment-icon">
+                            <img src="https://i.imgur.com/dtB9NiG.png" alt="Zelle" class="payment-icon">
+                            <img src="https://i.imgur.com/q7pJtIu.png" alt="Google Pay" class="payment-icon">
                         </div>
                     </div>
                     
+                    <!-- Mapa -->
                     <div class="map-container">
-                        <iframe src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d502656.178729774!2d-68.31310042501192!3d10.180541079198106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8069fb8056b8b7%3A0x50806d80b98cee62!2sNexus%20Marketing!5e0!3m2!1ses-419!2sve!4v1769284598719!5m2!1ses-419!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://wa.me/584244525765" class="social-link" target="_blank">
-                            <img src="https://i.imgur.com/JCQKfRj.png" alt="WhatsApp">
-                        </a>
-                        <a href="https://facebook.com/nexusmarketing" class="social-link" target="_blank">
-                            <img src="https://i.imgur.com/4d0KklK.png" alt="Facebook">
-                        </a>
-                        <a href="https://instagram.com/nexusmarketing" class="social-link" target="_blank">
-                            <img src="https://i.imgur.com/QY7ivGQ.png" alt="Instagram">
-                        </a>
-                        <a href="https://linkedin.com/company/nexusmarketing" class="social-link" target="_blank">
-                            <img src="https://i.imgur.com/uU8YpyK.png" alt="LinkedIn">
-                        </a>
-                        <a href="#" class="social-link" target="_blank">
-                            <img src="https://i.imgur.com/uAYMpZw.png" alt="Threads" style="filter: brightness(0) invert(0.8);">
-                        </a>
-                    </div>
-                    
-                    <div style="margin-top: 30px;">
-                        <h4>Métodos de Pago</h4>
-                        <div class="payment-methods">
-                            <div class="payment-method">
-                                <img src="https://i.imgur.com/dtB9NiG.png" alt="Zelle">
-                                <span>Zelle</span>
-                            </div>
-                            <div class="payment-method">
-                                <img src="https://i.imgur.com/tLxAMXV.png" alt="Binance">
-                                <span>Binance</span>
-                            </div>
-                            <div class="payment-method">
-                                <i class="fab fa-paypal" style="font-size: 1rem;"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="payment-method">
-                                <i class="fas fa-university" style="font-size: 1rem;"></i>
-                                <span>Transferencia</span>
-                            </div>
-                        </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d502656.178729774!2d-68.31310042501192!3d10.180541079198106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8069fb8056b8b7%3A0x50806d80b98cee62!2sNexus%20Marketing!5e0!3m2!1ses-419!2sve!4v1769284598719!5m2!1ses-419!2sve" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 
-                <div class="contact-form fade-in-up">
+                <div class="contact-form">
+                    <h3>Envíanos un mensaje</h3>
                     <form id="contactForm">
-                        <input type="text" placeholder="Tu nombre" required>
-                        <input type="email" placeholder="Tu correo electrónico" required>
-                        <input type="text" placeholder="Tu teléfono (WhatsApp)" required>
-                        <select required>
-                            <option value="" disabled selected>¿Qué servicio te interesa?</option>
-                            <option value="logo">Diseño de Logotipo</option>
-                            <option value="web">Página Web</option>
-                            <option value="marketing">Marketing Digital</option>
-                            <option value="consulting">Consultoría/Capacitación</option>
-                            <option value="otros">Otros servicios</option>
-                        </select>
-                        <textarea placeholder="Cuéntanos sobre tu proyecto o necesidades" required></textarea>
-                        <button type="submit" class="btn" style="width: 100%;">Enviar Mensaje</button>
+                        <div class="form-group">
+                            <label for="name">Nombre completo *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Teléfono / WhatsApp</label>
+                            <input type="text" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Servicio de interés</label>
+                            <select id="service" name="service">
+                                <option value="">Selecciona un servicio</option>
+                                <option value="diseño_logo">Diseño de Logotipos</option>
+                                <option value="banners">Diseño de Banners y Volantes</option>
+                                <option value="pagina_web">Página Web Profesional</option>
+                                <option value="blog">Creación de Blogs</option>
+                                <option value="google_maps">Registro en Google Maps</option>
+                                <option value="catalogo">Catálogo Web de Productos</option>
+                                <option value="whatsapp">Configuración de WhatsApp Business</option>
+                                <option value="qr">Código QR para Negocios</option>
+                                <option value="redes">Paquete "Arranca tus Redes"</option>
+                                <option value="cursos">Cursos de Capacitación</option>
+                                <option value="directorio">Registro en InfoGuía</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Enviar mensaje</button>
                     </form>
                 </div>
             </div>
@@ -1467,91 +1376,145 @@
     <footer>
         <div class="container">
             <div class="footer-container">
-                <div class="footer-about">
-                    <div class="footer-logo">Nexus<span style="color: var(--secondary);">Marketing</span></div>
-                    <p>Especialistas en marketing digital y consultoría para empresas venezolanas. Transformamos negocios con soluciones prácticas y resultados inmediatos.</p>
+                <div class="footer-column">
+                    <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" class="footer-logo">
+                    <p>Somos una empresa especializada en marketing digital y diseño web, comprometida con el crecimiento de tu negocio en el mundo digital.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="Threads">
+                            <i class="fab fa-threads"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Servicios</h4>
                     <ul>
                         <li><a href="#servicios">Diseño de Logotipos</a></li>
-                        <li><a href="#servicios">Páginas Web</a></li>
-                        <li><a href="#servicios">Marketing Digital</a></li>
-                        <li><a href="#capacitacion">Consultoría</a></li>
+                        <li><a href="#servicios">Páginas Web Profesionales</a></li>
+                        <li><a href="#servicios">Configuración de WhatsApp Business</a></li>
+                        <li><a href="#servicios">Registro en Google Maps</a></li>
+                        <li><a href="#servicios">Catálogos Web de Productos</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-links">
-                    <h4>Enlaces Rápidos</h4>
+                <div class="footer-column">
+                    <h4>Cursos</h4>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#servicios">Servicios Marketing</a></li>
-                        <li><a href="#clientes">Clientes</a></li>
-                        <li><a href="#capacitacion">Capacitación</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#cursos">Herramientas Digitales para Educación</a></li>
+                        <li><a href="#cursos">Ventas y Negocios Locales</a></li>
+                        <li><a href="#cursos">Cierre de Brecha Digital</a></li>
+                        <li><a href="#cursos">Storytelling para Negocios</a></li>
+                        <li><a href="#cursos">Transformación Digital Real</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Contacto</h4>
                     <ul>
-                        <li><i class="fas fa-phone-alt" style="margin-right: 8px;"></i> +58 424 452 5765</li>
-                        <li><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@nexusmarketing.com</li>
-                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Carabobo, Venezuela</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Los Guayos, Carabobo</li>
+                        <li><i class="fab fa-whatsapp"></i> +58 424-4525765</li>
+                        <li><i class="fas fa-envelope"></i> jhoncuenta2@gmail.com</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Nexus Marketing. Todos los derechos reservados. Especialistas en transformación digital.</p>
+                <p>&copy; 2023 Nexus Marketing. Todos los derechos reservados. | Diseñado con pasión para impulsar tu negocio digital</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Menú móvil
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
         
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileToggle.innerHTML = navMenu.classList.contains('active') 
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
                 ? '<i class="fas fa-times"></i>' 
                 : '<i class="fas fa-bars"></i>';
         });
         
-        // Cerrar menú al hacer clic en un enlace
-        document.querySelectorAll('.nav-menu a').forEach(link => {
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
         
-        // Acordeón para cursos
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        // Course Accordion
+        const courseHeaders = document.querySelectorAll('.course-header');
         
-        accordionHeaders.forEach(header => {
+        courseHeaders.forEach(header => {
             header.addEventListener('click', () => {
-                const accordionItem = header.parentElement;
-                accordionItem.classList.toggle('active');
+                const courseItem = header.parentElement;
+                const courseContent = header.nextElementSibling;
+                const toggleIcon = header.querySelector('.course-toggle');
+                
+                // Close all other open course items
+                document.querySelectorAll('.course-content.active').forEach(activeContent => {
+                    if (activeContent !== courseContent) {
+                        activeContent.classList.remove('active');
+                        activeContent.previousElementSibling.querySelector('.course-toggle').textContent = '+';
+                    }
+                });
+                
+                // Toggle current course item
+                courseContent.classList.toggle('active');
+                toggleIcon.textContent = courseContent.classList.contains('active') ? '-' : '+';
             });
         });
         
-        // Formulario de contacto
+        // Form Submission
         const contactForm = document.getElementById('contactForm');
         
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Aquí normalmente enviarías el formulario a un servidor
-            // Para este ejemplo, mostramos un mensaje de éxito
-            alert('¡Gracias por contactarnos! Un asesor se comunicará contigo en menos de 24 horas.');
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            
+            // Create WhatsApp message
+            let message = `¡Hola! Soy ${name} y estoy interesado en los servicios de Nexus Marketing.%0A`;
+            message += `Correo: ${email}%0A`;
+            
+            if (document.getElementById('phone').value) {
+                message += `Teléfono: ${document.getElementById('phone').value}%0A`;
+            }
+            
+            if (service) {
+                const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+                message += `Servicio de interés: ${serviceText}%0A`;
+            }
+            
+            if (document.getElementById('message').value) {
+                message += `Mensaje: ${document.getElementById('message').value}`;
+            }
+            
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/584244525765?text=${message}`, '_blank');
+            
+            // Show success message
+            alert('¡Gracias por contactarnos! Serás redirigido a WhatsApp para continuar con tu consulta.');
+            
+            // Reset form
             contactForm.reset();
         });
         
-        // Scroll suave para enlaces internos
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1568,40 +1531,6 @@
                 }
             });
         });
-        
-        // Animación al hacer scroll
-        const fadeElements = document.querySelectorAll('.fade-in-up');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        fadeElements.forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Efecto de aparición inicial
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.fade-in-up').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-            });
-            
-            setTimeout(() => {
-                document.querySelectorAll('.fade-in-up').forEach(el => {
-                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                });
-            }, 300);
-        });
     </script>
 </body>
 </html>
-
-
-
