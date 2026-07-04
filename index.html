@@ -1,2235 +1,1082 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Marketing - Consultoría Digital y Directorio Local</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/qCgst7f.jpeg">
-    <style>
-        /* Variables CSS */
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
-            --accent: #f59e0b;
-            --premium: #d4af37;
-            --dark: #1f2937;
-            --light: #f9fafb;
-            --gray: #6b7280;
-            --light-gray: #e5e7eb;
-            --success: #10b981;
-            --radius: 12px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-        
-        /* Reset y Estilos Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 20px auto 0;
-        }
-        
-        /* Header y Navegación */
-        header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .logo img {
-            height: 50px;
-            width: auto;
-            border-radius: 8px;
-        }
-        
-        .logo-text {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--primary);
-        }
-        
-        .logo-text span {
-            color: var(--secondary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 16px;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        nav a:hover {
-            color: var(--primary);
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--dark);
-            transition: var(--transition);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 160px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.imgur.com/qCgst7f.jpeg') center/cover no-repeat;
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .cta-button:hover {
-            background-color: white;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* Servicios */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .service-icon {
-            background-color: rgba(37, 99, 235, 0.1);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .service-icon i {
-            font-size: 30px;
-            color: var(--primary);
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-        
-        .service-card p {
-            color: var(--gray);
-            margin-bottom: 10px;
-        }
-        
-        .service-card p strong {
-            color: var(--dark);
-        }
-        
-        /* Directorio InfoGuías - NUEVO DISEÑO */
-        .directory-section {
-            background-color: #f8fafc;
-        }
-        
-        .directory-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--light-gray);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .directory-tab {
-            padding: 12px 30px;
-            background: none;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--gray);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .directory-tab.active {
-            color: var(--primary);
-        }
-        
-        .directory-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 3px 3px 0 0;
-        }
-        
-        .directory-filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 8px 20px;
-            background-color: white;
-            border: 1px solid var(--light-gray);
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            color: var(--gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .filter-btn.active, .filter-btn:hover {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        .directory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        /* Fichas Básicas */
-        .business-card.basic {
-            background: white;
-            border-radius: var(--radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-            border: 1px solid var(--light-gray);
-        }
-        
-        .business-card.basic:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .business-category {
-            display: inline-block;
-            padding: 4px 12px;
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .business-name {
-            font-size: 1.4rem;
-            color: var(--dark);
-            margin-bottom: 10px;
-        }
-        
-        .business-description {
-            color: var(--gray);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .business-location {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-        
-        .business-location i {
-            color: var(--primary);
-        }
-        
-        .business-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .business-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: var(--radius);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .business-btn.whatsapp {
-            background-color: #25D366;
-            color: white;
-        }
-        
-        .business-btn.whatsapp:hover {
-            background-color: #1da851;
-        }
-        
-        /* Fichas Premium */
-        .business-card.premium {
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition);
-            height: 100%;
-            border: 2px solid var(--premium);
-            position: relative;
-        }
-        
-        .business-card.premium:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .premium-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--premium);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            z-index: 2;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .business-image {
-            height: 180px;
-            width: 100%;
-            overflow: hidden;
-        }
-        
-        .business-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .business-card.premium:hover .business-image img {
-            transform: scale(1.05);
-        }
-        
-        .business-card.premium .business-content {
-            padding: 25px;
-        }
-        
-        .business-card.premium .business-name {
-            font-size: 1.5rem;
-        }
-        
-        .business-card.premium .business-description {
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-        
-        .business-card.premium .business-location {
-            margin-bottom: 25px;
-        }
-        
-        .business-social {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: var(--light-gray);
-            color: var(--dark);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .social-link:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .business-card.premium .business-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .business-btn.map {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .business-btn.map:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .business-btn.cta {
-            background-color: var(--accent);
-            color: var(--dark);
-        }
-        
-        .business-btn.cta:hover {
-            background-color: #e69500;
-        }
-        
-        .directory-cta {
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 50px;
-            border-radius: var(--radius);
-            margin-top: 60px;
-        }
-        
-        .directory-cta h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        
-        .directory-cta p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-        
-        /* Clientes */
-        .clients-section {
-            background-color: white;
-        }
-        
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .client-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .client-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .client-logo {
-            height: 80px;
-            width: auto;
-            margin-bottom: 15px;
-            object-fit: contain;
-        }
-        
-        .client-name {
-            font-weight: 600;
-            color: var(--dark);
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .client-description {
-            font-size: 0.9rem;
-            color: var(--gray);
-            text-align: center;
-        }
-        
-        /* Cursos */
-        .courses-accordion {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .course-item {
-            background: white;
-            border-radius: var(--radius);
-            margin-bottom: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .course-item:hover {
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .course-header {
-            padding: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            background-color: white;
-            transition: var(--transition);
-        }
-        
-        .course-header:hover {
-            background-color: #f8fafc;
-        }
-        
-        .course-header h3 {
-            margin: 0;
-            font-size: 1.3rem;
-            color: var(--dark);
-            flex: 1;
-        }
-        
-        .course-toggle {
-            font-size: 1.5rem;
-            color: var(--primary);
-            transition: transform 0.3s;
-            margin-left: 15px;
-        }
-        
-        .course-content {
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.3s ease;
-        }
-        
-        .course-content.active {
-            max-height: 1000px;
-            padding-bottom: 30px;
-        }
-        
-        .course-objective {
-            background-color: rgba(245, 158, 11, 0.1);
-            padding: 20px;
-            border-radius: var(--radius);
-            margin-bottom: 20px;
-            font-weight: 500;
-            border-left: 4px solid var(--accent);
-        }
-        
-        .course-modules h4 {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .course-modules ul {
-            padding-left: 20px;
-            margin-bottom: 25px;
-        }
-        
-        .course-modules li {
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .course-modules li::marker {
-            color: var(--primary);
-        }
-        
-        .course-cta {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .course-cta:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
-        /* Contacto */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-        
-        .contact-info h3, .contact-form h3 {
-            margin-bottom: 25px;
-            color: var(--dark);
-            font-size: 1.8rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-        }
-        
-        .contact-icon {
-            background-color: rgba(37, 99, 235, 0.1);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-        
-        .contact-icon i {
-            font-size: 24px;
-            color: var(--primary);
-        }
-        
-        .contact-details h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-        
-        .contact-details p {
-            color: var(--gray);
-        }
-        
-        .social-section {
-            margin-top: 40px;
-        }
-        
-        .social-section h4 {
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--light-gray);
-            color: var(--dark);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .social-icon:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .social-icon img {
-            width: 24px;
-            height: 24px;
-        }
-        
-        .payment-methods {
-            margin-top: 40px;
-        }
-        
-        .payment-methods h4 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .payment-icons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .payment-icon {
-            height: 40px;
-            width: auto;
-            border-radius: 5px;
-        }
-        
-        .map-container {
-            margin-top: 40px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 300px;
-            border: none;
-        }
-        
-        .contact-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .form-group label {
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .form-group input, .form-group textarea, .form-group select {
-            padding: 15px;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--radius);
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-            transition: var(--transition);
-            background-color: white;
-        }
-        
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-        
-        .submit-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 16px 30px;
-            border-radius: var(--radius);
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .submit-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
-        .submit-btn i {
-            font-size: 18px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 70px 0 30px;
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .footer-logo {
-            height: 60px;
-            width: auto;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-        
-        .footer-column p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .footer-column h4 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            color: white;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-column ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-column ul li a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .footer-column ul li a i {
-            font-size: 14px;
-            color: var(--accent);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-            
-            .directory-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-            
-            .clients-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 15px 0;
-            }
-            
-            nav {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                box-shadow: var(--shadow);
-                padding: 20px;
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-                z-index: 999;
-            }
-            
-            nav.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero {
-                padding: 140px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-                padding: 0 15px;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .directory-tabs {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                border-bottom: none;
-            }
-            
-            .directory-tab {
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid var(--light-gray);
-            }
-            
-            .directory-tab.active::after {
-                display: none;
-            }
-            
-            .directory-tab.active {
-                border-bottom: 3px solid var(--primary);
-            }
-            
-            .directory-filters {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .filter-btn {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .directory-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .client-card {
-                padding: 20px;
-            }
-            
-            .course-header {
-                padding: 20px;
-            }
-            
-            .course-header h3 {
-                font-size: 1.2rem;
-            }
-            
-            .contact-container {
-                gap: 40px;
-            }
-            
-            .directory-cta {
-                padding: 30px 20px;
-            }
-            
-            .directory-cta h3 {
-                font-size: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero {
-                padding: 120px 0 60px;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .cta-button, .directory-button {
-                padding: 14px 30px;
-                font-size: 1rem;
-            }
-            
-            .service-card {
-                padding: 25px;
-            }
-            
-            .business-card.premium .business-actions {
-                flex-direction: column;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Nexus Marketing | Estrategia Digital, Automatización y Desarrollo Web en Carabobo</title>
+<meta name="description" content="Nexus Marketing impulsa negocios en Carabobo y Venezuela con diseño web, branding, automatización y consultoría tecnológica. Estrategias digitales medibles para vender más.">
+<meta name="keywords" content="marketing digital Carabobo, diseño web Venezuela, agencia digital Los Guayos, creación de logos, punto de venta, google maps business, consultoría tecnológica, nexus marketing">
+<meta name="author" content="Nexus Marketing">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jhonmalorne.github.io/nexus.net/">
+<meta name="theme-color" content="#05070d">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nexus Marketing | Impulsa tu negocio con estrategias digitales efectivas">
+<meta property="og:description" content="Diseño web, branding, automatización y consultoría tecnológica para negocios y educadores en Carabobo, Venezuela.">
+<meta property="og:image" content="https://github.com/jhonmalorne/nexus.net/blob/main/logo%20Nexus%20Marketing.jpeg?raw=true">
+<meta property="og:url" content="https://jhonmalorne.github.io/nexus.net/">
+<meta property="og:locale" content="es_VE">
+<meta property="og:site_name" content="Nexus Marketing">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nexus Marketing | Estrategia Digital y Desarrollo Web">
+<meta name="twitter:description" content="Diseño web, branding, automatización y consultoría tecnológica para negocios en Carabobo, Venezuela.">
+<meta name="twitter:image" content="https://github.com/jhonmalorne/nexus.net/blob/main/logo%20Nexus%20Marketing.jpeg?raw=true">
+
+<!-- Favicon -->
+<link rel="icon" href="https://github.com/jhonmalorne/nexus.net/blob/main/logo%20Nexus%20Marketing.jpeg?raw=true" type="image/jpeg">
+<link rel="apple-touch-icon" href="https://github.com/jhonmalorne/nexus.net/blob/main/logo%20Nexus%20Marketing.jpeg?raw=true">
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Nexus Marketing",
+  "image": "https://github.com/jhonmalorne/nexus.net/blob/main/logo%20Nexus%20Marketing.jpeg?raw=true",
+  "description": "Agencia de marketing digital, automatización, desarrollo web y consultoría tecnológica en Carabobo, Venezuela.",
+  "telephone": "+58-424-4525765",
+  "email": "Jhoncuenta2@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Los Guayos",
+    "addressRegion": "Carabobo",
+    "addressCountry": "VE"
+  },
+  "url": "https://jhonmalorne.github.io/nexus.net/",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61586104414801",
+    "https://www.instagram.com/nexusmarketingnet"
+  ],
+  "priceRange": "$$"
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --void:#05070d;
+  --ink:#0a0e18;
+  --panel:#0d1220;
+  --glass:rgba(255,255,255,0.045);
+  --glass-brd:rgba(255,255,255,0.09);
+  --electric:#3b6bff;
+  --electric-2:#5ee3ff;
+  --white:#f4f6fb;
+  --mist:#9aa3ba;
+  --mist-2:#5c6580;
+  --line:rgba(255,255,255,0.08);
+  --success:#3ddc97;
+  --radius:18px;
+  --radius-sm:10px;
+  --ease:cubic-bezier(.16,.8,.24,1);
+  --shadow:0 30px 80px -20px rgba(0,0,0,0.6);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--void);
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.font-display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+input,textarea,select{font-family:inherit;}
+:focus-visible{outline:2px solid var(--electric-2);outline-offset:3px;}
+::selection{background:var(--electric);color:#fff;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+}
+
+.container{max-width:1240px;margin:0 auto;padding:0 24px;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--electric-2);
+  padding:6px 14px;border:1px solid var(--glass-brd);border-radius:100px;
+  background:var(--glass);
+}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--electric-2);box-shadow:0 0 12px var(--electric-2);}
+.section{padding:120px 0;position:relative;}
+.section-head{max-width:640px;margin-bottom:64px;}
+.section-head h2{font-size:clamp(2rem,4vw,3rem);font-weight:600;margin:18px 0 16px;}
+.section-head p{color:var(--mist);font-size:17px;max-width:560px;}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 30px;border-radius:100px;font-weight:600;font-size:15px;
+  transition:all .35s var(--ease);position:relative;overflow:hidden;white-space:nowrap;
+}
+.btn-primary{background:linear-gradient(135deg,var(--electric),var(--electric-2));color:#04060c;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px -10px rgba(59,107,255,0.55);}
+.btn-ghost{background:var(--glass);border:1px solid var(--glass-brd);color:var(--white);backdrop-filter:blur(20px);}
+.btn-ghost:hover{background:rgba(255,255,255,0.08);transform:translateY(-3px);}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.5);transform:scale(0);animation:rip .6s linear;pointer-events:none;}
+@keyframes rip{to{transform:scale(3);opacity:0;}}
+
+/* ============ PRELOADER ============ */
+#preloader{
+  position:fixed;inset:0;background:var(--void);z-index:9999;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;
+  transition:opacity .6s var(--ease), visibility .6s var(--ease);
+}
+#preloader.hide{opacity:0;visibility:hidden;}
+.loader-mark{
+  width:56px;height:56px;border-radius:16px;
+  background:linear-gradient(135deg,var(--electric),var(--electric-2));
+  display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';
+  font-weight:700;color:#04060c;font-size:22px;
+  animation:pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(0.85);}}
+.loader-bar{width:160px;height:2px;background:var(--line);border-radius:2px;overflow:hidden;}
+.loader-bar span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--electric),var(--electric-2));animation:load 1.2s var(--ease) forwards;}
+@keyframes load{to{width:100%;}}
+
+/* ============ NAVBAR ============ */
+.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:22px 0;transition:all .4s var(--ease);
+}
+.navbar.scrolled{
+  padding:14px 0;background:rgba(5,7,13,0.7);backdrop-filter:blur(24px) saturate(160%);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:700;font-size:19px;}
+.brand img{width:34px;height:34px;border-radius:9px;object-fit:cover;}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--mist);transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--electric-2);transition:width .3s var(--ease);}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{display:flex;align-items:center;gap:14px;}
+.burger{display:none;width:42px;height:42px;border-radius:10px;background:var(--glass);border:1px solid var(--glass-brd);align-items:center;justify-content:center;flex-direction:column;gap:5px;}
+.burger span{width:18px;height:2px;background:var(--white);border-radius:2px;transition:all .3s var(--ease);}
+.burger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.active span:nth-child(2){opacity:0;}
+.burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{
+  position:fixed;top:0;right:0;height:100vh;width:min(320px,80vw);
+  background:rgba(8,11,20,0.98);backdrop-filter:blur(24px);border-left:1px solid var(--line);
+  z-index:950;transform:translateX(100%);transition:transform .45s var(--ease);
+  padding:100px 32px 40px;display:flex;flex-direction:column;gap:28px;
+}
+.mobile-menu.open{transform:translateX(0);}
+.mobile-menu a{font-size:17px;font-weight:500;}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:940;opacity:0;visibility:hidden;transition:all .4s;}
+.menu-overlay.open{opacity:1;visibility:visible;}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding-top:110px;overflow:hidden;
+}
+#nexus-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.65;}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(59,107,255,0.22),transparent 70%),
+              radial-gradient(ellipse 50% 40% at 100% 100%,rgba(94,227,255,0.1),transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;text-align:center;max-width:900px;margin:0 auto;padding:0 24px;}
+.hero h1{
+  font-size:clamp(2.6rem,7vw,5rem);font-weight:700;line-height:1.02;margin:26px 0 22px;
+  background:linear-gradient(180deg,#fff 30%,#b9c4de 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--electric-2),var(--electric));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero p.lead{font-size:clamp(1rem,1.6vw,1.25rem);color:var(--mist);max-width:600px;margin:0 auto 40px;}
+.hero-actions{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:56px;justify-content:center;margin-top:80px;flex-wrap:wrap;}
+.hero-stat b{display:block;font-family:'Space Grotesk';font-size:2.2rem;font-weight:700;color:var(--white);}
+.hero-stat span{font-size:13px;color:var(--mist-2);text-transform:uppercase;letter-spacing:0.08em;}
+.scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;color:var(--mist-2);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
+.scroll-cue .line{width:1px;height:36px;background:linear-gradient(var(--electric-2),transparent);animation:scrolldown 1.8s ease-in-out infinite;}
+@keyframes scrolldown{0%{opacity:0;transform:scaleY(0.3);transform-origin:top;}50%{opacity:1;transform:scaleY(1);transform-origin:top;}100%{opacity:0;transform:scaleY(0.3);transform-origin:bottom;}}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.stagger .reveal:nth-child(1){transition-delay:.05s;}
+.stagger .reveal:nth-child(2){transition-delay:.12s;}
+.stagger .reveal:nth-child(3){transition-delay:.19s;}
+.stagger .reveal:nth-child(4){transition-delay:.26s;}
+.stagger .reveal:nth-child(5){transition-delay:.33s;}
+.stagger .reveal:nth-child(6){transition-delay:.4s;}
+
+/* ============ SERVICES ============ */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+.service-card{
+  padding:34px 30px;border-radius:var(--radius);background:var(--glass);
+  border:1px solid var(--glass-brd);backdrop-filter:blur(20px);
+  transition:all .45s var(--ease);position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--electric-2),transparent);
+  opacity:0;transition:opacity .4s;
+}
+.service-card:hover{transform:translateY(-8px);background:rgba(255,255,255,0.06);border-color:rgba(94,227,255,0.3);box-shadow:var(--shadow);}
+.service-card:hover::before{opacity:1;}
+.service-icon{
+  width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(59,107,255,0.18),rgba(94,227,255,0.08));
+  color:var(--electric-2);font-size:20px;margin-bottom:22px;transition:transform .4s var(--ease);
+}
+.service-card:hover .service-icon{transform:scale(1.1) rotate(-6deg);}
+.service-card h3{font-size:19px;font-weight:600;margin-bottom:10px;}
+.service-card p{font-size:14.5px;color:var(--mist);margin-bottom:22px;min-height:66px;}
+.service-link{font-size:13.5px;font-weight:600;color:var(--electric-2);display:inline-flex;align-items:center;gap:6px;}
+.service-link i{transition:transform .3s var(--ease);font-size:11px;}
+.service-card:hover .service-link i{transform:translateX(4px);}
+
+/* ============ BENEFITS ============ */
+.benefits{background:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.benefit-item{padding:30px 24px;text-align:center;border-right:1px solid var(--line);}
+.benefit-item:last-child{border-right:none;}
+.benefit-item .num{font-family:'Space Grotesk';font-size:2.6rem;font-weight:700;background:linear-gradient(135deg,var(--white),var(--electric-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.benefit-item .lbl{font-size:13px;color:var(--mist);margin-top:6px;letter-spacing:0.03em;}
+@media (max-width:820px){.benefits-grid{grid-template-columns:repeat(2,1fr);}.benefit-item{border-bottom:1px solid var(--line);}}
+
+/* ============ CONSULTORIAS (ACCORDION) ============ */
+.consult-tabs{display:flex;gap:10px;margin-bottom:36px;flex-wrap:wrap;}
+.consult-tab{padding:12px 22px;border-radius:100px;background:var(--glass);border:1px solid var(--glass-brd);font-size:14px;font-weight:600;color:var(--mist);transition:all .3s;}
+.consult-tab.active,.consult-tab:hover{background:var(--electric);color:#04060c;border-color:var(--electric);}
+.consult-panel{display:none;}
+.consult-panel.active{display:block;animation:fadein .5s var(--ease);}
+@keyframes fadein{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.accordion-item{border:1px solid var(--glass-brd);border-radius:var(--radius-sm);margin-bottom:12px;overflow:hidden;background:var(--glass);}
+.accordion-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;}
+.accordion-head h4{font-size:16.5px;font-weight:600;}
+.accordion-head i{color:var(--electric-2);transition:transform .35s var(--ease);}
+.accordion-item.open .accordion-head i{transform:rotate(45deg);}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.accordion-body ul{padding:0 24px 22px;display:flex;flex-direction:column;gap:10px;}
+.accordion-body li{font-size:14.5px;color:var(--mist);display:flex;align-items:center;gap:10px;}
+.accordion-body li::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--success);font-size:11px;}
+
+/* ============ DIRECTORY ============ */
+.directory-tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;align-items:center;}
+.search-box{
+  flex:1;min-width:240px;display:flex;align-items:center;gap:12px;
+  background:var(--glass);border:1px solid var(--glass-brd);border-radius:100px;padding:14px 22px;
+}
+.search-box input{background:none;border:none;color:var(--white);width:100%;font-size:14.5px;}
+.search-box input:focus{outline:none;}
+.search-box i{color:var(--mist-2);}
+.filter-select{background:var(--glass);border:1px solid var(--glass-brd);border-radius:100px;padding:14px 20px;color:var(--white);font-size:14px;}
+.filter-pills{display:flex;gap:8px;}
+.pill{padding:10px 18px;border-radius:100px;background:var(--glass);border:1px solid var(--glass-brd);font-size:13.5px;font-weight:600;color:var(--mist);transition:all .3s;}
+.pill.active,.pill:hover{background:var(--electric);color:#04060c;border-color:var(--electric);}
+.directory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.biz-card{
+  background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--radius);
+  padding:26px;transition:all .4s var(--ease);position:relative;
+}
+.biz-card:hover{transform:translateY(-6px);border-color:rgba(94,227,255,0.3);box-shadow:var(--shadow);}
+.biz-top{display:flex;gap:14px;align-items:center;margin-bottom:16px;}
+.biz-logo{width:56px;height:56px;border-radius:14px;object-fit:cover;background:#111726;border:1px solid var(--glass-brd);}
+.biz-name{font-size:17px;font-weight:600;}
+.biz-cat{font-size:12.5px;color:var(--electric-2);text-transform:uppercase;letter-spacing:0.06em;}
+.biz-tag{position:absolute;top:22px;right:22px;font-size:11px;font-weight:700;padding:5px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:0.04em;}
+.biz-tag.destacado{background:linear-gradient(135deg,var(--electric),var(--electric-2));color:#04060c;}
+.biz-tag.basico{background:var(--glass);border:1px solid var(--glass-brd);color:var(--mist);}
+.biz-desc{font-size:14px;color:var(--mist);margin-bottom:14px;min-height:42px;}
+.biz-addr{font-size:13px;color:var(--mist-2);display:flex;align-items:center;gap:6px;margin-bottom:20px;}
+.biz-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.biz-actions a{
+  width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.05);
+  display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--mist);
+  border:1px solid var(--glass-brd);transition:all .3s;
+}
+.biz-actions a:hover{background:var(--electric);color:#04060c;}
+.biz-actions .btn-contact{width:auto;padding:0 18px;font-size:13px;font-weight:600;background:var(--electric);color:#04060c;}
+.no-results{text-align:center;padding:60px 20px;color:var(--mist);grid-column:1/-1;}
+
+/* ============ FAQ ============ */
+.faq-list{max-width:820px;}
+.faq-item{border-bottom:1px solid var(--line);padding:6px 0;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 4px;cursor:pointer;font-weight:600;font-size:16.5px;}
+.faq-q i{color:var(--electric-2);transition:transform .35s var(--ease);flex-shrink:0;margin-left:20px;}
+.faq-item.open .faq-q i{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.faq-a p{padding:0 4px 22px;color:var(--mist);font-size:15px;max-width:700px;}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;margin-bottom:16px;}
+.contact-info p{color:var(--mist);margin-bottom:36px;max-width:460px;}
+.contact-row{display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid var(--line);}
+.contact-row:last-of-type{border-bottom:1px solid var(--line);}
+.contact-row .ic{width:44px;height:44px;border-radius:12px;background:var(--glass);border:1px solid var(--glass-brd);display:flex;align-items:center;justify-content:center;color:var(--electric-2);flex-shrink:0;}
+.contact-row .txt b{display:block;font-size:15px;}
+.contact-row .txt span{font-size:13px;color:var(--mist-2);}
+.copy-btn{margin-left:auto;background:var(--glass);border:1px solid var(--glass-brd);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--mist);transition:all .3s;}
+.copy-btn:hover{color:var(--electric-2);}
+.social-row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
+.social-row a{width:44px;height:44px;border-radius:12px;background:var(--glass);border:1px solid var(--glass-brd);display:flex;align-items:center;justify-content:center;transition:all .3s;}
+.social-row img{width:20px;height:20px;object-fit:contain;filter:grayscale(1) brightness(1.6);transition:filter .3s;}
+.social-row a:hover{background:var(--electric);}
+.social-row a:hover img{filter:none;}
+.qr-box{margin-top:30px;display:flex;align-items:center;gap:16px;padding:18px;background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--radius-sm);max-width:340px;}
+.qr-box img{width:72px;height:72px;border-radius:8px;background:#fff;padding:4px;}
+.qr-box span{font-size:13px;color:var(--mist);}
+
+.form-card{background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--radius);padding:36px;backdrop-filter:blur(20px);}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:8px;color:var(--mist);}
+.field input,.field select,.field textarea{
+  width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--glass-brd);border-radius:10px;
+  padding:14px 16px;color:var(--white);font-size:14.5px;transition:border-color .3s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--electric-2);}
+.field textarea{resize:vertical;min-height:100px;}
+.field .err{color:#ff6b6b;font-size:12.5px;margin-top:6px;display:none;}
+.field.invalid input,.field.invalid textarea,.field.invalid select{border-color:#ff6b6b;}
+.field.invalid .err{display:block;}
+.form-card .btn{width:100%;}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);border-top:1px solid var(--line);padding:70px 0 30px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;}
+.footer-brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:700;font-size:19px;margin-bottom:14px;}
+.footer-brand img{width:32px;height:32px;border-radius:8px;}
+.footer-col h5{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--mist-2);margin-bottom:18px;}
+.footer-col a{display:block;font-size:14px;color:var(--mist);padding:6px 0;transition:color .25s;}
+.footer-col a:hover{color:var(--electric-2);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:30px;border-top:1px solid var(--line);flex-wrap:wrap;gap:14px;}
+.footer-bottom p{font-size:13px;color:var(--mist-2);}
+@media (max-width:820px){.footer-grid{grid-template-columns:1fr 1fr;}}
+
+/* ============ FLOATING BUTTONS ============ */
+.float-wa{
+  position:fixed;bottom:26px;right:26px;width:60px;height:60px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;
+  z-index:500;box-shadow:0 12px 30px -6px rgba(37,211,102,0.5);animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.back-top{
+  position:fixed;bottom:26px;right:96px;width:48px;height:48px;border-radius:50%;
+  background:var(--glass);border:1px solid var(--glass-brd);backdrop-filter:blur(20px);
+  display:flex;align-items:center;justify-content:center;z-index:500;opacity:0;visibility:hidden;
+  transform:translateY(10px);transition:all .4s var(--ease);color:var(--white);
+}
+.back-top.show{opacity:1;visibility:visible;transform:translateY(0);}
+@media (max-width:560px){.float-wa{width:52px;height:52px;font-size:22px;right:18px;bottom:18px;}.back-top{width:42px;height:42px;right:80px;bottom:20px;}}
+
+/* ============ TOAST ============ */
+.toast-wrap{position:fixed;top:24px;right:24px;z-index:9998;display:flex;flex-direction:column;gap:10px;}
+.toast{
+  background:rgba(13,18,32,0.95);border:1px solid var(--glass-brd);backdrop-filter:blur(20px);
+  padding:16px 20px;border-radius:12px;font-size:14px;display:flex;align-items:center;gap:12px;
+  box-shadow:var(--shadow);transform:translateX(120%);transition:transform .4s var(--ease);min-width:260px;
+}
+.toast.show{transform:translateX(0);}
+.toast i{color:var(--success);font-size:16px;}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .services-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+}
+@media (max-width:640px){
+  .section{padding:80px 0;}
+  .hero-stats{gap:30px;}
+  .directory-tools{flex-direction:column;align-items:stretch;}
+  .filter-pills{overflow-x:auto;}
+}
+
+/* Skip link for a11y */
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--electric);color:#04060c;padding:12px 20px;z-index:9999;border-radius:0 0 8px 0;}
+.skip-link:focus{left:0;}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container header-container">
-            <a href="#inicio" class="logo">
-                <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing Logo">
-                <div class="logo-text">Nexus<span>Marketing</span></div>
-            </a>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#directorio">Directorio</a></li>
-                    <li><a href="#clientes">Clientes</a></li>
-                    <li><a href="#cursos">Cursos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="container hero-content">
-            <h1>Impulsa tu negocio con estrategias digitales efectivas</h1>
-            <p>En Nexus Marketing combinamos diseño web innovador, marketing digital estratégico y un directorio local para conectar negocios de nuestros clientes.</p>
-            <a href="#directorio" class="cta-button">Explorar Directorio <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </section>
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
 
-    <!-- Servicios de Marketing -->
-    <section id="servicios">
-        <div class="container">
-            <div class="section-title">
-                <h2>Servicios de Marketing Digital</h2>
-                <p>Soluciones integrales diseñadas para potenciar tu negocio en el mundo digital</p>
-            </div>
-            
-            <div class="services-grid">
-                <!-- Servicio 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>1. Diseño de Logotipos (Identidad Visual)</h3>
-                    <p><strong>¿Qué es?</strong> Es la cara de tu negocio. No es solo un dibujo; es la imagen que hará que tus clientes te reconozcan en la calle o en internet.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Un negocio sin logo parece temporal. Un buen logo transmite confianza y hace que te tomen en serio desde el primer día.</p>
-                </div>
-                
-                <!-- Servicio 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>2. Diseño de Banners y Volantes (Publicidad Digital e Impresa)</h3>
-                    <p><strong>¿Qué es?</strong> Imágenes diseñadas profesionalmente para enviar por WhatsApp, poner en tus estados o imprimir en papel.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Deja de enviar fotos borrosas o textos desordenados. Diseñamos anuncios claros y atractivos que provocan leer y comprar.</p>
-                </div>
-                
-                <!-- Servicio 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>3. Páginas Web Profesionales (Tu Oficina Digital)</h3>
-                    <p><strong>¿Qué es?</strong> Un sitio web completo donde mostramos quién eres, qué vendes y cómo contactarte.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Las redes sociales pasan de moda, pero tu web es tuya. Es como tener una oficina abierta las 24 horas del día, los 365 días del año, dando información por ti.</p>
-                </div>
-                
-                <!-- Servicio 4 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-blog"></i>
-                    </div>
-                    <h3>4. Creación de Blogs (Blogger)</h3>
-                    <p><strong>¿Qué es?</strong> Un espacio sencillo y económico para publicar artículos, noticias o tareas (ideal para docentes y escritores).</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Si tienes mucho que contar o enseñar, esta es la forma más fácil y rápida de empezar a tener presencia en internet sin complicaciones técnicas.</p>
-                </div>
-                
-                <!-- Servicio 5 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3>5. Registro en Google Maps (Google Business)</h3>
-                    <p><strong>¿Qué es?</strong> Hacemos que tu negocio aparezca con su ubicación exacta, horario y teléfono cuando alguien busca en Google o usa el GPS.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Para que tus vecinos y nuevos clientes te encuentren físicamente sin tener que preguntar direcciones. ¡Literalmente te ponemos en el mapa!</p>
-                </div>
-                
-                <!-- Servicio 6 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3>6. Catálogos Web de Productos</h3>
-                    <p><strong>¿Qué es?</strong> Una lista digital ordenada de todo lo que vendes, con fotos bonitas y precios claros.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Ahorra tiempo enviando mil fotos por WhatsApp. Con esto, envías un solo enlace y tu cliente ve todo lo que ofreces como si fuera un menú de restaurante.</p>
-                </div>
-                
-                <!-- Servicio 7 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>7. Configuración de Atención al Cliente Web</h3>
-                    <p><strong>¿Qué es?</strong> Te ayudamos a configurar respuestas automáticas y canales de contacto para que no pierdas mensajes.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Un cliente que no recibe respuesta rápido, se va con la competencia. Organizamos tu comunicación para que siempre haya alguien "atendiendo" tu negocio digital.</p>
-                </div>
-                
-                <!-- Servicio 8 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>8. Configuración Profesional de WhatsApp Business</h3>
-                    <p><strong>¿Qué es?</strong> Transformamos tu WhatsApp personal en una máquina de ventas. Configuramos tu perfil de empresa, horarios, respuestas automáticas de bienvenida y etiquetas para organizar tus pedidos.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Deja de perder chats importantes. Muchos usan WhatsApp normal para vender y pierden funciones profesionales vitales.</p>
-                </div>
-                
-                <!-- Servicio 9 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <h3>9. Creación de Código QR para Negocios</h3>
-                    <p><strong>¿Qué es?</strong> ¿Quieres que los clientes vayan a tu web o a tu WhatsApp sin tener que escribir tu número? Creamos códigos QR para que los pegues en tu mostrador, vitrina o tarjetas de presentación.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> Escanean y listo, ya están contactándote. Es el puente perfecto entre lo físico y lo digital.</p>
-                </div>
-                
-                <!-- Servicio 10 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>10. Paquete "Arranca tus Redes" (Configuración Inicial)</h3>
-                    <p><strong>¿Qué es?</strong> ¿No sabes cómo abrir el Instagram o Facebook de tu empresa? Nosotros te creamos las cuentas, ponemos la foto de perfil correcta, escribimos tu biografía profesional.</p>
-                    <p><strong>¿Por qué lo necesitas?</strong> No es Community Manager mensual, es solo el arranque. Te dejamos todo listo para que tú solo te encargues de publicar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div id="preloader" aria-hidden="true">
+  <div class="loader-mark">N</div>
+  <div class="loader-bar"><span></span></div>
+</div>
 
-    <!-- Directorio InfoGuías -->
-    <section class="directory-section" id="directorio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Directorio Local - InfoGuía</h2>
-                <p>Encuentra los mejores negocios de nuestros clientes</p>
-            </div>
-            
-            <div class="directory-tabs">
-                <button class="directory-tab active" data-tab="todos">Todos los negocios</button>
-                <button class="directory-tab" data-tab="premium">Destacados</button>
-                <button class="directory-tab" data-tab="basicos">Básicos</button>
-            </div>
-            
-            <div class="directory-filters">
-                <button class="filter-btn active" data-filter="todos">Todos</button>
-                <button class="filter-btn" data-filter="comida">Comida</button>
-                <button class="filter-btn" data-filter="servicios">Servicios</button>
-                <button class="filter-btn" data-filter="salud">Salud</button>
-                <button class="filter-btn" data-filter="educacion">Educación</button>
-            </div>
-            
-            <div class="directory-grid" id="directoryGrid">
-                <!-- Fichas Premium -->
-                <div class="business-card premium" data-category="comida" data-plan="premium">
-                    <div class="premium-badge">DESTACADO</div>
-                    <div class="business-image">
-                        <img src="https://i.imgur.com/W8mLP0s.png" alt="VarietyVida">
-                    </div>
-                    <div class="business-content">
-                        <div class="business-category">Comida</div>
-                        <h3 class="business-name">VarietyVida</h3>
-                        <p class="business-description">Los mejores servicios de carne, postres y pasapalos de la zona. Calidad garantizada y servicio a domicilio.</p>
-                        <div class="business-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Sector Felix Rios, Casa 856 - 16, Los Guayos, Estado Carabobo</span>
-                        </div>
-                        <div class="business-social">
-                            <a href="#" class="social-link">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </div>
-                        <div class="business-actions">
-                            <a href="https://wa.me/584244525765?text=Hola%20VarietyVida,%20me%20interesan%20sus%20productos" target="_blank" class="business-btn whatsapp">Pedir Catálogo</a>
-                            <a href="https://goo.gl/maps/example" target="_blank" class="business-btn map">Ver Ubicación</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="business-card premium" data-category="educacion" data-plan="premium">
-                    <div class="premium-badge">DESTACADO</div>
-                    <div class="business-image">
-                        <img src="https://i.imgur.com/4haYkRl.png" alt="Genio Vision">
-                    </div>
-                    <div class="business-content">
-                        <div class="business-category">Educación</div>
-                        <h3 class="business-name">Genio Vision</h3>
-                        <p class="business-description">Tareas dirigidas y apoyo escolar personalizado. Contamos con personal capacitado para que tu hijo sea el mejor.</p>
-                        <div class="business-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Sector Felix Rios, Casa 856 - 16, Los Guayos, Estado Carabobo</span>
-                        </div>
-                        <div class="business-social">
-                            <a href="#" class="social-link">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                        <div class="business-actions">
-                            <a href="https://wa.me/584244525765?text=Hola%20Genio%20Vision,%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="business-btn whatsapp">Reservar Cita</a>
-                            <a href="https://goo.gl/maps/example" target="_blank" class="business-btn map">Ver Ubicación</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Fichas Básicas -->
-                <div class="business-card basic" data-category="servicios" data-plan="basic">
-                    <div class="business-category">Servicios</div>
-                    <h3 class="business-name">Los Maestros de la Herreria</h3>
-                    <p class="business-description">Herreros y soldadores con los mejores servicios.</p>
-                    <div class="business-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Santa Inés sector 3 calle 26 casa 2 3, Carabobo, El Socorro</span>
-                    </div>
-                    <div class="business-actions">
-                        <a href="https://wa.me/584121219369?text=Hola,%20quiero%20información%20sobre%20sus%20servicios%20Herreros" target="_blank" class="business-btn whatsapp">Contactar ahora</a>
-                    </div>
-                </div>
-                
-                <div class="business-card basic" data-category="comida" data-plan="basic">
-                    <div class="business-category">Comida</div>
-                    <h3 class="business-name">Toldo Azul</h3>
-                    <p class="business-description">VENTA DE: 👉COMBOS DE PERRO CALIENTE 🌭🌭 y HAMBURGUESAS 🍔🍔🍔 Para tu compartir en Familia 
- 👉Deliciosa Sopa a la Leña 
-Sabados y Domingos</p>
-                    <div class="business-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Avenida Las Américas, Los Guayos 2011, Carabobo, Venezuela</span>
-                    </div>
-                    <div class="business-actions">
-                        <a href="https://wa.me/584120370662?text=Hola%20Toldo%20Azul,%20necesito%20información" target="_blank" class="business-btn whatsapp">Contactar ahora</a>
-                    </div>
-                </div>
-                
-                <div class="business-card premium" data-category="comida" data-plan="premium">
-                    <div class="premium-badge">DESTACADO</div>
-                    <div class="business-image">
-                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Panadería El Horno">
-                    </div>
-                    <div class="business-content">
-                        <div class="business-category">Comida</div>
-                        <h3 class="business-name">Panadería El Horno</h3>
-                        <p class="business-description">Pan fresco artesanal todos los días. Especialistas en pan dulce, tortas y pasteles personalizados.</p>
-                        <div class="business-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Calle Bolívar, Los Guayos</span>
-                        </div>
-                        <div class="business-social">
-                            <a href="#" class="social-link">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </div>
-                        <div class="business-actions">
-                            <a href="https://wa.me/584244525765?text=Hola%20Panadería%20El%20Horno,%20quiero%20hacer%20un%20pedido" target="_blank" class="business-btn whatsapp">Hacer Pedido</a>
-                            <a href="https://goo.gl/maps/example" target="_blank" class="business-btn map">Ver Ubicación</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="business-card basic" data-category="servicios" data-plan="basic">
-                    <div class="business-category">Servicios</div>
-                    <h3 class="business-name">Bodega YengniMaik</h3>
-                    <p class="business-description">Todo en productos de primera necesidad</p>
-                    <div class="business-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Sector Felix Rios Calle colombia, Los Guayos</span>
-                    </div>
-                    <div class="business-actions">
-                        <a href="https://wa.me/584143413555?text=Hola%20Bodega%20YegniMaik,%20necesito%20información%20sobre%20sus%20servicios" target="_blank" class="business-btn whatsapp">Contactar ahora</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="directory-cta">
-                <h3>¿Quieres aparecer en nuestro directorio?</h3>
-                <p>Registra tu negocio hoy y comienza a recibir clientes de Los Guayos. Ofrecemos planes gratuitos y premium con más visibilidad.</p>
-                <a href="https://bit.ly/InfoguiaMarketing" target="_blank" class="cta-button">Registrar mi negocio <i class="fas fa-external-link-alt"></i></a>
-            </div>
-        </div>
-    </section>
+<div class="toast-wrap" id="toastWrap"></div>
 
-    <!-- Clientes -->
-    <section class="clients-section" id="clientes">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Clientes</h2>
-                <p>Empresas que han confiado en nuestros servicios de marketing y diseño web</p>
-            </div>
-            
-            <div class="clients-grid">
-                <a href="https://jhonmalorne.github.io/nexus.net/" target="_blank" class="client-card">
-                    <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" class="client-logo">
-                    <div class="client-name">Nexus Marketing</div>
-                    <div class="client-description">La mejor empresa de marketing y consultoría con especialistas y los precios más cómodos.</div>
-                </a>
-                
-                <a href="https://jhonmalorne.github.io/varietyvida/" target="_blank" class="client-card">
-                    <img src="https://i.imgur.com/W8mLP0s.png" alt="VarietyVida" class="client-logo">
-                    <div class="client-name">VarietyVida</div>
-                    <div class="client-description">Los mejores servicios de carne, postres y pasapalos de la zona.</div>
-                </a>
-                
-                <a href="https://jhonmalorne.github.io/GenioVision/" target="_blank" class="client-card">
-                    <img src="https://i.imgur.com/4haYkRl.png" alt="Genio Vision" class="client-logo">
-                    <div class="client-name">Genio Vision</div>
-                    <div class="client-description">Si quieres que tu hijo se nivele o sea uno de los mejores no dudes en su servicio.</div>
-                </a>
-                
-                <a href="https://jhonmalorne.github.io/Sistemadeventas/" target="_blank" class="client-card">
-                    <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Sistema de Ventas" class="client-logo">
-                    <div class="client-name">Sistema de Ventas Bodega</div>
-                    <div class="client-description">Innovadora página web con sistema de ventas y sistema de inventarios.</div>
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#inicio" class="brand">
+      <img src="https://github.com/jhonmalorne/nexus.net/blob/main/logo%20Nexus%20Marketing.jpeg?raw=true" alt="Logo Nexus Marketing" loading="lazy">
+      Nexus Marketing
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#consultorias">Consultorías</a>
+      <a href="#directorio">Directorio</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contacto" class="btn btn-primary" style="padding:11px 22px;font-size:13.5px;">Solicitar Cotización</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
 
-    <!-- Cursos de Consultoría y Capacitación -->
-    <section id="cursos">
-        <div class="container">
-            <div class="section-title">
-                <h2>Consultoría & Capacitación</h2>
-                <p>Programas especializados para docentes, emprendedores y profesionales que buscan transformación digital</p>
-            </div>
-            
-            <div class="courses-accordion">
-                <!-- Bloque 1 -->
-                <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);">Bloque 1: Herramientas Digitales para la Educación</h3>
-                <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto;">Ideal para docentes y directivos que desean modernizar su enseñanza sin estrés.</p>
-                
-                <!-- Curso 1 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>1. De la Pizarra al Píxel: Organización Digital</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Transformar la gestión diaria del docente usando tecnología básica.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Adiós al papel: Cómo usar la nube para guardar exámenes y planificaciones.</li>
-                                <li>Módulo 2: Herramientas gratuitas para crear presentaciones que no aburran.</li>
-                                <li>Módulo 3: Comunicación efectiva con padres y alumnos vía digital (sin invadir tu privacidad).</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 2 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>2. Mi Primera Aula Virtual (Blogger y Más)</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Crear un espacio propio en internet para compartir recursos educativos.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: ¿Qué es un Blog y para qué sirve en la escuela?</li>
-                                <li>Módulo 2: Creación paso a paso de tu sitio en Blogger (estructura básica).</li>
-                                <li>Módulo 3: Cómo subir tareas, guías PDF y videos para tus alumnos.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 3 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>3. Diseño Visual para Docentes</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Crear material didáctico visualmente atractivo que capte la atención.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Psicología básica del color: ¿Qué colores ayudan a aprender?</li>
-                                <li>Módulo 2: Creación de infografías y láminas educativas sencillas.</li>
-                                <li>Módulo 3: Bancos de imágenes: Dónde encontrar fotos legales y de buena calidad.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 4 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>4. Google para Maestros (Suite Educativa)</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Dominar el ecosistema Google para ahorrar tiempo administrativo.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Formularios de Google: Crea exámenes que se corrigen solos.</li>
-                                <li>Módulo 2: Documentos compartidos: Trabajo colaborativo en tiempo real.</li>
-                                <li>Módulo 3: Google Calendar: Organiza tu año escolar y entregas.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 5 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>5. Presencia Digital Escolar (Para Directivos)</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Mejorar la imagen institucional de la escuela en internet.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: La importancia de la "huella digital" de la escuela.</li>
-                                <li>Módulo 2: Diferencia entre perfil personal y página institucional.</li>
-                                <li>Módulo 3: Protocolos de seguridad: Qué publicar y qué no (fotos de alumnos).</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Bloque 2 -->
-                <h3 style="text-align: center; margin: 60px 0 30px; color: var(--primary);">Bloque 2: Ventas y Negocios Locales</h3>
-                <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto;">Diseñado para comerciantes y emprendedores que quieren facturar más.</p>
-                
-                <!-- Curso 6 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>6. Tu Negocio en el Mapa (Google Business)</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Que los clientes locales te encuentren al buscar en su celular.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Cómo registrar tu negocio en Google Maps desde cero.</li>
-                                <li>Módulo 2: La ficha perfecta: Horarios, ubicación y fotos que venden.</li>
-                                <li>Módulo 3: Reseñas: Cómo lograr que tus clientes hablen bien de ti.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 7 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>7. Vender sin Enredarse (Marketing para No Expertos)</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Entender la lógica de las ventas digitales sin términos complicados.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: ¿Quién es mi cliente real y dónde está en internet?</li>
-                                <li>Módulo 2: Del "Me gusta" a la "Compra": El camino del cliente.</li>
-                                <li>Módulo 3: Errores comunes que hacen perder ventas en redes sociales.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 8 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>8. El Catálogo Digital Profesional</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Organizar tus productos para facilitar la compra vía WhatsApp/Web.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Cómo tomar fotos de producto decentes con tu celular.</li>
-                                <li>Módulo 2: Estructura de un catálogo: Categorías, precios y descripciones.</li>
-                                <li>Módulo 3: Herramientas para crear y compartir tu catálogo en PDF o Web.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 9 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>9. Atención al Cliente 2.0</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Profesionalizar la respuesta al cliente para cerrar más ventas.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Etiqueta digital: Cómo saludar, responder y despedirse.</li>
-                                <li>Módulo 2: Plantillas de respuesta rápida para WhatsApp (ahorra tiempo).</li>
-                                <li>Módulo 3: Manejo de quejas: Cómo convertir un cliente enojado en uno fiel.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 10 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>10. Imagen que Vende (Branding Básico)</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Entender por qué el diseño influye en cuánto puedes cobrar.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: El poder del Logo: Por qué no deberías usar Clipart.</li>
-                                <li>Módulo 2: Coherencia visual: Que tu local, tu uniforme y tu web digan lo mismo.</li>
-                                <li>Módulo 3: Elementos básicos de un Flyer promocional exitoso.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Solicitar presupuesto para este curso</a>
-                    </div>
-                </div>
-                
-                <!-- Bloque 3 -->
-                <h3 style="text-align: center; margin: 60px 0 30px; color: var(--primary);">Bloque 3: Cierre de Brecha Digital</h3>
-                <p style="text-align: center; margin-bottom: 40px; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto;">Capacitaciones esenciales para perder el miedo a la tecnología.</p>
-                
-                <!-- Curso 11 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>11. Internet para Emprendedores (Nivel Cero)</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Perder el miedo a navegar y usar herramientas básicas de gestión.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Correo corporativo vs. personal: Profesionalismo básico.</li>
-                                <li>Módulo 2: Navegadores y Búsquedas: Cómo encontrar proveedores e ideas.</li>
-                                <li>Módulo 3: La nube: Qué es y por qué es más segura que tu pendrive.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 12 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>12. Publicidad con Propósito</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Dejar de gastar dinero en publicidad que no trae clientes.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Diferencia entre publicidad tradicional (radio/volante) y digital.</li>
-                                <li>Módulo 2: Segmentación básica: Cómo hablarle solo a quien te puede comprar.</li>
-                                <li>Módulo 3: Cómo medir si tu publicidad funcionó o no.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 13 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>13. Seguridad y Confianza Digital</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Operar en internet protegiendo tus datos y los de tus clientes.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Contraseñas seguras y verificación en dos pasos.</li>
-                                <li>Módulo 2: Cómo identificar estafas y "Phishing" en el correo/WhatsApp.</li>
-                                <li>Módulo 3: Datos sensibles: Cómo proteger la información de tus clientes.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 14 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>14. Storytelling para Negocios</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Aprender a escribir textos que emocionen y vendan.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: Tu historia: ¿Por qué empezaste este negocio? (La gente compra historias).</li>
-                                <li>Módulo 2: Descripción de productos: Vende beneficios, no características.</li>
-                                <li>Módulo 3: Redacción para la sección "Quiénes Somos" de tu web.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-                
-                <!-- Curso 15 -->
-                <div class="course-item">
-                    <div class="course-header">
-                        <h3>15. Transformación Digital Real</h3>
-                        <span class="course-toggle">+</span>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-objective">
-                            <strong>Objetivo:</strong> Planificar el crecimiento tecnológico de tu negocio a largo plazo.
-                        </div>
-                        <div class="course-modules">
-                            <h4>Módulos:</h4>
-                            <ul>
-                                <li>Módulo 1: ¿Por qué necesito una página web si ya tengo Facebook?</li>
-                                <li>Módulo 2: Automatización básica: Tareas que puedes dejar de hacer manualmente.</li>
-                                <li>Módulo 3: El futuro de tu negocio: Pasos para seguir creciendo digitalmente.</li>
-                            </ul>
-                        </div>
-                        <a href="#contacto" class="course-cta">Quiero capacitar a mi equipo</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+  <a href="#servicios">Servicios</a>
+  <a href="#beneficios">Beneficios</a>
+  <a href="#consultorias">Consultorías</a>
+  <a href="#directorio">Directorio</a>
+  <a href="#faq">Preguntas</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#contacto" class="btn btn-primary" style="margin-top:10px;">Solicitar Cotización</a>
+</aside>
 
-    <!-- Contacto -->
-    <section id="contacto">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contáctanos</h2>
-                <p>¿Listo para transformar tu negocio? Escríbenos y un asesor te atenderá de inmediato</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Información de Contacto</h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Ubicación</h4>
-                            <p>Los Guayos, Carabobo, Venezuela</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>WhatsApp</h4>
-                            <p>+58 424-4525765</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Correo Electrónico</h4>
-                            <p>jhoncuenta2@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Redes Sociales -->
-                    <div class="social-section">
-                        <h4>Síguenos en Redes Sociales</h4>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon" title="Facebook">
-                                <img src="https://i.imgur.com/4d0KklK.png" alt="Facebook">
-                            </a>
-                            <a href="#" class="social-icon" title="Instagram">
-                                <img src="https://i.imgur.com/QY7ivGQ.png" alt="Instagram">
-                            </a>
-                            <a href="#" class="social-icon" title="LinkedIn">
-                                <img src="https://i.imgur.com/uU8YpyK.png" alt="LinkedIn">
-                            </a>
-                            <a href="#" class="social-icon" title="Threads">
-                                <img src="https://i.imgur.com/uAYMpZw.png" alt="Threads">
-                            </a>
-                            <a href="#" class="social-icon" title="Google Maps">
-                                <img src="https://i.imgur.com/q7pJtIu.png" alt="Google Maps">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Métodos de Pago -->
-                    <div class="payment-methods">
-                        <h4>Métodos de Pago Aceptados</h4>
-                        <div class="payment-icons">
-                            <img src="https://i.imgur.com/tLxAMXV.png" alt="Binance" class="payment-icon">
-                            <img src="https://i.imgur.com/dtB9NiG.png" alt="Zelle" class="payment-icon">
-                        </div>
-                    </div>
-                    
-                    <!-- Mapa -->
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d502656.178729774!2d-68.31310042501192!3d10.180541079198106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8069fb8056b8b7%3A0x50806d80b98cee62!2sNexus%20Marketing!5e0!3m2!1ses-419!2sve!4v1769284598719!5m2!1ses-419!2sve" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Envíanos un mensaje</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre completo *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Correo electrónico *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Teléfono / WhatsApp</label>
-                            <input type="text" id="phone" name="phone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Servicio de interés</label>
-                            <select id="service" name="service">
-                                <option value="">Selecciona un servicio</option>
-                                <option value="diseño_logo">Diseño de Logotipos</option>
-                                <option value="banners">Diseño de Banners y Volantes</option>
-                                <option value="pagina_web">Página Web Profesional</option>
-                                <option value="blog">Creación de Blogs (Blogger)</option>
-                                <option value="google_maps">Registro en Google Maps</option>
-                                <option value="catalogo">Catálogo Web de Productos</option>
-                                <option value="whatsapp">Configuración de WhatsApp Business</option>
-                                <option value="qr">Código QR para Negocios</option>
-                                <option value="redes">Paquete "Arranca tus Redes"</option>
-                                <option value="cursos">Cursos de Capacitación</option>
-                                <option value="directorio">Registro en InfoGuía</option>
-                                <option value="consultoria">Consultoría Personalizada</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensaje *</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos sobre tu proyecto o necesidades..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Enviar mensaje <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="main">
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <img src="https://i.imgur.com/qCgst7f.jpeg" alt="Nexus Marketing" class="footer-logo">
-                    <p>Somos una empresa especializada en marketing digital, diseño web y directorio local, comprometida con el crecimiento y transformación digital de tu negocio.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Servicios</h4>
-                    <ul>
-                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Diseño de Logotipos</a></li>
-                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Páginas Web Profesionales</a></li>
-                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Configuración de WhatsApp Business</a></li>
-                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Registro en Google Maps</a></li>
-                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Catálogos Web de Productos</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Cursos</h4>
-                    <ul>
-                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Herramientas Digitales para Educación</a></li>
-                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Ventas y Negocios Locales</a></li>
-                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Cierre de Brecha Digital</a></li>
-                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Storytelling para Negocios</a></li>
-                        <li><a href="#cursos"><i class="fas fa-chevron-right"></i> Transformación Digital Real</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Contacto</h4>
-                    <ul>
-                        <li><a href="https://wa.me/584244525765" target="_blank"><i class="fab fa-whatsapp"></i> +58 424-4525765</a></li>
-                        <li><a href="mailto:jhoncuenta2@gmail.com"><i class="fas fa-envelope"></i> jhoncuenta2@gmail.com</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Los Guayos, Carabobo</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Nexus Marketing. Todos los derechos reservados. | Diseñado y desarrollado con pasión para impulsar tu negocio digital</p>
-            </div>
-        </div>
-    </footer>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <canvas id="nexus-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <span class="eyebrow">Agencia Digital · Carabobo, Venezuela</span>
+    <h1>Conectamos tu negocio con <em>el cliente correcto</em></h1>
+    <p class="lead">Diseño web, branding, automatización y consultoría tecnológica pensados para negocios reales: más visibilidad, más ventas, menos fricción.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-primary" data-ripple>Solicitar Cotización <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#servicios" class="btn btn-ghost" data-ripple>Ver Servicios</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b data-count="10">0</b><span>Servicios Activos</span></div>
+      <div class="hero-stat"><b data-count="18">0</b><span>Consultorías</span></div>
+      <div class="hero-stat"><b data-count="3" data-suffix="+">0</b><span>Empresas en Directorio</span></div>
+      <div class="hero-stat"><b data-count="100" data-suffix="%">0</b><span>Enfoque Local</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Explorar</span><span class="line"></span></div>
+</section>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // Course Accordion
-        const courseHeaders = document.querySelectorAll('.course-header');
-        
-        courseHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const courseItem = header.parentElement;
-                const courseContent = header.nextElementSibling;
-                const toggleIcon = header.querySelector('.course-toggle');
-                
-                // Close all other open course items
-                document.querySelectorAll('.course-content.active').forEach(activeContent => {
-                    if (activeContent !== courseContent) {
-                        activeContent.classList.remove('active');
-                        activeContent.previousElementSibling.querySelector('.course-toggle').textContent = '+';
-                    }
-                });
-                
-                // Toggle current course item
-                courseContent.classList.toggle('active');
-                toggleIcon.textContent = courseContent.classList.contains('active') ? '−' : '+';
-            });
-        });
-        
-        // Directory Filtering System
-        const directoryTabs = document.querySelectorAll('.directory-tab');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const businessCards = document.querySelectorAll('.business-card');
-        const directoryGrid = document.getElementById('directoryGrid');
-        
-        // Tab functionality
-        directoryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active tab
-                directoryTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                const tabType = tab.getAttribute('data-tab');
-                filterBusinessCards(tabType, 'todos');
-            });
-        });
-        
-        // Filter button functionality
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active filter button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                const activeTab = document.querySelector('.directory-tab.active').getAttribute('data-tab');
-                const filterCategory = button.getAttribute('data-filter');
-                
-                filterBusinessCards(activeTab, filterCategory);
-            });
-        });
-        
-        // Function to filter business cards
-        function filterBusinessCards(tabType, category) {
-            businessCards.forEach(card => {
-                const cardPlan = card.getAttribute('data-plan');
-                const cardCategory = card.getAttribute('data-category');
-                
-                let shouldShow = true;
-                
-                // Apply tab filter
-                if (tabType !== 'todos') {
-                    if (tabType === 'premium' && cardPlan !== 'premium') {
-                        shouldShow = false;
-                    } else if (tabType === 'basicos' && cardPlan !== 'basic') {
-                        shouldShow = false;
-                    }
-                }
-                
-                // Apply category filter
-                if (category !== 'todos' && cardCategory !== category) {
-                    shouldShow = false;
-                }
-                
-                // Show or hide card
-                if (shouldShow) {
-                    card.style.display = 'block';
-                    // Add slight delay for animation
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Qué hacemos</span>
+      <h2>Servicios diseñados para vender</h2>
+      <p>Cada servicio está pensado para un objetivo comercial concreto: visibilidad, confianza o conversión.</p>
+    </div>
+    <div class="services-grid stagger" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="benefits" id="beneficios">
+  <div class="container">
+    <div class="benefits-grid">
+      <div class="benefit-item reveal"><div class="num" data-count="48">0</div><div class="lbl">Horas promedio de entrega</div></div>
+      <div class="benefit-item reveal"><div class="num" data-count="0" data-suffix="Bs">0</div><div class="lbl">Costo en infraestructura pesada</div></div>
+      <div class="benefit-item reveal"><div class="num" data-count="24" data-suffix="/7"></div><div class="lbl">Presencia digital activa</div></div>
+      <div class="benefit-item reveal"><div class="num" data-count="1" data-suffix="er"></div><div class="lbl">Lugar en resultados locales</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTORIAS -->
+<section class="section" id="consultorias">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Formación</span>
+      <h2>Consultorías por sector</h2>
+      <p>Programas breves y prácticos, dictados por bloque, para docentes, comercios y emprendedores.</p>
+    </div>
+    <div class="consult-tabs" role="tablist">
+      <button class="consult-tab active" data-tab="0" role="tab">Educación</button>
+      <button class="consult-tab" data-tab="1" role="tab">Ventas y Negocios Locales</button>
+      <button class="consult-tab" data-tab="2" role="tab">Cierre de Brecha Digital</button>
+    </div>
+    <div id="consultPanels"></div>
+  </div>
+</section>
+
+<!-- DIRECTORIO -->
+<section class="section" id="directorio">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Infoguía Empresarial</span>
+      <h2>Directorio de clientes</h2>
+      <p>Negocios reales que confían en Nexus Marketing para su presencia digital.</p>
+    </div>
+    <div class="directory-tools reveal">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="bizSearch" placeholder="Buscar por nombre, categoría o ubicación...">
+      </div>
+      <select class="filter-select" id="bizCategory">
+        <option value="todas">Todas las categorías</option>
+      </select>
+      <div class="filter-pills" id="bizTipo">
+        <button class="pill active" data-tipo="todos">Todos</button>
+        <button class="pill" data-tipo="Destacado">Destacados</button>
+        <button class="pill" data-tipo="Básico">Básicos</button>
+      </div>
+    </div>
+    <div class="directory-grid stagger" id="directoryGrid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Dudas frecuentes</span>
+      <h2>Preguntas y respuestas</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+  <div class="container contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Hablemos</span>
+      <h2>Nexus Marketing</h2>
+      <p>Impulsa tu negocio con estrategias digitales efectivas. Escríbenos y te respondemos el mismo día.</p>
+
+      <div class="contact-row">
+        <div class="ic"><i class="fa-solid fa-phone"></i></div>
+        <div class="txt"><b>04244525765</b><span>Teléfono / WhatsApp</span></div>
+        <button class="copy-btn" data-copy="04244525765" aria-label="Copiar teléfono"><i class="fa-regular fa-copy"></i></button>
+      </div>
+      <div class="contact-row">
+        <div class="ic"><i class="fa-solid fa-envelope"></i></div>
+        <div class="txt"><b>Jhoncuenta2@gmail.com</b><span>Correo electrónico</span></div>
+        <button class="copy-btn" data-copy="Jhoncuenta2@gmail.com" aria-label="Copiar correo"><i class="fa-regular fa-copy"></i></button>
+      </div>
+      <div class="contact-row">
+        <div class="ic"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="txt"><b>Los Guayos, Carabobo</b><span>Venezuela</span></div>
+      </div>
+
+      <div class="social-row">
+        <a href="https://www.facebook.com/profile.php?id=61586104414801" target="_blank" rel="noopener" aria-label="Facebook"><img src="https://github.com/jhonmalorne/nexus.net/blob/main/icono%20facebook.png?raw=true" alt="Facebook" loading="lazy"></a>
+        <a href="https://www.instagram.com/nexusmarketingnet" target="_blank" rel="noopener" aria-label="Instagram"><img src="https://github.com/jhonmalorne/nexus.net/blob/main/icono%20instagram.png?raw=true" alt="Instagram" loading="lazy"></a>
+        <a href="#" target="_blank" rel="noopener" aria-label="TikTok"><img src="https://github.com/jhonmalorne/nexus.net/blob/main/icono%20de%20tiktok.png?raw=true" alt="TikTok" loading="lazy"></a>
+        <a href="https://wa.me/584244525765" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="https://github.com/jhonmalorne/nexus.net/blob/main/icono%20whatsapp.png?raw=true" alt="WhatsApp" loading="lazy"></a>
+        <a href="https://google.com/maps?cid=5800756719689461346" target="_blank" rel="noopener" aria-label="Google Maps"><img src="https://github.com/jhonmalorne/nexus.net/blob/main/icono%20maps.png?raw=true" alt="Maps" loading="lazy"></a>
+      </div>
+
+      <div class="qr-box">
+        <img src="https://github.com/jhonmalorne/nexus.net/blob/main/QR%20Instagram%20nexus%20marketing.png" alt="Código QR Instagram Nexus Marketing" loading="lazy">
+        <span>Escanea el código QR para seguirnos en Instagram y ver nuestros proyectos.</span>
+      </div>
+    </div>
+
+    <form class="form-card reveal" id="contactForm" novalidate>
+      <div class="field" id="f-name">
+        <label for="name">Nombre completo</label>
+        <input type="text" id="name" name="name" placeholder="Tu nombre">
+        <span class="err">Por favor ingresa tu nombre.</span>
+      </div>
+      <div class="field" id="f-phone">
+        <label for="phone">Teléfono</label>
+        <input type="tel" id="phone" name="phone" placeholder="04XX-XXXXXXX">
+        <span class="err">Ingresa un teléfono válido.</span>
+      </div>
+      <div class="field" id="f-service">
+        <label for="service">Servicio de interés</label>
+        <select id="service" name="service">
+          <option value="">Selecciona un servicio</option>
+          <option>Diseño Web</option>
+          <option>Creación de Logos</option>
+          <option>Flyers Publicitarios</option>
+          <option>Redes Publicitarias</option>
+          <option>Punto de Venta Adaptado</option>
+          <option>Catálogo Web</option>
+          <option>Google Maps Business</option>
+          <option>Blogger Corporativo</option>
+          <option>Google Sites</option>
+          <option>WhatsApp Business</option>
+          <option>Código QR</option>
+          <option>Consultoría</option>
+        </select>
+        <span class="err">Selecciona un servicio.</span>
+      </div>
+      <div class="field" id="f-msg">
+        <label for="msg">Mensaje</label>
+        <textarea id="msg" name="msg" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+        <span class="err">Escribe un mensaje breve.</span>
+      </div>
+      <button type="submit" class="btn btn-primary" data-ripple>Enviar por WhatsApp <i class="fa-brands fa-whatsapp"></i></button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="https://github.com/jhonmalorne/nexus.net/blob/main/logo%20Nexus%20Marketing.jpeg?raw=true" alt="Nexus Marketing" loading="lazy">
+          Nexus Marketing
+        </div>
+        <p style="color:var(--mist);font-size:14px;max-width:280px;">Impulsa tu negocio con estrategias digitales efectivas. Los Guayos, Carabobo, Venezuela.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <a href="#servicios">Servicios</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#consultorias">Consultorías</a>
+        <a href="#directorio">Directorio</a>
+      </div>
+      <div class="footer-col">
+        <h5>Servicios</h5>
+        <a href="#servicios">Diseño Web</a>
+        <a href="#servicios">Branding y Logos</a>
+        <a href="#servicios">Google Maps Business</a>
+        <a href="#servicios">WhatsApp Business</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <a href="tel:+584244525765">04244525765</a>
+        <a href="mailto:Jhoncuenta2@gmail.com">Jhoncuenta2@gmail.com</a>
+        <a href="https://google.com/maps?cid=5800756719689461346" target="_blank" rel="noopener">Los Guayos, Carabobo</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Nexus Marketing. Todos los derechos reservados.</p>
+      <p>Diseñado y desarrollado por Nexus Marketing</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/584244525765" target="_blank" rel="noopener" class="float-wa" aria-label="Escríbenos por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="back-top" id="backTop" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
+  /* ===== PRELOADER ===== */
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      document.getElementById('preloader').classList.add('hide');
+    }, 500);
+  });
+
+  /* ===== NAVBAR SCROLL ===== */
+  var navbar = document.getElementById('navbar');
+  var backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 40){ navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+    if(window.scrollY > 500){ backTop.classList.add('show'); } else { backTop.classList.remove('show'); }
+  });
+  backTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  /* ===== MOBILE MENU ===== */
+  var burger = document.getElementById('burger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var overlay = document.getElementById('menuOverlay');
+  function toggleMenu(){
+    burger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    overlay.classList.toggle('open');
+    var expanded = burger.classList.contains('active');
+    burger.setAttribute('aria-expanded', expanded);
+  }
+  burger.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+  mobileMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ if(mobileMenu.classList.contains('open')) toggleMenu(); }); });
+
+  /* ===== RIPPLE EFFECT ===== */
+  document.querySelectorAll('[data-ripple], .btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var rect = btn.getBoundingClientRect();
+      var span = document.createElement('span');
+      span.className = 'ripple';
+      span.style.left = (e.clientX - rect.left) + 'px';
+      span.style.top = (e.clientY - rect.top) + 'px';
+      btn.appendChild(span);
+      setTimeout(function(){ span.remove(); }, 650);
+    });
+  });
+
+  /* ===== SCROLL REVEAL ===== */
+  var revealEls = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('in'); observer.unobserve(entry.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(function(el){ observer.observe(el); });
+
+  /* ===== ANIMATED COUNTERS ===== */
+  var counters = document.querySelectorAll('[data-count]');
+  var countObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-count'),10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var current = 0;
+        var steps = 40;
+        var inc = target / steps;
+        var timer = setInterval(function(){
+          current += inc;
+          if(current >= target){ current = target; clearInterval(timer); }
+          el.textContent = Math.floor(current) + suffix;
+        }, 30);
+        countObserver.unobserve(el);
+      }
+    });
+  }, {threshold:0.5});
+  counters.forEach(function(el){ countObserver.observe(el); });
+
+  /* ===== TOASTS ===== */
+  function showToast(msg){
+    var wrap = document.getElementById('toastWrap');
+    var t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>'+msg+'</span>';
+    wrap.appendChild(t);
+    requestAnimationFrame(function(){ t.classList.add('show'); });
+    setTimeout(function(){ t.classList.remove('show'); setTimeout(function(){ t.remove(); }, 400); }, 3200);
+  }
+
+  /* ===== COPY BUTTONS ===== */
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var val = btn.getAttribute('data-copy');
+      navigator.clipboard.writeText(val).then(function(){ showToast('Copiado: ' + val); });
+    });
+  });
+
+  /* ===== NEXUS CANVAS PARTICLES ===== */
+  var canvas = document.getElementById('nexus-canvas');
+  var ctx = canvas.getContext('2d');
+  var hero = document.querySelector('.hero');
+  var W, H, nodes = [];
+  var mouse = {x:null, y:null};
+  function resize(){
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+  function initNodes(){
+    nodes = [];
+    var count = Math.min(70, Math.floor(W*H/16000));
+    for(var i=0;i<count;i++){
+      nodes.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx: (Math.random()-0.5)*0.35, vy:(Math.random()-0.5)*0.35, r: Math.random()*1.6+1
+      });
+    }
+  }
+  resize(); initNodes();
+  window.addEventListener('resize', function(){ resize(); initNodes(); });
+  hero.addEventListener('mousemove', function(e){
+    var rect = hero.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top;
+  });
+  hero.addEventListener('mouseleave', function(){ mouse.x=null; mouse.y=null; });
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){
+      var n = nodes[i];
+      if(!reduceMotion){
+        n.x += n.vx; n.y += n.vy;
+        if(n.x<0||n.x>W) n.vx*=-1;
+        if(n.y<0||n.y>H) n.vy*=-1;
+      }
+      for(var j=i+1;j<nodes.length;j++){
+        var m = nodes[j];
+        var dx = n.x-m.x, dy = n.y-m.y;
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < 140){
+          ctx.strokeStyle = 'rgba(94,227,255,'+(0.14*(1-dist/140))+')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(m.x,m.y); ctx.stroke();
         }
-        
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-            
-            // Create WhatsApp message
-            let whatsappMessage = `¡Hola! Soy ${name} y estoy interesado en los servicios de Nexus Marketing.%0A`;
-            whatsappMessage += `Correo: ${email}%0A`;
-            
-            if (phone) {
-                whatsappMessage += `Teléfono: ${phone}%0A`;
-            }
-            
-            if (service) {
-                const serviceText = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
-                whatsappMessage += `Servicio de interés: ${serviceText}%0A`;
-            }
-            
-            if (message) {
-                whatsappMessage += `Mensaje: ${message}`;
-            }
-            
-            // Open WhatsApp with the message
-            window.open(`https://wa.me/584244525765?text=${whatsappMessage}`, '_blank');
-            
-            // Show success message
-            alert('¡Gracias por contactarnos! Serás redirigido a WhatsApp para continuar con tu consulta. Un asesor te atenderá en seguida.');
-            
-            // Reset form
-            contactForm.reset();
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-                header.style.padding = '10px 0';
-            } else {
-                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
-                header.style.padding = '20px 0';
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Initialize directory with all businesses
-        filterBusinessCards('todos', 'todos');
-    </script>
+      }
+      if(mouse.x!==null){
+        var dxm = n.x-mouse.x, dym = n.y-mouse.y;
+        var dm = Math.sqrt(dxm*dxm+dym*dym);
+        if(dm < 180){
+          ctx.strokeStyle = 'rgba(59,107,255,'+(0.35*(1-dm/180))+')';
+          ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = 'rgba(148,196,255,0.85)';
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  /* ===== SERVICES DATA ===== */
+  var services = [
+    {icon:'fa-display', title:'Diseño Web', desc:'Sitios modernos, rápidos y responsive que representan tu marca profesionalmente.'},
+    {icon:'fa-pen-nib', title:'Creación de Logos', desc:'Identidad visual memorable, adaptada a tu sector y a tu público.'},
+    {icon:'fa-bullhorn', title:'Flyers Publicitarios', desc:'Piezas gráficas listas para redes sociales, WhatsApp e impresión.'},
+    {icon:'fa-share-nodes', title:'Redes Publicitarias', desc:'Estructuración de campañas y presencia coordinada en redes sociales.'},
+    {icon:'fa-cash-register', title:'Punto de Venta Adaptado', desc:'Sistemas simples de gestión de ventas ajustados a tu negocio.'},
+    {icon:'fa-book-open', title:'Catálogo Web', desc:'Catálogo digital de productos, siempre disponible para tus clientes.'},
+    {icon:'fa-map-location-dot', title:'Google Maps Business', desc:'Aparece en el mapa cuando tus clientes buscan cerca de ellos.'},
+    {icon:'fa-blog', title:'Blogger Corporativo', desc:'Blog institucional para posicionar tu marca y compartir novedades.'},
+    {icon:'fa-globe', title:'Google Sites', desc:'Página institucional simple, rápida de publicar y fácil de mantener.'},
+    {icon:'fa-brands fa-whatsapp', title:'WhatsApp Business', desc:'Configuración profesional: catálogo, respuestas rápidas y etiquetas.'},
+    {icon:'fa-qrcode', title:'Creación de Código QR', desc:'Códigos QR personalizados para menús, pagos, redes o catálogos.'}
+  ];
+  var servicesGrid = document.getElementById('servicesGrid');
+  services.forEach(function(s){
+    var iconClass = s.icon.indexOf('fa-brands') === 0 ? s.icon : 'fa-solid '+s.icon;
+    var card = document.createElement('div');
+    card.className = 'service-card reveal';
+    card.innerHTML =
+      '<div class="service-icon"><i class="'+iconClass+'"></i></div>'+
+      '<h3>'+s.title+'</h3>'+
+      '<p>'+s.desc+'</p>'+
+      '<a href="https://wa.me/584244525765?text='+encodeURIComponent('Hola Nexus Marketing, quiero información sobre: '+s.title)+'" target="_blank" rel="noopener" class="service-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>';
+    servicesGrid.appendChild(card);
+  });
+  revealEls = document.querySelectorAll('.reveal');
+  revealEls.forEach(function(el){ observer.observe(el); });
+
+  /* ===== CONSULTORIAS DATA ===== */
+  var consultData = [
+    {title:'Herramientas Digitales para la Educación', items:['De la Pizarra al Píxel','Mi Primera Aula Virtual','Diseño Visual para Docentes','Google para Maestros','Presencia Digital Escolar']},
+    {title:'Ventas y Negocios Locales', items:['Tu Negocio en el Mapa','Marketing para No Expertos','Catálogo Digital Profesional','Atención al Cliente 2.0','Imagen que Vende']},
+    {title:'Cierre de Brecha Digital', items:['Internet para Emprendedores','Publicidad con Propósito','Seguridad Digital','Storytelling','Transformación Digital','Tokeniza tu Negocio']}
+  ];
+  var consultPanels = document.getElementById('consultPanels');
+  consultData.forEach(function(block, idx){
+    var panel = document.createElement('div');
+    panel.className = 'consult-panel' + (idx===0 ? ' active' : '');
+    panel.setAttribute('data-panel', idx);
+    var itemsHtml = block.items.map(function(it,i){
+      return '<div class="accordion-item'+(i===0?' open':'')+'">'+
+        '<div class="accordion-head"><h4>'+it+'</h4><i class="fa-solid fa-plus"></i></div>'+
+        '<div class="accordion-body"><ul>'+
+          '<li>Diagnóstico inicial y objetivos claros</li>'+
+          '<li>Práctica guiada paso a paso</li>'+
+          '<li>Material de apoyo entregable</li>'+
+        '</ul></div></div>';
+    }).join('');
+    panel.innerHTML = '<div class="accordion-group">'+itemsHtml+'</div>';
+    consultPanels.appendChild(panel);
+  });
+
+  document.querySelectorAll('.consult-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.consult-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var idx = tab.getAttribute('data-tab');
+      document.querySelectorAll('.consult-panel').forEach(function(p){
+        p.classList.toggle('active', p.getAttribute('data-panel') === idx);
+      });
+    });
+  });
+
+  document.addEventListener('click', function(e){
+    var head = e.target.closest('.accordion-head');
+    if(head){
+      var item = head.parentElement;
+      var body = item.querySelector('.accordion-body');
+      var isOpen = item.classList.contains('open');
+      item.classList.toggle('open');
+      body.style.maxHeight = isOpen ? null : body.scrollHeight + 'px';
+    }
+  });
+  // open first accordion body by default height
+  document.querySelectorAll('.accordion-item.open .accordion-body').forEach(function(b){ b.style.maxHeight = b.scrollHeight + 'px'; });
+
+  /* ===== DIRECTORY DATA ===== */
+  var businesses = [
+    {
+      name:'Variety Vida', logo:'https://github.com/jhonmalorne/nexus.net/blob/main/VarietyVida.png?raw=true',
+      web:'https://jhonmalorne.github.io/varietyvida/', phone:'4244517644', category:'Comida',
+      desc:'Venta de postres, embutidos, carnes y pasapalos.', address:'Los Guayos', tipo:'Destacado',
+      facebook:'', instagram:''
+    },
+    {
+      name:'GenioVision', logo:'https://github.com/jhonmalorne/nexus.net/blob/main/logo%20Genio%20Vision.jpeg?raw=true',
+      web:'https://jhonmalorne.github.io/GenioVision/', phone:'4244517644', category:'Educación',
+      desc:'Educación y tareas dirigidas.', address:'Online', tipo:'Destacado',
+      facebook:'', instagram:''
+    },
+    {
+      name:'Wolf & Co', logo:'https://github.com/jhonmalorne/nexus.net/blob/main/logo%20wolf%20&%20co.png?raw=true',
+      web:'', phone:'4127484447', category:'Accesorios',
+      desc:'Venta de artículos y accesorios.', address:'Online', tipo:'Básico',
+      facebook:'', instagram:''
+    }
+  ];
+
+  var directoryGrid = document.getElementById('directoryGrid');
+  var bizCategory = document.getElementById('bizCategory');
+  var bizSearch = document.getElementById('bizSearch');
+  var currentTipo = 'todos';
+
+  // Populate category filter
+  var cats = Array.from(new Set(businesses.map(function(b){ return b.category; })));
+  cats.forEach(function(c){
+    var opt = document.createElement('option');
+    opt.value = c; opt.textContent = c;
+    bizCategory.appendChild(opt);
+  });
+
+  function waLink(phone, name){
+    var digits = phone.replace(/\D/g,'');
+    if(digits.charAt(0) === '0') digits = digits.substring(1);
+    return 'https://wa.me/58'+digits+'?text='+encodeURIComponent('Hola '+name+', te contacto a través de Nexus Marketing.');
+  }
+
+  function renderDirectory(){
+    var term = bizSearch.value.trim().toLowerCase();
+    var cat = bizCategory.value;
+    var filtered = businesses.filter(function(b){
+      var matchesTerm = !term || (b.name+' '+b.category+' '+b.address+' '+b.desc).toLowerCase().indexOf(term) !== -1;
+      var matchesCat = cat === 'todas' || b.category === cat;
+      var matchesTipo = currentTipo === 'todos' || b.tipo === currentTipo;
+      return matchesTerm && matchesCat && matchesTipo;
+    });
+    filtered.sort(function(a,b){
+      if(a.tipo === b.tipo) return a.name.localeCompare(b.name);
+      return a.tipo === 'Destacado' ? -1 : 1;
+    });
+
+    directoryGrid.innerHTML = '';
+    if(filtered.length === 0){
+      directoryGrid.innerHTML = '<div class="no-results"><i class="fa-solid fa-magnifying-glass" style="font-size:28px;margin-bottom:14px;display:block;"></i>No se encontraron negocios con esos filtros.</div>';
+      return;
+    }
+    filtered.forEach(function(b){
+      var tagClass = b.tipo === 'Destacado' ? 'destacado' : 'basico';
+      var card = document.createElement('div');
+      card.className = 'biz-card reveal in';
+      card.innerHTML =
+        '<span class="biz-tag '+tagClass+'">'+b.tipo+'</span>'+
+        '<div class="biz-top">'+
+          '<img class="biz-logo" src="'+b.logo+'" alt="Logo '+b.name+'" loading="lazy">'+
+          '<div><div class="biz-name">'+b.name+'</div><div class="biz-cat">'+b.category+'</div></div>'+
+        '</div>'+
+        '<p class="biz-desc">'+b.desc+'</p>'+
+        '<div class="biz-addr"><i class="fa-solid fa-location-dot"></i>'+(b.address || 'ONLINE')+'</div>'+
+        '<div class="biz-actions">'+
+          (b.facebook ? '<a href="'+b.facebook+'" target="_blank" rel="noopener" aria-label="Facebook de '+b.name+'"><i class="fa-brands fa-facebook-f"></i></a>' : '')+
+          (b.instagram ? '<a href="'+b.instagram+'" target="_blank" rel="noopener" aria-label="Instagram de '+b.name+'"><i class="fa-brands fa-instagram"></i></a>' : '')+
+          (b.web ? '<a href="'+b.web+'" target="_blank" rel="noopener" aria-label="Sitio web de '+b.name+'"><i class="fa-solid fa-globe"></i></a>' : '')+
+          '<a href="'+waLink(b.phone,b.name)+'" target="_blank" rel="noopener" aria-label="WhatsApp de '+b.name+'"><i class="fa-brands fa-whatsapp"></i></a>'+
+          '<a href="'+waLink(b.phone,b.name)+'" target="_blank" rel="noopener" class="btn-contact">Contactar</a>'+
+          (b.web ? '<a href="'+b.web+'" target="_blank" rel="noopener" class="btn-contact" style="background:var(--glass);color:var(--white);border:1px solid var(--glass-brd);">Ver Web</a>' : '')+
+        '</div>';
+      directoryGrid.appendChild(card);
+    });
+  }
+
+  bizSearch.addEventListener('input', renderDirectory);
+  bizCategory.addEventListener('change', renderDirectory);
+  document.querySelectorAll('#bizTipo .pill').forEach(function(pill){
+    pill.addEventListener('click', function(){
+      document.querySelectorAll('#bizTipo .pill').forEach(function(p){ p.classList.remove('active'); });
+      pill.classList.add('active');
+      currentTipo = pill.getAttribute('data-tipo');
+      renderDirectory();
+    });
+  });
+  renderDirectory();
+
+  /* ===== FAQ ===== */
+  var faqs = [
+    {q:'¿Cuánto tiempo toma desarrollar mi sitio web?', a:'La mayoría de los proyectos se entregan entre 48 y 96 horas, dependiendo del alcance y del contenido que nos proporciones.'},
+    {q:'¿Necesito tener dominio o hosting propio?', a:'No es obligatorio. Podemos publicar tu proyecto en infraestructura gratuita (como GitHub Pages) o ayudarte a configurar tu propio dominio si ya lo tienes.'},
+    {q:'¿Trabajan con negocios que no tienen presupuesto grande?', a:'Sí. Nexus Marketing nace justamente para negocios locales; priorizamos soluciones eficientes que no dependen de grandes inversiones.'},
+    {q:'¿Puedo actualizar el contenido de mi sitio después?', a:'Sí, entregamos instrucciones claras y, si lo prefieres, nosotros nos encargamos del mantenimiento y las actualizaciones.'},
+    {q:'¿Ofrecen consultorías individuales o solo grupales?', a:'Ambas modalidades están disponibles. Las consultorías pueden dictarse de forma individual, para equipos o para instituciones completas.'},
+    {q:'¿Cómo apareceré en el directorio de clientes?', a:'Al contratar un servicio, tu negocio puede incluirse en nuestra Infoguía Empresarial con logo, descripción, contacto y enlaces directos.'}
+  ];
+  var faqList = document.getElementById('faqList');
+  faqs.forEach(function(f){
+    var item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = '<div class="faq-q">'+f.q+'<i class="fa-solid fa-chevron-down"></i></div><div class="faq-a"><p>'+f.a+'</p></div>';
+    faqList.appendChild(item);
+  });
+  document.addEventListener('click', function(e){
+    var q = e.target.closest('.faq-q');
+    if(q){
+      var item = q.parentElement;
+      var a = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    }
+  });
+
+  /* ===== FORM VALIDATION ===== */
+  var form = document.getElementById('contactForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var valid = true;
+    var name = document.getElementById('name');
+    var phone = document.getElementById('phone');
+    var service = document.getElementById('service');
+    var msg = document.getElementById('msg');
+
+    function setValid(fieldId, ok){
+      var el = document.getElementById(fieldId);
+      el.classList.toggle('invalid', !ok);
+      if(!ok) valid = false;
+    }
+
+    setValid('f-name', name.value.trim().length >= 3);
+    setValid('f-phone', /^[0-9\-\+\s]{7,15}$/.test(phone.value.trim()));
+    setValid('f-service', service.value !== '');
+    setValid('f-msg', msg.value.trim().length >= 5);
+
+    if(!valid){ showToast('Revisa los campos marcados en rojo.'); return; }
+
+    var text = 'Hola Nexus Marketing, mi nombre es '+name.value.trim()+
+      '. Teléfono: '+phone.value.trim()+
+      '. Me interesa: '+service.value+
+      '. Mensaje: '+msg.value.trim();
+    window.open('https://wa.me/584244525765?text='+encodeURIComponent(text), '_blank');
+    showToast('Redirigiendo a WhatsApp...');
+    form.reset();
+  });
+
+  /* ===== FOOTER YEAR ===== */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+});
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
